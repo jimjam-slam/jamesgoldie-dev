@@ -2,3 +2,32 @@ baseURL: "https://jamesgoldie.dev/"
 languageCode: "en-us"
 title: "James Goldie"
 theme: "pathfinder"
+taxonomies:
+  tag: "tags"
+  catgeory: "categories"
+
+enableSharingButtons: true
+
+# metadata mostly used in document's head
+description: "My new homepage or blog"
+keywords: "homepage, blog"
+# images = [""]
+
+menu:
+  main:
+    - name: "Career"
+      url: "/career"
+    - name: "Projects"
+      url: "/projects"
+    - name: "Writing"
+      url: "/writing"
+
+params:
+  homeSubtitle: "Doing stuff yay"
+  # logoText: "James Goldie"
+  social:
+    - name: twitter
+      url: https://twitter.com/rensa_co
+      
+  # footerLeft: ""
+  footerRight: "James Goldie"
