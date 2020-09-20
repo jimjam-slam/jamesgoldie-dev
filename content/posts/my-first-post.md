@@ -1,7 +1,7 @@
 ---
 title: "My First Post"
 date: 2020-09-05T18:15:36+10:00
-draft: false
+draft: true
 toc: false
 images:
 tags:
@@ -17,3 +17,11 @@ gftr grgrdghjkhjkrhrhg:
 * hfjk edhfkjdk f
 
 fhjfjhrjfhjkerh fjkh fhrj kfhrjfkhrjkhfhf 🤣 fhdsjhfk fkjv
+
+```r
+library(tidyverse)
+
+mtcars %>%
+  rownames_to_column() %>%
+  as_tibble()
+```
