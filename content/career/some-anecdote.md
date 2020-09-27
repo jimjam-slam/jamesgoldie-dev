@@ -1,11 +1,11 @@
 ---
-title: "My First Post"
+title: "I guess I did a PhD?"
 date: 2020-09-05T18:15:36+10:00
 draft: true
 toc: false
 images:
 tags:
-  - untagged
+  - education
 ---
 
 nejkfhjke hbjfkjf hjk [hfjkehf](https://rensa.co) jh kjrh jkeh fjkhe fjk hfr

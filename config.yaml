@@ -23,11 +23,26 @@ menu:
       url: "/writing"
 
 params:
-  homeSubtitle: "Doing stuff yay"
-  # logoText: "James Goldie"
+  homeSubtitle: "I'm a Knowledge Broker working on [stuff](/career) and things!"
+  Logo:
+    logoText: "James Goldie"
+  Portrait:
+    Path: https://rensa.co/assets/me.jpg
   social:
     - name: twitter
       url: https://twitter.com/rensa_co
+    - name: linkedin
+      url: https://www.linkedin.com/in/jamesgoldie/
+    - name: github
+      url: https://github.com/rensa
+    - name: gitlab
+      url: https://gitlab.com/rensa
+    - name: googlescholar
+      url: https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en
+    - name: keybase
+      url: https://keybase.io/rensa
+    - name: email
+      url: mailto:me@jamesgoldie.dev
       
   # footerLeft: ""
   footerRight: "James Goldie"
