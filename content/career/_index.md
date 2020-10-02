@@ -1,8 +1,10 @@
 ---
-title: "I work as a Knowledge Broker."
+title: "Career"
+# layout: subsection-list
+layout: single
 ---
-What does that mean? a bunch of stuff, I suppose. For one thing, it never gets boring.
+<span style="font-size:1.5rem;">I'm a researcher and data scientist with a focus on visualising and communicating climate change.</span>
 
-And another thing! jkd fjhkds jfkdsjk fjkd fjfkls djklfrjdlkrdsjk shdnkjf dhjk fhnjkds fj skhfjkd hfjkh kjkd hfjkhfjksdhfjksdh.
+Right now I'm working at the [Monash Climate Change Communication Hub](https://monash.edu/mcccrh) as a Senior Knowledge Broker, helping to bridge the gap between climate scientists and the media! But I also have a background researching the public health impacts of climate change: I graduated in 2019 with a PhD from the Climate Change Research Centre at UNSW.
 
-Dj fkdjkhf jkdsh fjkdhs fjkh jkfh juihfrkjh fhvkjfhdfjkh dj khfhsdjh fjkhjkhs f.
+All this means I have a pretty varied mix of skills! I've been doing data science since 2013, and you can see [tools and websites I've built](/projects) that run the gamut from data analysis packages like collateral, through to sophisticated data viusalisation platforms like the Climdex website.

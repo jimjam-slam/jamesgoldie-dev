@@ -1,12 +1,19 @@
 baseURL: "https://jamesgoldie.dev/"
 languageCode: "en-us"
 title: "James Goldie"
+author:
+  name: "James Goldie"
 theme: "pathfinder"
 taxonomies:
   tag: "tags"
   catgeory: "categories"
 
 enableSharingButtons: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 
 # metadata mostly used in document's head
 description: "My new homepage or blog"
@@ -45,4 +52,4 @@ params:
       url: mailto:me@jamesgoldie.dev
       
   # footerLeft: ""
-  footerRight: "James Goldie"
+  footerRight: ""
