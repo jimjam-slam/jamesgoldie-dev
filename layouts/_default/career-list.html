@@ -1,0 +1,34 @@
+{{ define "main" }}
+    {{ $paginator := .Paginate .Data.Pages }}
+    
+    <main class="posts">
+        <h1>{{ .Title }}</h1>
+
+        {{ if .Content }}
+            <div class="content">{{ .Content }}</div>
+        {{ end }}
+        
+        {{ range where .Pages ".Params.aspect" "Role" }}
+            <div class="posts-group">
+                <div class="post-year">X</div>
+
+                <ul class="posts-list">
+                    <li class="post-item">
+                        <a href="{{.Permalink}}">
+                            <span class="post-title">{{.Title}}</span>
+                            <span class="post-day">
+                                {{ if .Site.Params.dateformShort }}
+                                    {{ .Date.Format .Site.Params.dateformShort }}
+                                {{ else }}
+                                    {{ .Date.Format "Jan 2"}}
+                                {{ end }}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        {{ end }}
+
+    {{ partial "pagination.html" . }}
+    </main>
+{{ end }}

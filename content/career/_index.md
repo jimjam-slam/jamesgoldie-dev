@@ -1,7 +1,7 @@
 ---
 title: "Career"
-# layout: subsection-list
-layout: single
+layout: subsection-list
+# ayout: single
 ---
 <span style="font-size:1.5rem;">I'm a researcher and data scientist with a focus on visualising and communicating climate change.</span>
 
