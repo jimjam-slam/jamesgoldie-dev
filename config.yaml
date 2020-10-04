@@ -28,6 +28,8 @@ menu:
       url: "/projects"
     - name: "Writing"
       url: "/writing"
+    - name: "#"
+      url: "/tags"
 
 params:
   homeSubtitle: "I'm a Knowledge Broker working on [stuff](/career) and things!"

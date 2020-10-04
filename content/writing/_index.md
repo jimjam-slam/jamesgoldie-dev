@@ -1,4 +1,4 @@
 ---
 title: "Writing"
-description: I write! I _write._ Sometimes. 
+description: "Blog posts, tutorials, technical write-ups and opinions."
 ---

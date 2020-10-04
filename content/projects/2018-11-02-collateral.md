@@ -3,7 +3,7 @@ title: collateral
 work-type: package
 tags: [rstats, package]
 date: 2018-11-02
-ext-link: https://collateral.jamesgoldie.dev
+extlink: https://collateral.jamesgoldie.dev
 description: Automatically map complex operations safely or quietly, and quickly see the captured side effects.
 ---
 
