@@ -35,6 +35,7 @@ params:
   homeSubtitle: "I work to [visualise climate change](/career) and [build things for fun and social change](/projects) 🥳"
   Logo:
     logoText: "James Goldie"
+  defaultTheme: "light"
   Portrait:
     Path: /images/james-2020-sm.jpg
   social:
