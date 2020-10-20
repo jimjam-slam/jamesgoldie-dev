@@ -32,11 +32,11 @@ menu:
       url: "/tags"
 
 params:
-  homeSubtitle: "I'm a Knowledge Broker working on [stuff](/career) and things!"
+  homeSubtitle: "I work to [visualise climate change](/career) and [build things for fun and social change](/projects) 🥳"
   Logo:
     logoText: "James Goldie"
   Portrait:
-    Path: https://rensa.co/assets/me.jpg
+    Path: /images/james-2020-sm.jpg
   social:
     - name: twitter
       url: https://twitter.com/rensa_co
