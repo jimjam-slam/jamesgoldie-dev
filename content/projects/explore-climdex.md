@@ -1,7 +1,7 @@
 ---
 title: Explore Climdex
 work-type: website
-tags: [js, webapp, leaflet, dataviz, svg]
+tags: [js, webapp, leaflet, dataviz, svg, climatechange]
 date: 2018-06-25
 
 description: Explore observed climate extremes, and learn about the research into them.
@@ -22,4 +22,4 @@ The other mode told stories to highlight promising new climate research using so
 
 I've written about [some of the design decisions](http://climateextremes.org.au/arccss-showcase-projects/) behind this project, as well as [some of the technical challenges](https://medium.com/@jamesgoldie/challenges-visualising-climate-extremes-with-leaflet-7a407162d75f).
 
-A lot of the ideas from this website (if not the underlying technology) were incorporated into a new version of [climdex.org](climdex.org).
+A lot of the ideas from this website (if not the underlying technology) were incorporated into a new version of [climdex.org](https://climdex.org).

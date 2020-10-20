@@ -2,7 +2,7 @@
 draft: true
 title: Kitchen speaker, charger and voice assistant
 work-type: diy
-tags: [diy, bluetooth, rpi, voice]
+tags: [diy, bluetooth, rasperrypi, voice]
 date: 2017-06-05
 description: Bluetooth speaker + wireless charger + Google Assistant based on Raspberry Pi.
 ---

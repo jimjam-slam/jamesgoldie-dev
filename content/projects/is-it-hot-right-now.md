@@ -1,10 +1,11 @@
 ---
 title: Is It Hot Right Now?
 work-type: website
-tags: [js, rstats, webapp, climate, weather]
+tags: [js, rstats, webapp, climatechange, weather]
 date: 2017-09-23
 extlink: https://isithotrightnow.com
 description: Is it really hot today, or does it just feel that way?
+showRelated: true
 ---
 Sometimes you just need a simple answer to a (not-so-)simple question: is it hot right wow?
 

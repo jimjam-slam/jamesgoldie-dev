@@ -1,7 +1,7 @@
 ---
 title: Climate Health Network
 work-type: website
-tags: [websites, health]
+tags: [websites, health, climatechange]
 date: 2020-05-17
 extlink: https://climatehealth.info
 description: Find and network with experts on climate and health.

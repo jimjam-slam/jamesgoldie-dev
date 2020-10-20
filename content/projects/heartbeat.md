@@ -1,7 +1,7 @@
 ---
 title: Heartbeat of Extremes
 work-type: website
-tags: [js, leaflet, svg, webapp, dataviz]
+tags: [js, leaflet, svg, webapp, dataviz, climatechange]
 date: 2018-06-25
 description: Learn about the growing trend in hot nights across Australia.
 ---

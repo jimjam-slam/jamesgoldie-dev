@@ -52,6 +52,16 @@ params:
       url: https://keybase.io/rensa
     - name: email
       url: mailto:me@jamesgoldie.dev
-      
   # footerLeft: ""
   footerRight: ""
+  related:
+    includeNewer: true
+    threshold: 80
+    toLower: false
+    indices:
+      - name: seealso
+        weight: 100
+      - name: keywords
+        weight: 10
+      - name: date
+        weight: 1
