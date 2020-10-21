@@ -16,10 +16,6 @@ markup:
     renderer:
       unsafe: true
 
-# metadata mostly used in document's head
-description: "I work to visualise climate change and build things for fun and for social change."
-keywords: "james goldie, rensa, climate change, data visualization, data visualisation, dataviz, climate, blog, knowledge broker, australia, health, heat stress"
-
 menu:
   main:
     - name: "Career"
@@ -32,7 +28,10 @@ menu:
       url: "/tags"
 
 params:
+  author: "James Goldie"
   homeSubtitle: "I work to [visualise climate change](/career) and [build things for fun and for social change](/projects) 🥳"
+  description: "I work to visualise climate change and build things for fun and for social change."
+  keywords: "james goldie, rensa, climate change, data visualization, data visualisation, dataviz, climate, blog, knowledge broker, australia, health, heat stress"
   Logo:
     logoText: "James Goldie"
   defaultTheme: "light"
