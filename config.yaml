@@ -38,6 +38,10 @@ params:
   defaultTheme: "light"
   Portrait:
     Path: /images/james-2020-sm.jpg
+  images:
+    - /images/james-2020-og.jpg
+    - /images/climdex-og.jpg
+    - /images/james-2019-og.jpg
   social:
     - name: twitter
       url: https://twitter.com/rensa_co
