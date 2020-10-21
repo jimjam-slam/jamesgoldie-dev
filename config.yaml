@@ -9,6 +9,7 @@ taxonomies:
   catgeory: "categories"
 
 enableSharingButtons: true
+googleAnalytics: G-TFLDY9KQSH
 
 markup:
   goldmark:
