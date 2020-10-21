@@ -17,9 +17,8 @@ markup:
       unsafe: true
 
 # metadata mostly used in document's head
-description: "My new homepage or blog"
-keywords: "homepage, blog"
-# images = [""]
+description: "I work to visualise climate change and build things for fun and for social change."
+keywords: "james goldie, rensa, climate change, data visualization, data visualisation, dataviz, climate, blog, knowledge broker, australia, health, heat stress"
 
 menu:
   main:
@@ -33,7 +32,7 @@ menu:
       url: "/tags"
 
 params:
-  homeSubtitle: "I work to [visualise climate change](/career) and [build things for fun and social change](/projects) 🥳"
+  homeSubtitle: "I work to [visualise climate change](/career) and [build things for fun and for social change](/projects) 🥳"
   Logo:
     logoText: "James Goldie"
   defaultTheme: "light"
