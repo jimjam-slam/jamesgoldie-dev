@@ -1,7 +1,7 @@
 ---
 title: Climdex
 work-type: website
-tags: [js, webapp, deckgl, dataviz, climatechange, docker, plumber, rstats]
+tags: [js, webapp, deckgl, dataviz, climatechange, docker, plumber, rstats, react]
 date: 2020-05-01
 extlink: https://climdex.org
 description: Gets maps, plots and data on global climate extremes.
