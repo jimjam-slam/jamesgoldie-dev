@@ -36,7 +36,7 @@ params:
     logoText: "James Goldie"
   defaultTheme: "light"
   Portrait:
-    Path: /images/james-2020-sm.jpg
+    Path: /images/james-2021-sm.jpg
   images:
     - /images/james-2020-og.jpg
     - /images/climdex-og.jpg
