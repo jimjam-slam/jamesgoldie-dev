@@ -6,7 +6,7 @@ org: "Monash Climate Change Communication Research Hub"
 extlink: https://monash.edu/mcccrh/people/james-goldie
 ---
 
-After spending a year in a joint role as a Knowledge Broker for the [ARC Centre of Excellence for Climate Extremes](https://climateextremes.org.au) and the [Monash Climate Change Communication Research Hub](https://monash.edu/mcccrh), I'm now a Senior Knowledge Broker for the Hub.
+After spending a year in a joint role as a Knowledge Broker for the [ARC Centre of Excellence for Climate Extremes](https://climateextremes.org.au) and the [Monash Climate Change Communication Research Hub](https://monash.edu/mcccrh), I transitioned into a full-time role as Senior Knowledge Broker for the Hub.
 
 The Hub is a unique team with a unique mission: we bridge the gap between climate scientists and the media in order to help Australians understand and tackle climate change.
 
