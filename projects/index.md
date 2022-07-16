@@ -4,4 +4,5 @@ description: I've worked on websites, data visualisations, open source packages 
 listing:
   type: grid
   sort: "date desc"
+  categories: cloud
 ---

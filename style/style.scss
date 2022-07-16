@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700;800&display=swap');
+@import url('/fonts/DankMono-Regular.woff2');
+@import url('/fonts/DankMono-Bold.woff2');
+@import url('/fonts/DankMono-Italic.woff2');
 
 /*-- scss:uses --*/
 
 /*-- scss:functions --*/
 
 /*-- scss:defaults --*/
+
+$code-block-border-left: true;
 
 /* -- scss:mixins --*/
 
@@ -112,7 +117,7 @@ span {
   font-weight: 800;
 }
 
-main.content a {
+main.content a, .listing-category {
   font-weight: 600;
 }
 
@@ -123,14 +128,22 @@ main.content .quarto-listing .listing-description {
 
 
 /* home page header only (not post headers hopefully!) */
-.quarto-about-jolla header.quarto-title-block {
-  border-bottom: none;
-  padding-bottom: 0px;
+.quarto-about-jolla {
   
-  .description {
-    text-align: center;
-    font-size: 1.25rem;
+  header.quarto-title-block {
+    border-bottom: none;
+    padding-bottom: 0px;
+    
+    .description {
+      text-align: center;
+      // font-size: 1.25rem;
+    }
   }
+}
+
+header.quarto-title-block .description {
+  font-size: 1.15rem;
+  // letter-spacing: 0.1rem; 
 }
 
 /* social links on mobile */

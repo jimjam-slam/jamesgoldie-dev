@@ -1,7 +1,7 @@
 ---
 title: Explore Climdex
 work-type: website
-tags: [js, webapp, leaflet, dataviz, svg, climatechange]
+categories: [js, webapp, leaflet, dataviz, svg, climatechange]
 date: 2018-06-25
 
 description: Explore observed climate extremes, and learn about the research into them.
@@ -10,7 +10,7 @@ _**Note:** this project has now been retired._
 
 I produced two websites for the recent ARCCSS Showcase. One of those was [Explore Climdex](https://exploreclimdex.org), a site designed to allow people to either explore our massive datasets of climate extremes on their own or to be walked through interesting aspects of extremes research in a guided way.
 
-![One view of Explore Climdex](/images/exploreclimdex.png)
+![One view of Explore Climdex](exploreclimdex.png)
 
 Explore Climdex had two modes. The first was a classic data portal, where users could select one of the indices quantifying an aspect of changing  climate extremes, such as the temperatur3 of the hottest day every year, and view a map of it.
 

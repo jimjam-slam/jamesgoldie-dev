@@ -1,7 +1,7 @@
 ---
 title: ggflags
 work-type: Package
-tags: [rstats, package]
+categories: [rstats, package]
 date: 2017-09-29
 project-date: Sep 2017
 description: A package for plotting country flags as bubbles or balloons in ggplot.

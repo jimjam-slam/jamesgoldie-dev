@@ -1,7 +1,7 @@
 ---
 title: Freelance animation
 work-type: video
-tags: [video]
+categories: [video]
 date: 2014-12-31
 description: I used to be a freelance animator!
 ---

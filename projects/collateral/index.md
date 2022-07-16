@@ -1,11 +1,12 @@
 ---
 title: collateral
 work-type: package
-tags: [rstats, package]
+categories: [rstats, package]
 date: 2018-11-02
-extlink: https://collateral.jamesgoldie.dev
 description: Automatically map complex operations safely or quietly, and quickly see the captured side effects.
 ---
+
+[Find this at collateral.jamesgoldie.dev](https://collateral.jamesgoldie.dev){.btn .btn-gradient}
 
 Toward the end of my PhD analysis, I've started leaning on [`purrr`](https://purrr.tidyverse.org/) more and more to get analysis done on small multiples quickly and _safely_. Where before I might have used nested loops and potentially missed a lot of problems, I now split data frames out, build statistical models, extract model parameters and print plots all in one workflow.
 

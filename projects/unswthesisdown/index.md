@@ -1,7 +1,7 @@
 ---
 title: unswthesisdown
 work-type: Package
-tags: [rstats, thesis, package]
+categories: [rstats, thesis, package]
 date: 2017-07-09
 description: A package for writing your thesis in RMarkdown according to UNSW guidelines.
 ---
