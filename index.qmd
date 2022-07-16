@@ -1,6 +1,6 @@
 ---
 title: "James Goldie"
-description: "I work to **visualise climate change** and **build things for fun and for social change** 🥳"
+description: "I work to visualise climate change and build things for fun and for social change 🥳"
 image: profile.jpg
 about:
   id: about
@@ -13,10 +13,16 @@ about:
       href: https://twitter.com/jimjam_slam
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/jamesgoldie
     - icon: github
-      text: Github
+      text: GitHub
       href: https://github.com/jimjam-slam
+    - icon: mortarboard-fill
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en
+    - icon: envelope-fill
+      text: Mail
+      href: mailto:me@jamesgoldie.dev
 # listing:
 #   - contents: posts/folderA
 #     max-items: 2
@@ -39,6 +45,4 @@ page-layout: article
 
 :::: {#about}
 
-Learn more about [my career]{.text-orange-gold} ->
 ::::
-

@@ -1,6 +1,6 @@
 ---
 title: "Career"
-description: I'm a researcher and data scientist with a focus on visualising and communicating climate change.
+description: I'm a researcher and data journalist with a focus on visualising and communicating climate change.
 listing:
   type: default
   sort: "date desc"

@@ -1,5 +1,5 @@
 ---
-title: "Quarto: create beautiful documents with R, Pythonm Julia and Observable"
+title: "Quarto: create beautiful documents with R, Python, Julia and Observable"
 categories: ["talk"]
 date: 2022-05-20
 ---
