@@ -1,7 +1,8 @@
 ---
 title: "Career"
-layout: career-list
 description: I'm a researcher and data scientist with a focus on visualising and communicating climate change.
+listing:
+  sort: "date desc"
 ---
 Right now I'm working at [360info](https://newshub.360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of a new media startup hosted by Monash University. 
 

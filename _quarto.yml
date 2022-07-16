@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "James Goldie"
+  navbar:
+    left:
+      - text: career
+        href: /career
+      - text: projects
+        href: /projects
+      - text: writing
+        href: /writing
+    right:
+      - icon: github
+        href: https://github.com/jimjam-slam
+      - icon: twitter
+        href: https://twitter.com/jimjam_slam
+  title-block-banner: false
+
+format:
+  html:
+    theme: [flatly, "style/style.scss", "style/light.scss"]
+    mainfont: "Inter"    
