@@ -1,0 +1,34 @@
+project:
+  type: website
+
+execute:
+  freeze: auto
+
+website:
+  title: "James Goldie"
+  navbar:
+    left:
+      - text: career
+        href: /career
+      - text: projects
+        href: /projects
+      - text: writing
+        href: /writing
+    right:
+      - icon: twitter
+        href: https://twitter.com/jimjam_slam
+      - icon: linkedin
+        href: https://www.linkedin.com/in/jamesgoldie
+      - icon: github
+        href: https://github.com/jimjam-slam
+      - icon: mortarboard-fill
+        href: https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en
+      - icon: envelope-fill
+        href: mailto:me@jamesgoldie.dev
+  title-block-banner: false
+
+format:
+  html:
+    theme: [flatly, "style/style.scss", "style/light.scss"]
+    mainfont: "Inter"
+    monofont: "Dank Mono"

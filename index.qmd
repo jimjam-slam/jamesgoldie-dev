@@ -1,0 +1,48 @@
+---
+title: "James Goldie"
+description: "I work to visualise climate change and build things for fun and for social change 🥳"
+image: profile.jpg
+about:
+  id: about
+  template: jolla
+  image-shape: round
+  image-width: 8em
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/jimjam_slam
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/jamesgoldie
+    - icon: github
+      text: GitHub
+      href: https://github.com/jimjam-slam
+    - icon: mortarboard-fill
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en
+    - icon: envelope-fill
+      text: Mail
+      href: mailto:me@jamesgoldie.dev
+# listing:
+#   - contents: posts/folderA
+#     max-items: 2
+#     id: latestA
+#     sort: "date desc"
+#     type: grid
+#     fields: [title, subtitle, date, reading-time, categories]
+#     grid-columns: 1
+#     grid-item-border: false
+#   - contents: posts/folderB
+#     max-items: 1
+#     id: latestB
+#     sort: "date desc"
+#     type: grid
+#     fields: [title, subtitle, date, reading-time, categories]
+#     grid-columns: 1
+#     grid-item-border: false
+page-layout: article
+---
+
+:::: {#about}
+
+::::

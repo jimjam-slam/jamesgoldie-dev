@@ -1,8 +1,4 @@
-/public
-/resources/_gen
+/.quarto/
+/_site/
 
-hugo.exe
-hugo.linux
-hugo.darwin
-
-*Zone.Identifier
+.DS_Store
