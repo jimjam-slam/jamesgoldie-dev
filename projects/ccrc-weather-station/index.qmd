@@ -1,9 +1,9 @@
 ---
 title: CCRC Weather Station
-work-type: diy
-date: 2015-09-21
-categories: [rasperrypi, ffmpeg, shell, timelapse, weather]
 description: Raspberry Pi + camera + enthusiast weather station + really tall building = epic weather data
+date: 2015-09-21
+categories: [rasperrypi, ffmpeg, shell, timelapse, weather, diy]
+image: weather-station-sunrise.png
 ---
 <!-- Youtube embed -->
 ```{=html}

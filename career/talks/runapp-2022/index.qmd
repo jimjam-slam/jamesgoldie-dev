@@ -4,7 +4,7 @@ categories: ["talk"]
 date: 2022-05-20
 ---
 
-I presented to the R Users Network for Australian Public Policy on the use of [Quarto](https://quarto.org), a publishing system for data science:
+I presented to the R Users Network for Australian Public Policy on the use of [Quarto](https://quarto.org), a publishing system for data science.
 
 ```{=html}
 <div style="text-align:center; position: relative; height: 0; padding-bottom: 56.25%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">

@@ -1,10 +1,9 @@
 ---
 title: Destiny Title Generator
-work-type: website
+description: Find out your world-ending space-magic title.
+image: d2-title-generator.png
 categories: [js, webapp, destiny, react]
 date: 2021-01-25
-description: Find out your world-ending space-magic title.
-showRelated: true
 ---
 
 [Find this at d2title.jamesgoldie.dev](https://d2title.jamesgoldie.dev){.btn .btn-gradient}
