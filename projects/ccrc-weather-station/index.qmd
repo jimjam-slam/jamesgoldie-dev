@@ -4,6 +4,8 @@ description: Raspberry Pi + camera + enthusiast weather station + really tall bu
 date: 2015-09-21
 categories: [rasperrypi, ffmpeg, shell, timelapse, weather, diy]
 image: weather-station-sunrise.png
+twitter-card:
+  image: weather-station-sunrise.png
 ---
 <!-- Youtube embed -->
 ```{=html}

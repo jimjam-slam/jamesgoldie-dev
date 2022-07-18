@@ -2,6 +2,8 @@
 title: "James Goldie"
 description: "I work to visualise climate change and build things for fun and for social change 🥳"
 image: profile.jpg
+twitter-card:
+  image: profile.jpg
 about:
   id: about
   template: jolla

@@ -4,6 +4,8 @@ description: I used to be a freelance animator!
 categories: [video]
 date: 2014-12-31
 image: animation-unswtv.png
+twitter-card:
+  image: animation-unswtv.png
 ---
 
 ```{=html}

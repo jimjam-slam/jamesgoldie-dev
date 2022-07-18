@@ -4,6 +4,8 @@ description: A package for writing your thesis in RMarkdown according to UNSW gu
 categories: [rstats, package]
 date: 2017-07-09
 image: thesis.png
+twitter-card:
+  image: thesis.png
 ---
 
 _**Note:** the RMarkdown publishing landscape has moved on considerably since I wrote my thesis with `underthesisdown`. I have some, uh, **strong** opinions about LaTeX, and I'd be more inclined to use Paged CSS and [`pagedown`](https://pagedown.rbind.io) to write a long report or thesis these days. I belive [Quarto](https://quarto.org) has plans for a Paged CSS solution too!_

@@ -26,6 +26,16 @@ website:
       - icon: envelope-fill
         href: mailto:me@jamesgoldie.dev
   title-block-banner: false
+  open-graph: true
+    description: I work to visualise climate change and build things for fun and for social change 🥳
+    image: /profile.png
+  twitter-card:
+    creator: "@jimjam-slam"
+    site: "@jimjam-slam"
+    card-style: "summary"
+    image: "/profile.jpg"
+  google-analytics: G-2WJLV09KE6
+    
 
 format:
   html:
