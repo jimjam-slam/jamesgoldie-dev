@@ -16,14 +16,19 @@ website:
         href: /writing
     right:
       - icon: twitter
+        aria-label: "James's Twitter"
         href: https://twitter.com/jimjam_slam
       - icon: linkedin
+        aria-label: "James's LinkedIn"
         href: https://www.linkedin.com/in/jamesgoldie
       - icon: github
+        aria-label: "James's GitHub"
         href: https://github.com/jimjam-slam
       - icon: mortarboard-fill
+        aria-label: "James's Google Scholar"
         href: https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en
       - icon: envelope-fill
+        aria-label: Email James
         href: mailto:me@jamesgoldie.dev
   title-block-banner: false
   open-graph:
