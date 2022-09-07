@@ -1,0 +1,52 @@
+---
+title: "Mortgage calculator"
+categories: [app]
+date: 2022-09-07
+description: ...
+draft: true
+---
+
+<!-- intro -->
+
+::: {.callout-warning}
+## Disclaimer
+
+None of this is legal or financial advice! I made it to help myself understand my situation. If it's helpful for you, great! But please do other research.
+:::
+
+# What kind of house can I buy with my saved deposit?
+
+<!-- inputs:
+- money saved
+- deposit fraction: 5%? 10%? 15%? 20%? Higher?
+- stamp duty? https://www.sro.vic.gov.au/calculators/land-transfer-calculator
+  - first home exemption/concession? https://www.sro.vic.gov.au/fhbduty
+  - off-the-plan first home concession? https://www.sro.vic.gov.au/offtheplan
+    - off the plan might be too complicated!
+- lmi
+  - might need to estimate!
+  - lmi premium loadings?
+-->
+
+<!--
+maybe easier if house_price is the independent var?
+
+(house_price * deposit_rate) + lmi + stamp_duty + other_transaction_costs = money_saved
+(house_price * deposit_rate) + lmi + stamp_duty + other_transaction_costs + money_borrowed = house_price
+-->
+
+```{ojs}
+viewof money_saved = Inputs.range([0, 5E+6], {
+  value: 6e+5,
+  step: 1e+3,
+  transform: Math.log,
+  label: "Money saved"
+ });
+
+viewof deposit_frac = Inputs.range([0.01, 0.99], {
+  value: 0.2,
+  step: 0.01,
+  label: "Deposit fraction"
+ });
+
+```
