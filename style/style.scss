@@ -161,6 +161,7 @@ header.quarto-title-block .description {
   div.quarto-about-jolla .about-links {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     column-gap: 0.8em;
     row-gap: 15px;
     width: auto;
