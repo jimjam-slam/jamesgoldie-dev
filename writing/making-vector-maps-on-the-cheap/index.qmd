@@ -35,4 +35,12 @@ Tiles aren't just of different parts of the world - they're also of different zo
 
 <!-- TODO - picture of map panning and network requests for tiles, plus previewing a tile -->
 
+## Raster tiles
 
+In the past, map tiles have been _rasters_: images like `.png` or `.jpg` files. These are easier to use because they're file formats we're already familiar with; all that's needed to turn a raster map of the world into a tiled map is to crop it into different tiles and then organise them using an agreed-upon structure.
+
+Although that can theoretically be any map projection, any tile shape and any access scheme, there're a few commonalities we see in most maps:
+
+* Most raster web maps use the [Web Mercator projection](https://en.wikipedia.org/wiki/Web_Mercator_projection), designated EPSG:3857. It's a square, which makes it really easy to tile: you just break each square into quarters each time you increase the zoom.
+* The tiles have to be hosted somewhere on the Internet: a server. Mapping packages usually request individual tiles from a server using a URL scheme, like `{z}/{x}/{y}.png`. But how that URL is actually processed by a server could vary:
+  - It could mean that the mapping package connects to a special tile server, like `https://tiles.example.com`, which receives a request like `5/4/3.png`, extracts the relevant parameters (zoom 5, x index 4, y index 3) and returns a tile. The advantage of runn
