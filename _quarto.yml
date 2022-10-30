@@ -34,7 +34,6 @@ website:
       - icon: envelope-fill
         aria-label: Email James
         href: mailto:me@jamesgoldie.dev
-  title-block-banner: false
   open-graph:
     description: I work to visualise climate change and build things for fun and for social change 🥳
     image: "/profile.png"
