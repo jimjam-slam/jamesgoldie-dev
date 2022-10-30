@@ -19,6 +19,9 @@ website:
       - icon: twitter
         aria-label: "James's Twitter"
         href: https://twitter.com/jimjam_slam
+      - icon: mastodon
+        aria-label: "James's Mastodon"
+        href: https://aus.social/@jimjamslam
       - icon: linkedin
         aria-label: "James's LinkedIn"
         href: https://www.linkedin.com/in/jamesgoldie
@@ -31,7 +34,6 @@ website:
       - icon: envelope-fill
         aria-label: Email James
         href: mailto:me@jamesgoldie.dev
-  title-block-banner: false
   open-graph:
     description: I work to visualise climate change and build things for fun and for social change 🥳
     image: "/profile.png"
