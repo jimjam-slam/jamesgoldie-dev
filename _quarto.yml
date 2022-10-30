@@ -19,6 +19,9 @@ website:
       - icon: twitter
         aria-label: "James's Twitter"
         href: https://twitter.com/jimjam_slam
+      - icon: mastodon
+        aria-label: "James's Mastodon"
+        href: https://aus.social/@jimjamslam
       - icon: linkedin
         aria-label: "James's LinkedIn"
         href: https://www.linkedin.com/in/jamesgoldie
