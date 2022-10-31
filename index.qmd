@@ -14,12 +14,12 @@ about:
       text: Twitter
       aria-label: "James's Twitter"
       href: https://twitter.com/jimjam_slam
-    - icon: linkedin
-      text: LinkedIn
     - icon: mastodon
       text: Mastodon
       aria-label: "James's Mastodon"
       href: https://aus.social/@jimjamslam
+    - icon: linkedin
+      text: LinkedIn
       aria-label: "James's LinkedIn"
       href: https://www.linkedin.com/in/jamesgoldie
     - icon: github
