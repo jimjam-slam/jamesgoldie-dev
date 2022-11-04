@@ -40,3 +40,5 @@ page-layout: article
 :::: {#about}
 
 ::::
+
+[Mastodon verification](https://aus.social/@jimjamslam){rel="me" style="display: none;"}
