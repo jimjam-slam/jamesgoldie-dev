@@ -1,0 +1,267 @@
+---
+title: "Twitter spring cleaning"
+categories: [tutorial, rstats]
+date: 2022-11-16
+description: Want to understand, archive or delete your tweets?
+image: twitter-post-banner.jpg
+resources:
+  - twitter-post-banner.jpg
+  - this-is-going-straight-to-the-pool-room.gif
+---
+
+With Twitter [becoming increasingly unstable](https://www.platformer.news/p/elon-only-trusts-elon), your mind might be starting to turn toward all of the data you have there.
+
+Well, if you've ever wanted to preserve your tweets---or perhaps delete some of your less considered ones---it's very possible to do in R. There are [automated tools for batch deleting tweets](https://tweetdelete.net), but with R it's possible to be a lot more surgical!
+
+![Twitter's getting shaky.](twitter-post-banner.jpg)
+
+We're going to download all of our old tweets, then use R's analysis tools to single out ones that we want to preserve (or delete). We'll even use the `{rtweet}` package to automate deletion of the tweets we no longer want.
+
+```r
+library(tidyverse)
+library(rtweet)
+library(jsonlite)
+library(lubridate)
+library(here)
+```
+
+Let's get started. No time like the present, right?
+
+:::{.callout-note}
+We'll be using the new pipe operator `|>`, which is only available in R 4.1. If you're using an older version of R, you should be able to swap it for the tidyverse pipe `%>%` without a problem.
+:::
+
+## Getting your Twitter data
+
+There are two ways to get a full list of your tweets: by downloading the archive from Twitter's settings, and by using `{rtweet}` to retrieve them in batches.
+
+I recommend the former: the zip file you get not only has all of your tweets, it has all of the other data Twitter has built up on you over the years. It even has copies of all the videos and images you've ever posted.
+
+### Getting your data from a Twitter archive
+
+This isn't too hard, but it takes a while for twitter to get back to you with the data. Go to your [account settings](https://twitter.com/settings/account) and hit "Download an archive of your data". Once you authenticate, Twitter will start the process of pulling it together, sending you a push notification when it's ready (this took about 12 hours for me).
+
+When it is ready, return to this page and hit "Download an archive of your data" again. There'll now be a button for you to download everything as a zip file.
+
+Once you extract this zip file (for the purposes of this tutorial, it's `twitter-2022-11-06`, but yours will probably have a different name!), we're ready to pull it into R.
+
+The file we're interested in is `data/tweets.js`. The good news, if we remove the very first part---`window.YTD.tweets.part0 = `---the rest is actually valid JSON, so we can pull it all into a table really quickly with the `jsonlite` package:
+
+```r
+"twitter-2022-11-06/data/tweets.js" |>
+  readLines() |>
+  str_replace("window.YTD.tweets.part0 = ", "") |>
+  paste(collapse = "\n") |>
+  fromJSON() |>
+  pluck(1) |>
+  as_tibble()
+```
+
+There are a few useful columns that we might want to convert from text: our retweet and favourite counts, and the creation date. Let's do that too, and we'll save the data frame as `tweets`:
+
+```r
+"twitter-2022-11-06/data/tweets.js" |>
+  readLines() |>
+  str_replace("window.YTD.tweets.part0 = ", "") |>
+  paste(collapse = "\n") |>
+  fromJSON() |>
+  pluck(1) |>
+  as_tibble()
+  mutate(
+    favorite_count = as.numeric(favorite_count),
+    retweet_count = as.numeric(retweet_count),
+    created_at = parse_date_time(created_at, "abdHMSzY")) ->
+tweets
+```
+
+### Getting your tweets with `{rtweet}`
+
+Now, let's say Twitter's archive download function is disabled. You can still get your tweets from the Twitter API using the `{rtweet}` package.
+
+The first thing you'll need to do is authorise `{rtweet}` to act on your account's behalf. To do that, we can run:
+
+```r
+auth_setup_default()
+```
+
+This will open a login flow in the browser. Once you've done that and closed it, getting your timeline is as simple as:
+
+```r
+some_tweets <- get_my_timeline(n = Inf, retryonratelimit = TRUE)
+```
+
+Note that it might take some time, and you might not get them all in one go, even with `{rtweet}` retrying on your behalf. Twitter's API has limits, which we'll look into more below when it comes to deleting tweets.
+
+But for now, if we don't get them all in one go, we can run `get_my_timeline` again, using the `max_id` to say, "Get my tweets, but only up to the one with _this_ ID". The ID we'll give it will be the oldest one in the last batch.
+
+```r
+some_tweets |>
+  mutate(created_at = parse_date_time(created_at, "abdHMSzY")) |>
+  slice_min(created_at) |>
+  pull(id) ->
+oldest_id
+
+more_tweets <- get_my_timeline(n = Inf, retryonratelimit = TRUE,
+  max_id = oldest_id)
+
+# do this as many times as you need, then bind them all together with:
+tweets <- bind_rows(some_tweets, more_tweets)
+```
+
+:::{.callout-note}
+The information you get from `{rtweet}` might be slightly differently structured than the stuff that comes out of the archive.
+
+In particular, columns with nested data, like `hashtags`, appear to be unnested here. The following code assumes that we're working with the archive, but you should only need to make minor column name adjustments if you're using `{rtweet}`.
+:::
+
+## Sifting through the tweets
+
+We can do a lot of interesting exploratory work on `tweets`. Take a look at all the columns in here (note that these columns name)
+
+```r
+tweets |> nrow()
+```
+
+I've tweeted _how_ many times?!
+
+And you can see a lot of information about each tweet:
+
+```r
+tweets |> glimpse()
+```
+
+Here's my most favourited tweet! Nice.
+
+```r
+tweets |> slice_max(favorite_count) |> glimpse()
+```
+
+!["This is going straight to the pool room."](the-castle-straight-to-the-pool-room.gif)
+
+I'm not really convinced that I said anything of value before 2014. In fact, unless it has a least a couple of likes or retweets, it's probably better off in the trash.
+
+Let's find those:
+
+```r
+tweets |>
+  filter(created_at < as.Date("2014-01-01"))
+```
+
+That's a lot of old tweets! But how many got a few likes or retweets?
+
+```r
+tweets |>
+  filter(
+    created_at < as.Date("2014-01-01"),
+    favorite_count >= 5 | retweet_count >= 3)
+```
+
+Just one! Geez. Maybe I should keep my mouth shut more. Let's get all the old tweets except for the goodie, and we'll use `dplyr::pull` to extract the IDs (which we can use to delete them later).
+
+:::{.callout-warning}
+Before we wanted tweets that had a few likes or retweets.
+
+Now we want the _opposite_: tweets with less than a few likes _and_ less than a few retweets.
+
+You're not jus tflipping `>=` to `<` here; you're also flipping AND to OR!
+:::
+
+```r
+tweets |>
+  filter(
+    created_at < as.Date("2014-01-01"),
+    favorite_count < 5,
+    retweet_count < 3) |>
+  pull(id) ->
+tweets_to_nuke
+```
+
+## Deleting tweets
+
+If you downloaded your archive and this is for your first time using `{rtweet}`, you'll need to authorise it to act ion your account's behalf first. Run:
+
+```r
+auth_setup_default()
+```
+
+Once you've gone to the browser and back to login, we're ready to go! We're going to use the [`post_destroy`](https://docs.ropensci.org/rtweet/reference/post_destroy.html) function to delete our tweets.
+
+Everything you do with Twitter's API is subject to [rate limiting](https://en.wikipedia.org/wiki/Rate_limiting). The official Twitter app knows how not to hog Twitter's resources, but other apps need rules for how much data they can ask for.
+
+To discover these limits, we can run:
+
+```r
+rate_limit()
+```
+
+Unfortunately, `rate_limit` tells us limits using the raw route names of Twitter's API, not the [names of `{rtweet}` functions](https://docs.ropensci.org/rtweet/reference/index.html). But we can see what `post_destroy` is doing under the hood if we inspect its code:
+
+```r
+post_destroy
+# function (destroy_id, token = NULL) 
+# {
+#     stopifnot(is.character(destroy_id) && length(destroy_id) == 
+#         1)
+#     query <- sprintf("/1.1/statuses/destroy/%s", destroy_id)
+#     r <- TWIT_post(token, query)
+#     message("Your tweet has been deleted!")
+#     return(invisible(r))
+# }
+# <bytecode: 0x10ed71628>
+# <environment: namespace:rtweet>
+```
+
+Ahh, Twitter calls it `statuses/destroy`. What are the limits for that?
+
+```r
+rate_limit() |>
+  filter(str_detect(resource, "statuses/destroy"))
+# # A tibble: 1 × 5
+#   resource                 limit remaining reset_at            reset  
+#   <chr>                    <int>     <int> <dttm>              <drtn> 
+# 1 /drafts/statuses/destroy   450       450 2022-11-16 13:09:46 15 mins
+```
+
+Okay, we can call it 450 times every 15 minutes, or twice a second.
+
+There are two other things to keep in mind:
+
+1. `post_destroy` takes a _single_ post ID, not a whole vector of them. That means we need to call it for each tweet we want to delete.
+2. We don't want `post_destroy` to run more than twice a second.
+
+Let's use `purrr::slowly` (part of the tidyverse) to slow `post_destroy` down. We'll get a new version of it that we don't have to worry about:
+
+```r
+post_destroy_slowly <- slowly(post_destroy, rate = rate_delay(0.52))
+```
+
+Now, to call it once for each tweet we want to delete, we're going to use `purrr::map`.
+
+Instead of `post_destroy_slowly(one_bad_tweet_id)`, we're going to do:
+
+```r
+tweets_to_nuke |> map(post_destroy)
+```
+
+This will take a bit of time, but you should start seeing `{rtweet}` reporting back on successful deletions!
+
+## What about the good ones?
+
+I mean, if you just want them in a bunker, you can write the ones left into a new spreadsheet:
+
+```r
+tweets |>
+  filter(!(id %in% tweets_to_nuke)) |>
+  select(id, created_at, fulltext, favorite_count, retweet_count) |>
+  write_csv("good-tweets.csv")
+```
+
+Or if you _really_ love the things you've been typing, maybe you want to [make a book out of them](https://quarto.org/docs/books), or use the data to [make a gorgeous data visualisation](https://github.com/rfordatascience/tidytuesday).
+
+There's a good bit of other rich data in `tweets`: who you were replying to, who you were quoting, where you tweeted from, the images or videos you included (if you downloaded the full archive)... it's a lot.
+
+Hopefully you know what to do with it!
+
+:::{style="font-size:smaller;"}
+Banner image credit: [CHUTTERNSAP/Unsplash](https://unsplash.com/photos/cGXdjyP6-NU)
+:::
