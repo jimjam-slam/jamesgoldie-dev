@@ -1,0 +1,14 @@
+---
+title: "Telling climate stories with, and around, data"
+categories: ["talk"]
+date: 2022-11-17
+---
+
+I gave a keynote for the 2022 Early Career and Students mini-conference of the Statistical Society of Australia's WA branch.
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 56.25%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://ssa2022.talks.jamesgoldie.dev" allowfullscreen></iframe>
+</div>
+```
+
