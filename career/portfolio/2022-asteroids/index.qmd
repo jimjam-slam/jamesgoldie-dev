@@ -1,0 +1,16 @@
+---
+title: "Asteroid strikes"
+description: "What would an asteroid or comet impact be like?"
+image: thumb-asteroids.webp
+categories: ["talk"]
+date: 2022-06-30
+---
+
+What would an asteroid or comet impact be like?
+
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 75%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white;" src="https://360info-asteroidimpacts.pages.dev/calculator" allowfullscreen></iframe>
+</div>
+```

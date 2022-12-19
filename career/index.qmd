@@ -1,30 +1,41 @@
 ---
 title: "Career"
 description: I'm a researcher and data journalist with a focus on visualising and communicating climate change.
-# listing:
-#   type: default
-#   sort: "date desc"
 listing:
-  contents: talks
-  type: grid
-  id: about-talks
-  page-size: 3
-  sort-ui: false
-  filter-ui: false
+  - contents: talks
+    id: about-talks
+    type: grid
+    sort: "date desc"
+    page-size: 3
+    sort-ui: false
+    filter-ui: false
+  - contents: portfolio
+    id: about-portfolio
+    type: grid
+    sort: "date desc"
+    page-size: 3
+    sort-ui: false
+    filter-ui: false
 ---
 
-Right now I'm working at [360info](https://newshub.360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of a new media startup hosted by Monash University.
+Right now I'm working at [360info](https://newshub.360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of a new, open newswire supported by Monash University.
+
+Here are some the more ambitious interactives I've produced:
+
+::::{.column-screen-inset}
+:::{#about-portfolio}
+:::
+::::
+
+I also produce static charts and infographics, train our interns in data storytelling, work with our media partners to help them use our interactives and datasets, and manage our [GitHub presence](https://github.ciom/360-info), working to make our data and graphics more discoverable.
+
+Although I work in data journalism, I have a background researching the public health impacts of climate change. [Here's my published research.](https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en)
 
 I sometimes give talks on data visualisation, storytelling, open data science and climate change:
 
-::::{.column-screen-inset-shaded}
+::::{.column-screen-inset}
 :::{#about-talks}
 :::
 ::::
 
-I also have a background researching the public health impacts of climate change: I graduated in 2019 with a PhD from the Climate Change Research Centre at UNSW. I investigated extreme heat: how it affects hospital admissions in Australian cities, how it might change with the climate, and what that means for the future of our health system. [Here's my published research.](https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en)
-
-All this means I have a pretty varied mix of skills! I've been doing data science since 2013, and you can see [tools and websites I've built](/projects) that run the gamut from data analysis packages like collateral, through to sophisticated data visualisation platforms like [climdex.org](https://climdex.org) website.
-
 Have ideas about communicating climate change or other big ideas better? [I'm always happy to talk!](mailto:me@jamesgoldie.dev)
-
