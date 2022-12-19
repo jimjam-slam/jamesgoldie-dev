@@ -1,5 +1,6 @@
 ---
 title: "Datavis: Going Big For Mass Media"
+description: "For the DAT/Artathon 2022 workshop"
 categories: ["talk"]
 date: 2022-07-22
 ---

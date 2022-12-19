@@ -1,5 +1,6 @@
 ---
 title: "Climate Change, Migration and the Role of Climate Data"
+description: "For the Calcutta Research Group"
 categories: ["talk"]
 date: 2022-08-25
 ---

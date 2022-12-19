@@ -1,5 +1,6 @@
 ---
 title: "Telling climate stories with, and around, data"
+description: "For the Statistical Society of Australia's WA branch"
 categories: ["talk"]
 date: 2022-11-17
 ---

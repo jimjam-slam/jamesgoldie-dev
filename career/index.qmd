@@ -1,13 +1,26 @@
 ---
 title: "Career"
 description: I'm a researcher and data journalist with a focus on visualising and communicating climate change.
+# listing:
+#   type: default
+#   sort: "date desc"
 listing:
-  type: default
-  sort: "date desc"
-  categories: cloud
+  contents: talks
+  type: grid
+  id: about-talks
+  page-size: 3
+  sort-ui: false
+  filter-ui: false
 ---
 
-Right now I'm working at [360info](https://newshub.360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of a new media startup hosted by Monash University. 
+Right now I'm working at [360info](https://newshub.360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of a new media startup hosted by Monash University.
+
+I sometimes give talks on data visualisation, storytelling, open data science and climate change:
+
+::::{.column-screen-inset-shaded}
+:::{#about-talks}
+:::
+::::
 
 I also have a background researching the public health impacts of climate change: I graduated in 2019 with a PhD from the Climate Change Research Centre at UNSW. I investigated extreme heat: how it affects hospital admissions in Australian cities, how it might change with the climate, and what that means for the future of our health system. [Here's my published research.](https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en)
 

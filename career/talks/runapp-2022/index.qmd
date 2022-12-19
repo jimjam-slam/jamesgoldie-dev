@@ -1,5 +1,6 @@
 ---
 title: "Quarto: create beautiful documents with R, Python, Julia and Observable"
+description: "For the R Users Network for Australian Public Policy"
 categories: ["talk"]
 date: 2022-05-20
 ---
