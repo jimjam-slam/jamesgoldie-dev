@@ -1,5 +1,6 @@
 ---
 title: "Talking about climate change in 7 seconds"
+description: "For the Non-Uniform Monash Business Analytics Team"
 categories: ["talk"]
 date: 2022-12-07
 ---
