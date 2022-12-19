@@ -23,6 +23,7 @@ Right now I'm working at [360info](https://newshub.360info.org) as the Data and 
 Here are some the more ambitious interactives I've produced:
 
 ::::{.column-screen-inset}
+### **Featured work**
 :::{#about-portfolio}
 :::
 ::::
@@ -34,6 +35,7 @@ Although I work in data journalism, I have a background researching the public h
 I sometimes give talks on data visualisation, storytelling, open data science and climate change:
 
 ::::{.column-screen-inset}
+### **Talks**
 :::{#about-talks}
 :::
 ::::
