@@ -20,7 +20,7 @@ listing:
 
 Right now I'm working at [360info](https://newshub.360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of a new, open newswire supported by Monash University.
 
-Here are some the more ambitious interactives I've produced:
+Here are some of the more ambitious interactives I've produced:
 
 ::::{.column-screen-inset}
 ### **Featured work**
