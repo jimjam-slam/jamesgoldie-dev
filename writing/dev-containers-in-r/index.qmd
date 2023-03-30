@@ -1,0 +1,70 @@
+---
+title: "Dev containers"
+# categories: [dataviz, mapping, ]
+date: 2023-03-30
+description: TKTKTK
+draft: true
+---
+
+If you do analysis or data science, sooner or later you have to deal with dependencies. If somebody can't tell what versions of apps and packages you used, they're going to have a tough time reproducing your analysis.
+
+[Development containers, or _dev containers_](https://code.visualstudio.com/docs/devcontainers/containers), don't just control dependencies—they make your analysis quickly shareable, too! And they're real easy to set up and share, even if you haven't messed around with Docker before.
+
+How easy? Well, [here's one I made earlier.]() Try it out![^1]
+
+[^1]: Basic- 2-core Codespaces are [free to use for 60 hours a month](https://github.com/features/codespaces) for everyone with a GitHub account (as of March 2023)—enough to do 3 hours of work every workday. It won't bill you unless you set it up will a billing method and raise the spending limit. So give it a whirl!
+
+<!-- screenshot here -->
+
+When you boot a project up in a dev container, your project folder on your laptop (the _host_) is mounted inside the container, the tools and environment are installed, and then... you're just back in VSCode again?
+
+You have all of VSCode's tools, terminals and extensions (plus any configured by the dev container) with which to write, test, commit and push code. You get your themes, your keyboard shortcuts, your snippets, your formatters and your autocompletion, even magical extensions like [Live Share](https://code.visualstudio.com/learn/collaboration/live-share)... except now, you have a controllable environment in which to use it all.
+
+That environment becomes available to anyone through GitHub Codespaces with a link—or, if someone has VSCode and [Docker](https://www.docker.com) installed, they can ask it to set that environment up on their laptop.
+
+# So what does the workflow look like?
+
+So how do we turn a regular project into a dev container? VSCode looks for a `.devcontainer` folder at the root of your project, and `devcontainer.json` file inside it, to configure the container.
+
+If you're starting from scratch and need to work out which tools you want, VSCode has a wizard available from the command palette that can write this file for you. You choose the language you primarily want to work in, add extra features, and off you go!
+
+![VSCode has a wizard that will take you through the steps of setting up a `devcontainer.json`, but you can steal one from another project if you'd like.](devcontainer-create-spec.png)
+
+Here's the `devcontainer.json` I usually start with on R/Quarto projects:
+
+```json
+{
+	"name": "R (rocker/r-ver base)",
+	"image": "ghcr.io/rocker-org/devcontainer/r-ver:4.2",
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
+			"version": "prerelease"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "libudunits2-dev,libxtst6,libxt6,libmagick++-dev"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "github::rstudio/renv,tidyverse,here,httpgd,themes360info"
+		},
+	},
+}
+```
+
+The spec says:
+
+* We're going to use a "base image" published by the community. It tracks R 4.2.x releases.[^2]
+* It additionally adds some features:
+  - The pre-release version of [Quarto](https://quarto.org) at the time gets installed (you can also specify a fixed version), and the Quarto VSCode extension is added.
+  - Four packages are installed from APT (these are _not_ frozen; if you want to fix system dependencies, you'll need to [add a lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts) or [use a Dockerfile](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_dockerfile))
+
+[^2]: If you're a Docker pro, you can [substitute a `build` block for the `image`](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_dockerfile) and include your own Dockerfile.
+
+# Why dev containers?
+
+Docker containers have a lot of flexibility. You can use them to:
+
+- run a set of commands non-interactively and then quit (perhaps returning something);
+- keep a web server running indefinitely; 
+- keep them running indefinitely and then get an interactive shell inside them 
+
+Dev containers are a more prescriptive use of Docker containers: they're designed to make the container an environment in which you write and run code.
