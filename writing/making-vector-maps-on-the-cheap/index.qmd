@@ -1,14 +1,12 @@
 ---
 title: "Making vector maps on the cheap"
-categories: [dataviz, deckgl, mapping, maplibre]
-date: 2022-07-10
-description: Lessons from visualising tiled climate datasets with Leaflet
+categories: [dataviz, mapping, ]
+date: 2023-01-04
+description: TKTKTK
 draft: true
 ---
 
-<!-- TODO - nut graf -->
-
-# Background
+# Why vector tiles are rad
 
 Let's start with some background.
 
@@ -27,20 +25,97 @@ You can potentially go _anywhere_ on a slippy map. You can zoom in all the way f
 
 ## Tiled maps
 
-The secret to making a slippy map performant - that is, to making it work quickly - is **tiling**. Tiling means that the map is broken up into chunks, or tiles, and those tiles are streamed i, or downloaded to the user, as it starts to come into view.
+The secret to making a slippy map performant --- that is, to making it work quickly --- is **tiling**. Tiling means that the map is broken up into chunks, or tiles, and those tiles are downloaded to the user as they start to come into view.
 
 If you've ever seen squares of map appearing as you move or zoom, you've seen tiles streaming in.
 
-Tiles aren't just of different parts of the world - they're also of different zoom levels. This means that a person can look at the entire world with just one, low-detail tile, but they can then zoom into a street view and get a tile that covers a few blocks with a lot of detail.
-
 <!-- TODO - picture of map panning and network requests for tiles, plus previewing a tile -->
+
+Tiles aren't just of different parts of the world - they're also of different zoom levels.
+
+A tile of the whole world, for example, might not need have something tiny like your house on it. But when you try to zoom in and get a closer look, the map can download a higher detail version of a small area - say, a street block.
+
+This means that we can get an overview of larger areas and only download the details for places we're interested in. That's a lot better than, say, trying to download imagery of the whole world at street level.
 
 ## Raster tiles
 
-In the past, map tiles have been _rasters_: images like `.png` or `.jpg` files. These are easier to use because they're file formats we're already familiar with; all that's needed to turn a raster map of the world into a tiled map is to crop it into different tiles and then organise them using an agreed-upon structure.
+In the past, map tiles have been _rasters_: images like `.png` or `.jpg` files. These are easier to use because they're file formats we're already familiar with: all that's needed to turn a raster map of the world into a tiled map is to crop it into different tiles and then organise them using an agreed-upon structure.
 
 Although that can theoretically be any map projection, any tile shape and any access scheme, there're a few commonalities we see in most maps:
 
 * Most raster web maps use the [Web Mercator projection](https://en.wikipedia.org/wiki/Web_Mercator_projection), designated EPSG:3857. It's a square, which makes it really easy to tile: you just break each square into quarters each time you increase the zoom.
 * The tiles have to be hosted somewhere on the Internet: a server. Mapping packages usually request individual tiles from a server using a URL scheme, like `{z}/{x}/{y}.png`. But how that URL is actually processed by a server could vary:
   - It could mean that the mapping package connects to a special tile server, like `https://tiles.example.com`, which receives a request like `5/4/3.png`, extracts the relevant parameters (zoom 5, x index 4, y index 3) and returns a tile. The advantage of runn
+
+# Where can I get tiles?
+
+If you've made a slippy map before, you've probably seen a tile layer like this:
+
+```
+https://tile.openstreetmap.org/{z}/{y}/{x}.png
+```
+
+The mapping software takes a URL template like this and substitutes `{z}`, `{y}` and `{x}` for zoom number and and tile index (from 0 to `n - 1`) in order to request individual tiles. For example, `https://tile.openstreetmap.org/15/16365/10897.png` is an area just out to the west of London.
+
+If you've used a vector tileset, you might see it referred to like this:
+
+```
+https://api.maptiler.com/tiles/v3/tiles.json
+```
+
+This is a [Mapbox Tile Specification](https://github.com/mapbox/vector-tile-spec): a JSON file that defines where to get tiles and, potentially, a default style for them (although an individual map can change, extend or override that style).
+
+Inside that JSON file (or perhaps directly), you would probably find a familiar-looking URL template:
+
+```
+https://api.maptiler.com/tiles/v3/{z}/{y}/{x}.pbf
+```
+
+This template is for vector tiles, which use the [ProtocolBuffer Binary Format](https://wiki.openstreetmap.org/wiki/PBF_Format) (`.pbf`), but it works essentially the same way in terms of requesting tiles.
+
+You might even see a URL like this:
+
+```
+https://protomaps-static.sfo3.cdn.digitaloceanspaces.com/protomaps_vector_planet_odbl_z10.pmtiles
+```
+
+This is a `.pmtiles` _tile archive_: a kind of zip file for a whole set of tiles. Some mapping apps, like MapLibre, can request just _part_ of the archive corresponding to an individual tile using [HTTP Range Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests). Here, the mapping app downloads a table of contents from the archive and uses that to work out where each tile is stored within the archive.
+
+## Keys
+
+Regardless of the exact format your map has used to get tiles, there's a good chance you've seen something like this:
+
+```
+https://api.maptiler.com/tiles/v3/4/4/5.pbf?key=XXXXXXXXXXXXXXXX
+```
+
+Most tile datasets require the use of an API key. That's because sending data to map users costs money, and most people don't want to foot the bill for someone else's map.
+
+:::{.callout-note}
+## Keys and security
+
+Small aside here: if you've ever used the Network tab on your browser tools to see the requests your browser is making, you'll probably see the key it's using to request tiles.
+
+Although keys are often used to limit who (or _what_) can download tiles, they aren't sufficient on their own - the key has to be provided with the map, and it's pretty easy to go and copy and paste that key somewhere else.
+
+Many map tile providers who are concerned about cost use **origin limiting** as well, so only web pages that are hosted on a particular website domain can request tiles.
+
+That isn't a foolproof measure either - origins can be spoofed - but it's hard to run a real website that masquerades as another, so these two measures together are usually enough to prevent people from running your bills up.
+:::
+
+There are plenty of providers who'll let you use their tiles if you sign up for a key. [Mapbox](https://mapbox.com), for example, has a generous free tier (about 50 000 users a month as of early 2023) and will even allow you to configure their appearance with a friendly studio interface. But if you run past that free tier, the cost starts to add up really quickly.
+
+There are other, less obvious reasons some users may not want to use go with a host:
+
+- Adding a service provider introduces another dependency: not only could the host of your map go down, the host of your tiles could go down. Or either could decide your content violates their usage policies.
+- Most map providers will base their tiles on [OpenStreetMap](https://www.openstreetmap.org) data. OSM tiles have a lot of different layers in them, making them useful for a wide range of uses. But they may not have _your_ data in them.
+
+**In this post, we're going to look at how you can make vector tiles, either from OSM data or from your own spatial data, and then we're going to look at how you can use them in your own map.**
+
+# Tileservers
+
+# Links
+
+- [protomaps.com](https://protomaps.com)
+- [Mapbox Vector Tiles](https://docs.mapbox.com/data/tilesets/guides/vector-tiles-standards/)
+- [MapLibre Font Maker](https://maplibre.org/font-maker)
