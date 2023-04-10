@@ -3,7 +3,6 @@ title: "Dev containers with R and Quarto"
 categories: [development, rstats, quarto]
 date: 2023-04-10
 description: The quickest way to get other folks into your data science code.
-draft: true
 ---
 
 My favourite new trick is setting up a reproducible R/Quarto development environment in two clicks. It looks like this, and creating it yourself is as simple as [following a link](https://github.com/codespaces/new?repo=621160564&ref=main&machine=basicLinux32gb):
