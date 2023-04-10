@@ -6,33 +6,49 @@ description: TKTKTK
 draft: true
 ---
 
-If you do analysis or data science, sooner or later you have to deal with dependencies. If somebody can't tell what versions of apps and packages you used, they're going to have a tough time reproducing your analysis.
+My favourite new trick is setting up a reproducible development environment in two clicks:
 
-[Development containers, or _dev containers_](https://code.visualstudio.com/docs/devcontainers/containers), don't just control dependencies—they make your analysis quickly shareable, too! And they're real easy to set up and share, even if you haven't messed around with Docker before.
+<!-- pic: container initialising... -->
+
+We publish a lot of [open data analyses at 3600info](https://github.com/360-info). We want to make visuals quickly and easily accessible to journalists, but we also want the underlying data, and any analysis we've done to it, reproducible too. I call it a 'cake and ingredients' model—we want to deliver both.
+
+So we want people to be able to dive into our analysis quickly, rather than floundering installing R packages or GDAL or something.
+
+[Development containers, or _dev containers_](https://code.visualstudio.com/docs/devcontainers/containers), don't just control dependencies like R package versions—they make your analysis shareable, too! They're real easy to set up and share, even if you haven't messed around with Docker before.
 
 How easy? Well, [here's one I made earlier.]() Try it out![^1]
 
 [^1]: Basic- 2-core Codespaces are [free to use for 60 hours a month](https://github.com/features/codespaces) for everyone with a GitHub account (as of March 2023)—enough to do 3 hours of work every workday. It won't bill you unless you set it up will a billing method and raise the spending limit. So give it a whirl!
 
-<!-- screenshot here -->
+<!-- screenshot here?	 -->
 
 When you boot a project up in a dev container, your project folder on your laptop (the _host_) is mounted inside the container, the tools and environment are installed, and then... you're just back in VSCode again?
+
+VSCode brings your usual tools and extensions along for the ride when you open a project in a dev container. The dev container or its features can also add extensions (for example, the R and Quarto extensions come with this example), or you can [mandate other extensions be installed](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_create-a-devcontainerjson-file) by adding a `customizations.vscode.extensions` if you think there's an important one other users might not have:
+
+```json
+"customizations": {
+    "vscode": {
+      "extensions": ["streetsidesoftware.code-spell-checker"]
+    }
+  },
+```
 
 You have all of VSCode's tools, terminals and extensions (plus any configured by the dev container) with which to write, test, commit and push code. You get your themes, your keyboard shortcuts, your snippets, your formatters and your autocompletion, even magical extensions like [Live Share](https://code.visualstudio.com/learn/collaboration/live-share)... except now, you have a controllable environment in which to use it all.
 
 That environment becomes available to anyone through GitHub Codespaces with a link—or, if someone has VSCode and [Docker](https://www.docker.com) installed, they can ask it to set that environment up on their laptop.
 
-# So what does the workflow look like?
+# So how do I set one up?
 
-So how do we turn a regular project into a dev container? VSCode looks for a `.devcontainer` folder at the root of your project, and `devcontainer.json` file inside it, to configure the container.
+The magic happens in the `.devcontainer/devcontainer.json` file. Open a folder in VSCode that has a `.devcontainer` folder with `devcontainer.json` in it, and VSCode will prompt you to reopen the project in a dev container.
 
 If you're starting from scratch and need to work out which tools you want, VSCode has a wizard available from the command palette that can write this file for you. You choose the language you primarily want to work in, add extra features, and off you go!
 
 ![VSCode has a wizard that will take you through the steps of setting up a `devcontainer.json`, but you can steal one from another project if you'd like.](devcontainer-create-spec.png)
 
-Here's the `devcontainer.json` I usually start with on R/Quarto projects:
+Or you can write it yourself. Here's the `devcontainer.json` I usually start with on R/Quarto projects:
 
-```json
+```{.json filename=".devcontainer/devcontainer.json"}
 {
 	"name": "R (rocker/r-ver base)",
 	"image": "ghcr.io/rocker-org/devcontainer/r-ver:4.2",
@@ -44,27 +60,88 @@ Here's the `devcontainer.json` I usually start with on R/Quarto projects:
 			"packages": "libudunits2-dev,libxtst6,libxt6,libmagick++-dev"
 		},
 		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-			"packages": "github::rstudio/renv,tidyverse,here,httpgd,themes360info"
+			"packages": "github::rstudio/renv,tidyverse,here,httpgd"
 		},
 	},
+	"customizations": {
+		"vscode": {
+			"extensions": ["mechatroner.rainbow-csv"]
+		},
+		"codespaces": {
+			"openFiles": ["README.md"]
+		}
+	}
 }
 ```
 
-The spec says:
+Let's break this spec down:
 
-* We're going to use a "base image" published by the community. It tracks R 4.2.x releases.[^2]
-* It additionally adds some features:
-  - The pre-release version of [Quarto](https://quarto.org) at the time gets installed (you can also specify a fixed version), and the Quarto VSCode extension is added.
-  - Four packages are installed from APT (these are _not_ frozen; if you want to fix system dependencies, you'll need to [add a lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts) or [use a Dockerfile](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_dockerfile))
+* `image`: We're going to use a "base image" published by the community. It uses the latest R 4.2.x releases.
 
-[^2]: If you're a Docker pro, you can [substitute a `build` block for the `image`](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_dockerfile) and include your own Dockerfile.
+* It additionally adds some `features`:
 
-# Why dev containers?
+  1. The pre-release version of [Quarto](https://quarto.org) at the time gets installed (you can also specify a fixed version), and the Quarto VSCode extension is added.
 
-Docker containers have a lot of flexibility. You can use them to:
+  2. Four packages are installed from APT (these are _not_ frozen; if you want to fix system dependencies, you'll need to [add a lifecycle script](https://containers.dev/implementors/json_reference/#lifecycle-scripts) or [use a Dockerfile](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_dockerfile))
+	- A few R packages are installed. Most are from the [Posit Package Manager](https://packagemanager.rstudio.com/client), which acts as a CRAN mirror, but `renv` is installed from GitHub here.
 
-- run a set of commands non-interactively and then quit (perhaps returning something);
-- keep a web server running indefinitely; 
-- keep them running indefinitely and then get an interactive shell inside them 
+* Finally, we add a few editor-specific `customizations`:
 
-Dev containers are a more prescriptive use of Docker containers: they're designed to make the container an environment in which you write and run code.
+  1. In addition to the R and Quarto VSCode extensions, which come with the image and features, I want to make sure that the Rainbow CSV extension is installed. It's a nice, lightweight parser of CSV files.
+	
+	2. When someone is launching this project as a [Codespace](http://github.com/codespaces) (more on this below!), we can tell the container to open a set of files by default. This is a great way to welcome users by opening the README and an intended entrypoint to the project.
+
+Once you're ready to launch your dev container, press {{< kbd mac=Shift-Command-P win=Shift-Control-P linux=Shift-Ctrl-P >}} to open the command palette, and select **Dev Containers: Reopen in Container**. Hold on!
+
+# Okay, so how do I share it?
+
+If you commit `devcontainer.json` to version control, other people who clone your repo and open it in VSCode will be able to launch it in a dev container, making it easy for them to match your environment. But that's not the best part.
+
+![Use the Code button on a GitHub repository to launch a codespace.](launch-codespace.png)
+
+GitHub has [Codespaces](https://github.com/features/codespaces), a way to launch a repository in a cloud environment an run VSCode in your browser. (If you've ever used [Posit Cloud](https://posit.cloud), this is very much the same deal.)
+
+If you open a Codespace on a repository that includes a devcontainer spec, the Codespace will use that spec. Codespaces support most of the things that local VSCode does (including some of the really cool things, like sharing an open web server with other people).
+
+You can also share a link to open a specific repo in Codespaces—a great way to get students and workshop participants started when you don't want to bother with installation pre-requisites. As long as they have a GitHub account, they can get started, and there're plenty of free hours each month for most use cases.
+
+To get the link, go to <http://github.com/codespaces/new>, select the repository, and then copy and paste the updated URL in the address bar:[^3]
+
+[^3]: Most of the extra detail isn't important unless you want to be prescriptive, but you do at least want the `repo` number and probably the `ref` (branch) to open:
+
+```
+https://github.com/codespaces/new?repo=621160564&ref=main
+```
+
+Now anyone with a GitHub account can click it to start a Codespace with your repo![^4]
+
+[^4]: Other people who launch your project as a Codespace use their own billing, not yours!
+
+# Is it really reproducible?
+
+Nothing's completely reproducible, and dev containers certainly aren't foolproof. A few things to keep in mind:
+
+* If you use Rocker's `apt-packages` feature to install other tools, these track whatever the latest versions are on APT, as far as I'm aware. If you need fixed versions of things, either:
+
+  - look for dev container features for those tools (eg. use the [`node` feature](https://github.com/devcontainers/features/tree/main/src/node) to install a fixed version of npm), or
+	- install those tools manually [using a `postCreateCommand`](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_rebuild)
+
+* The version of R is determined by the version of the `image` you select. If you select `latest` or the latest R minor version (currently `4.2`), it will track the latest patch version (eg. `4.2.3`) until a new minor release comes out. The Rocker dev containers don't have labels for specific patch versions.
+
+* The versions of R packages that come from the Posit Package Manager are _also_ determined by the `image` you select. If you select `latest` or the latest R minor version (currently `4.2`), the container will use the latest available versions (even if those versions have changed since you last built the container). Once a new minor version releases, previous ones will switch to using a fixed date checkpoint on the Posit Package Manager.
+
+  - If you need to make sure that R package versions do not change from the start of your analysis, you can set a specific Posit Package Manager checkpoint even for the latest R image using:
+
+	```json
+	"containerEnv": {
+    "PKG_CRAN_MIRROR": "https://packagemanager.posit.co/cran/2023-01-31"
+	},
+	```
+
+For reproducibility reasons, I generally I find it easier to start a project working in a dev container, rather than converting an existing project. You can use `renv` to restore from an `renv.lock` file, but I've found that a little difficult in practice.
+
+On the other hand, if you start in a dev container from the start and set a fixed PPM checkpoint, you can use Miles McBain's helpful [`{capsule}` package](https://github.com/MilesMcBain/capsule) to quickly write out a lockfile. Other folks can use that even if they're not sold on using a dev container.
+
+# What else can I do?
+
+If you're a Docker pro, you can [substitute a `build` block for the `image`](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_dockerfile) and make whatever customisations you like!
