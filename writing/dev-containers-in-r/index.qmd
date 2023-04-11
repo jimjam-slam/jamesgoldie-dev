@@ -1,9 +1,12 @@
 ---
 title: "Dev containers with R and Quarto"
 categories: [development, rstats, quarto]
-date: 2023-04-10
-description: The quickest way to get other folks into your data science code.
-draft: true
+date: 2023-04-11
+twitter-card:
+  image: https://jamesgoldie.dev/writing/dev-containers-in-r/devcontainer-launched.png
+open-graph:
+  image: https://jamesgoldie.dev/writing/dev-containers-in-r/devcontainer-launched.png
+description: Dev containers are probably the quickest way to get other folks into your data science code.
 ---
 
 My favourite new trick is setting up a reproducible R/Quarto development environment in two clicks. It looks like this, and creating it yourself is as simple as [following a link](https://github.com/codespaces/new?repo=621160564&ref=main&machine=basicLinux32gb):
@@ -11,7 +14,7 @@ My favourite new trick is setting up a reproducible R/Quarto development environ
 ::: {.aside}
 Basic 2-core Codespaces like the one here are [free to use for 60 hours a month](https://github.com/features/codespaces) for everyone with a GitHub account (as of March 2023)—enough to do 3 hours of work every workday.
 <br><br>
-You won't be billed you unless you add a billing method and raise the spending limit, and unused Codespaces shut down after a few hours if you forget to kill them yourself. So give it a whirl!
+You won't be billed you unless you add a billing method and raise the spending limit, and unused Codespaces stop running after half an hour if you forget to stop them yourself. So give it a whirl!
 :::
 
 [![A sample dev container running as a Codespace in the browser.](devcontainer-launched.png)](https://github.com/codespaces/new?repo=621160564&ref=main&machine=basicLinux32gb)
@@ -87,9 +90,23 @@ Let's break this spec down:
 	
 	2. When someone is launching this project as a [Codespace](http://github.com/codespaces) (more on that below!), we can tell the container to open a set of files by default. This is a great way to welcome users by automatically opening the README or an intended entrypoint to the project.
 
-Once you're ready to launch your dev container, press {{< kbd mac=Shift-Command-P win=Shift-Control-P linux=Shift-Ctrl-P >}} to open the command palette, and select **Dev Containers: Reopen in Container**. Hold on!
+Once you're ready to launch your dev container, press {{< kbd Shift-Ctrl-P mac=Shift-Command-P >}} to open the command palette, and select **Dev Containers: Reopen in Container**. Hold on!
 
-# Okay, so how do I share it?
+Once you're working inside the container, you can write code, save files, commit and push as usual. For the most part, VSCode brings your usual git credentials into the container.
+
+:::{.aside}
+I use 1Password's SSH agent, and I haven't quite figured out how to make that work with dev containers yet. It feels like a solvable problem, though.
+:::
+
+You can close the container when you're done, and it'll open right back up next time—or if you delete the container, it can be recreated from the container spec.
+
+::: {.callout-info}
+You can install tools and packages from the terminal once you're inside the container if you like, but keep in mind that the changes won't persist if you delete the container (or if someone else is trying to use it).
+
+It's generally best to specify tools you want in the container in `devcontainer.json`.
+:::
+
+# But how do I share it with others?
 
 If you commit `devcontainer.json` to version control, other people who clone your repo and open it in VSCode will be able to launch it in a dev container, making it easy for them to match your environment. But that's not the best part.
 
