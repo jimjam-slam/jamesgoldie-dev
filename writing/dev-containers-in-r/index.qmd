@@ -1,8 +1,12 @@
 ---
 title: "Dev containers with R and Quarto"
 categories: [development, rstats, quarto]
-date: 2023-04-10
-description: The quickest way to get other folks into your data science code.
+date: 2023-04-11
+twitter-card:
+  image: https://jamesgoldie.dev/writing/dev-containers-in-r/devcontainer-launched.png
+open-graph:
+  image: https://jamesgoldie.dev/writing/dev-containers-in-r/devcontainer-launched.png
+description: Dev containers are probably the quickest way to get other folks into your data science code.
 ---
 
 My favourite new trick is setting up a reproducible R/Quarto development environment in two clicks. It looks like this, and creating it yourself is as simple as [following a link](https://github.com/codespaces/new?repo=621160564&ref=main&machine=basicLinux32gb):
@@ -88,7 +92,21 @@ Let's break this spec down:
 
 Once you're ready to launch your dev container, press {{< kbd Shift-Ctrl-P mac=Shift-Command-P >}} to open the command palette, and select **Dev Containers: Reopen in Container**. Hold on!
 
-# Okay, so how do I share it?
+Once you're working inside the container, you can write code, save files, commit and push as usual. For the most part, VSCode brings your usual git credentials into the container.
+
+:::{.aside}
+I use 1Password's SSH agent, and I haven't quite figured out how to make that work with dev containers yet. It feels like a solvable problem, though.
+:::
+
+You can close the container when you're done, and it'll open right back up next time—or if you delete the container, it can be recreated from the container spec.
+
+::: {.callout-info}
+You can install tools and packages from the terminal once you're inside the container if you like, but keep in mind that the changes won't persist if you delete the container (or if someone else is trying to use it).
+
+It's generally best to specify tools you want in the container in `devcontainer.json`.
+:::
+
+# But how do I share it with others?
 
 If you commit `devcontainer.json` to version control, other people who clone your repo and open it in VSCode will be able to launch it in a dev container, making it easy for them to match your environment. But that's not the best part.
 
