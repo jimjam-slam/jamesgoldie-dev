@@ -10,7 +10,7 @@ My favourite new trick is setting up a reproducible R/Quarto development environ
 ::: {.aside}
 Basic 2-core Codespaces like the one here are [free to use for 60 hours a month](https://github.com/features/codespaces) for everyone with a GitHub account (as of March 2023)—enough to do 3 hours of work every workday.
 <br><br>
-You won't be billed you unless you add a billing method and raise the spending limit, and unused Codespaces shut down after a few hours if you forget to kill them yourself. So give it a whirl!
+You won't be billed you unless you add a billing method and raise the spending limit, and unused Codespaces stop running after half an hour if you forget to stop them yourself. So give it a whirl!
 :::
 
 [![A sample dev container running as a Codespace in the browser.](devcontainer-launched.png)](https://github.com/codespaces/new?repo=621160564&ref=main&machine=basicLinux32gb)
@@ -86,7 +86,7 @@ Let's break this spec down:
 	
 	2. When someone is launching this project as a [Codespace](http://github.com/codespaces) (more on that below!), we can tell the container to open a set of files by default. This is a great way to welcome users by automatically opening the README or an intended entrypoint to the project.
 
-Once you're ready to launch your dev container, press {{< kbd mac=Shift-Command-P win=Shift-Control-P linux=Shift-Ctrl-P >}} to open the command palette, and select **Dev Containers: Reopen in Container**. Hold on!
+Once you're ready to launch your dev container, press {{< kbd Shift-Ctrl-P mac=Shift-Command-P >}} to open the command palette, and select **Dev Containers: Reopen in Container**. Hold on!
 
 # Okay, so how do I share it?
 
