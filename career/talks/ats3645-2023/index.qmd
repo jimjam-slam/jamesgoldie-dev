@@ -1,0 +1,14 @@
+---
+title: "Climate Change, Migration and the Role of Climate Data"
+description: "For the Calcutta Research Group"
+categories: ["talk"]
+date: 2022-08-25
+---
+
+I spoke to the Calcutta Research Group's Media Workshop on climate change and migration about the use of climate data:
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 56.25%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="width: 100%; height: 100%; position: absolute; left: 0; top: 0;" src="https://www.youtube.com/embed/ky6RLtEyXEc?start=132" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+```

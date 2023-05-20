@@ -1,0 +1,16 @@
+---
+title: "Sinking cities"
+subtitle: "Where are coastal cities sinking?"
+description: "Where are coastal cities sinking?"
+image: thumb-sinking-cities.webp
+categories: ["talk"]
+date: 2023-05-17
+---
+
+This map uses radar observations and interpolation from [a study by Tay et al.](https://doi.org/10.1038/s41893-022-00947-z) to visualise land subsistence (sinking) across some of the world's largest coastal cities.
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 75%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white" src="https://may2023.360info-sinking-cities.pages.dev/map/?edshare" allowfullscreen></iframe>
+</div>
+```

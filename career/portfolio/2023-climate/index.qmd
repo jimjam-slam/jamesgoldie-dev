@@ -1,0 +1,20 @@
+---
+title: "Sinking cities"
+subtitle: "Where are coastal cities sinking?"
+description: "Where are coastal cities sinking?"
+image: thumb-sinking-cities.webp
+categories: ["talk"]
+date: 2023-02-28
+---
+
+This map shows future climate projections of very hot days for postcodes across Australia. The projections are courtesy of the [NARCliM1.5](https://doi.org/10.1029/2020EF001833) project.
+
+As part of this map's development, I also wrote a [reproducible pipeline](https://github.com/360-info/climate-projections-narclim15) to retrieve and process the raw, gridded daily projections and to project area averages for any specified [ABS boundaries](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files).
+
+The data underpinning the map was used by News Ltd's David Mills for a story on the impact of extreme heat on workers. I also [wrote a story](https://360info.org/extreme-heat-will-put-more-pressure-on-workers/), published with 360info, with expanded quotes from researchers.
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 75%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white" src="https://may2023.360info-sinking-cities.pages.dev/map/?edshare" allowfullscreen></iframe>
+</div>
+```

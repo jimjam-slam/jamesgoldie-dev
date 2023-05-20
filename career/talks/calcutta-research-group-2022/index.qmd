@@ -1,14 +1,14 @@
 ---
-title: "Climate Change, Migration and the Role of Climate Data"
-description: "For the Calcutta Research Group"
+title: "Climate Change and Solutions Journalism"
+description: "For Monash journalism students"
 categories: ["talk"]
-date: 2022-08-25
+date: 2023-04-25
 ---
 
-I spoke to the Calcutta Research Group's Media Workshop on climate change and migration about the use of climate data:
+I spoke to journalism students at Monash about the work I do at 360info, the work I did at MCCCRH, and solutions journalism:
 
 ```{=html}
-<div style="text-align:center; position: relative; height: 0; padding-bottom: 56.25%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
-	<iframe style="width: 100%; height: 100%; position: absolute; left: 0; top: 0;" src="https://www.youtube.com/embed/ky6RLtEyXEc?start=132" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 75%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white" src="https://ats3645.talks.jamesgoldie.dev/" allowfullscreen></iframe>
 </div>
 ```
