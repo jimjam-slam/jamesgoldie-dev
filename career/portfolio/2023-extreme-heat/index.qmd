@@ -15,6 +15,6 @@ The data underpinning the map was used by News Ltd's David Mills for a story on 
 
 ```{=html}
 <div style="text-align:center; position: relative; height: 0; padding-bottom: 75%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
-	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white" src="https://may2023.360info-sinking-cities.pages.dev/map/?edshare" allowfullscreen></iframe>
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white" src="https://feb2023.360info-heatmaps-narclim.pages.dev/news/?edshare" allowfullscreen></iframe>
 </div>
 ```
