@@ -3,7 +3,7 @@ title: "Arms trade"
 subtitle: "Who supplies and receives arms?"
 description: "Who supplies and receives arms?"
 image: thumb-arms-trade.webp
-categories: ["talk"]
+categories: ["visual"]
 date: 2022-08-23
 ---
 

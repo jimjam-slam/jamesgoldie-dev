@@ -3,7 +3,7 @@ title: "Sinking cities"
 subtitle: "Where are coastal cities sinking?"
 description: "Where are coastal cities sinking?"
 image: thumb-sinking-cities.webp
-categories: ["talk"]
+categories: ["visual"]
 date: 2023-05-17
 ---
 

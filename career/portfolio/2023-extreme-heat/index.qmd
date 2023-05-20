@@ -1,9 +1,9 @@
 ---
-title: "Sinking cities"
-subtitle: "Where are coastal cities sinking?"
-description: "Where are coastal cities sinking?"
-image: thumb-sinking-cities.webp
-categories: ["talk"]
+title: "Extreme heat"
+subtitle: "How are hot days affecting workers?"
+description: "How are hot days affecting workers?"
+image: thumb-extreme-heat.webp
+categories: ["visual"]
 date: 2023-02-28
 ---
 
