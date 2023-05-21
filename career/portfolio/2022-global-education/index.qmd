@@ -2,7 +2,7 @@
 title: "Most popular countries for students"
 description: ""
 image: thumb-global-education.webp
-categories: ["talk"]
+categories: ["visual"]
 date: 2022-06-30
 ---
 

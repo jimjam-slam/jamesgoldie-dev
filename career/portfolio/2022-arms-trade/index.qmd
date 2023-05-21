@@ -1,12 +1,11 @@
 ---
-title: "The renewables transition"
-description: "Nations are slowly but surely moving to cleaner sources of electricity."
+title: "Arms trade"
+subtitle: "Who supplies and receives arms?"
+description: "Who supplies and receives arms?"
 image: thumb-arms-trade.webp
-categories: ["talk"]
+categories: ["visual"]
 date: 2022-08-23
 ---
-
-Who supplies and receives arms?
 
 This ambitious map uses data on transfers of arms between countries from the [Stockholm International Peace Research Institute](https://sipri.org). SIPRI agreed to release its transfers data to us under Creative Commons as part of this story.
 

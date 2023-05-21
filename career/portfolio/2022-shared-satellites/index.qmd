@@ -2,7 +2,7 @@
 title: "Mixed use"
 description: "How governments, the military and business share satellites"
 image: thumb-mixed-use.png
-categories: ["talk"]
+categories: ["visual"]
 date: 2022-05-02
 ---
 

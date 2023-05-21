@@ -2,7 +2,7 @@
 title: "Asteroid strikes"
 description: "What would an asteroid or comet impact be like?"
 image: thumb-asteroids.webp
-categories: ["talk"]
+categories: ["visual"]
 date: 2022-06-30
 ---
 
