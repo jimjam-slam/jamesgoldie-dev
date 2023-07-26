@@ -1,6 +1,6 @@
 ---
 title: "Most popular countries for students"
-description: ""
+description: "See where students are likely to come from or visit."
 image: thumb-global-education.webp
 categories: ["visual"]
 date: 2022-06-30

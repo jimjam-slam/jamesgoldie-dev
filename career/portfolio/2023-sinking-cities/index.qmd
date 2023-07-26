@@ -1,6 +1,5 @@
 ---
 title: "Sinking cities"
-subtitle: "Where are coastal cities sinking?"
 description: "Where are coastal cities sinking?"
 image: thumb-sinking-cities.webp
 categories: ["visual"]

@@ -1,6 +1,5 @@
 ---
 title: "Arms trade"
-subtitle: "Who supplies and receives arms?"
 description: "Who supplies and receives arms?"
 image: thumb-arms-trade.webp
 categories: ["visual"]

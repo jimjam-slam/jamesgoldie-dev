@@ -1,6 +1,5 @@
 ---
 title: "Extreme heat"
-subtitle: "How are hot days affecting workers?"
 description: "How are hot days affecting workers?"
 image: thumb-extreme-heat.webp
 categories: ["visual"]
