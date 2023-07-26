@@ -1,0 +1,13 @@
+---
+title: "El Niño"
+description: "See how it works to affect weather around the world"
+image: thumb-elnino.webp
+categories: ["visual"]
+date: 2023-06-12
+---
+
+```{=html}
+<div style="position:relative; padding-bottom: 70%">
+	<iframe allow="fullscreen; clipboard-write self https://jul2023.360info-elnino.pages.dev" allowfullscreen="true" src="https://jul2023.360info-elnino.pages.dev/map/" title="Interactive: El Niño: global impacts" style="width:100%; height:100%; position: absolute; top: 0; left: 0; border:none;" scrolling="no"></iframe>
+</div>
+```
