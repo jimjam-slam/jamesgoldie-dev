@@ -4,17 +4,203 @@ categories: [app]
 date: 2022-09-07
 description: Tools for helping me understand mortgages
 draft: true
+format:
+  html:
+    code-fold: true
 ---
 
 <!-- intro -->
 
+```{ojs}
+import { aq, op } from "@uwdata/arquero"
+import { interval } from "@mootari/range-slider"
+```
+
 ::: {.callout-warning}
-## Disclaimer
+# Disclaimer
 
 None of this is legal or financial advice! I made it to help myself understand my situation. If it's helpful for you, great! But please do other research.
 :::
 
 # What kind of house can I buy with my saved deposit?
+
+Use this tool to work out how much money you'd need, how much you'd have to borrow, and what the initial repayments would be on 
+
+::::::{.column-page}
+
+```{ojs}
+minPrice = 20000
+maxPrice = 1200000
+priceStep = 10000
+```
+
+```{ojs}
+//| panel: sidebar
+
+viewof housePriceRange = interval([minPrice, maxPrice], {
+  step: priceStep,
+  value: [
+    (minPrice + (maxPrice - minPrice) * 0.25),
+    (minPrice + (maxPrice - minPrice) * 0.75),],
+  label: "Price range",
+  format: x => "$" + roundDollars.format(x[0]) + " to " + "$" + roundDollars.format(x[1])
+})
+
+viewof targetDeposit = Inputs.range([2, 50], {
+  label: "Deposit (%)",
+  value: 20,
+  step: 1,
+  format: x => x.toFixed(0)
+})
+
+viewof eligibleFHB = Inputs.checkbox(["I am eligible for the First Home Buyer stamp duty concession"])
+
+viewof initialInterestRate = Inputs.range([0, 15], {
+  label: "Initial interest rate (%)",
+  value: 5.9,
+  step:  0.05,
+  format: x => x.toFixed(2)
+})
+
+viewof term = Inputs.range([2, 40], {
+  label: "Term (years)",
+  value: 30,
+  step: 1
+})
+```
+
+:::::{.panel-fill}
+::::{.panel-tabset}
+
+## Table
+
+```{ojs}
+viewof tableComponents = Inputs.checkbox(
+  ["Cost breakdown", "Repayments"],
+  {
+    label: "Show:",
+    value: ["Cost breakdown"]
+  })
+
+colsToShow = [
+  ...(tableComponents.includes("Cost breakdown") ?
+    ["stampDuty", "depositPlusCosts", "toBorrow"] : []),
+  ...(tableComponents.includes("Repayments") ?
+    ["monthlyInterest", "initMinRepayment"] : []),
+]
+```
+
+```{ojs}
+// house price from $10k to $2M in 10k increments
+
+priceTable = aq.table({
+  "housePrice": Array.from(
+    {length: ((maxPrice - minPrice) / priceStep) + 1},
+    (_, x) => x * priceStep + minPrice)
+})
+  .params({
+    housePriceRange: housePriceRange,
+    targetDeposit: targetDeposit,
+    eligibleFHB: eligibleFHB,
+    initialInterestRate: initialInterestRate,
+    term: term
+  })
+  .derive({ "stampDutyNormal": d => 2870 + (0.06 * (d.housePrice - 130000)) })
+  .derive({"stampDutyFHB": d =>
+    Math.max(0, Math.min(1, (d.housePrice - 600000) / (750000 - 600000))) *
+      d.stampDutyNormal })
+  .derive({ "stampDuty": d => eligibleFHB.length == 1 ?
+    d.stampDutyFHB : d.stampDutyNormal })
+  .derive({ "deposit": d => (targetDeposit / 100) * d.housePrice })
+  .derive({ "depositPlusCosts": d => d.deposit + d.stampDuty })
+  .derive({ "toBorrow": d => d.housePrice - d.depositPlusCosts })
+  .derive({ "monthlyInterest": d =>
+    Math.round(d.toBorrow * (initialInterestRate / 100 / 365.25 * 30.4375)) })
+  .derive({ "initMinRepayment": d =>
+    Math.round(
+      d.toBorrow * (
+        (initialInterestRate / 1200) +
+        (initialInterestRate / 1200) /
+        (( 1 + (initialInterestRate / 1200) ) ^ (term * 12) - 1)),
+      0)
+  })
+  .filter(
+    d => d.housePrice >= housePriceRange[0] &&
+      d.housePrice <= housePriceRange[1])
+
+roundDollars = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 })
+
+Inputs.table(priceTable, {
+  rows: 15,
+  width: 900,
+  columns: ["housePrice", ...colsToShow],
+  header: {
+    "housePrice": "House price",
+    "stampDuty": "Stamp duty",
+    "depositPlusCosts": "Deposit + Costs",
+    "toBorrow": "To borrow",
+    "monthlyInterest": "Init. interest",
+    "initMinRepayment": "Init. min. repayment"
+  },
+  format: {
+    "housePrice": x => "$" + roundDollars.format(x),
+    "stampDuty": x => "$" + roundDollars.format(x),
+    "depositPlusCosts": x => "$" + roundDollars.format(x),
+    "toBorrow": x => "$" + roundDollars.format(x),
+    "monthlyInterest": x => "$" + roundDollars.format(x) + " p.m.",
+    "initMinRepayment": x => "$" + roundDollars.format(x) + " p.m.",
+  }})
+// TODO - table shading: https://observablehq.com/@observablehq/input-table
+```
+
+## Cost breakdown chart
+
+```{ojs}
+
+priceTableLong = priceTable
+  .select(["housePrice", "stampDuty", "deposit", "toBorrow"])
+  .fold(["stampDuty", "deposit", "toBorrow"])
+
+viewof costsChartAsPercentage = Inputs.checkbox(["Show costs as percentage of total"])
+
+costsChartLegend = costsChart.legend("color")
+
+costsChart = Plot.plot({
+  marks: [
+    Plot.areaY(priceTableLong, {
+      x: "housePrice",
+      y: "value",
+      fill: "key",
+      offset: costsChartAsPercentage.length == 1 ? "normalize": null
+    }),
+    Plot.ruleY([0])
+  ],
+  fill: {
+    opacity: 0.5
+  },
+  x: {
+    tickFormat: "$.0s",
+    label: "House price →"
+  },
+  y: {
+    grid: true,
+    tickFormat: costsChartAsPercentage.length == 1 ? ".0%" : "$.0s",
+    label: "↑ Cost breakdown"
+  },
+  marginTop: 40,
+  marginRight: 40,
+  marginBottom: 40,
+  marginLeft: 80
+})
+```
+
+```{ojs}
+costsChart.setAttribute("font-size", 14);
+```
+
+::::
+:::::
+::::::
 
 <!-- inputs:
 - money saved
@@ -35,51 +221,4 @@ maybe easier if house_price is the independent var?
 (house_price * deposit_rate) + lmi + stamp_duty + other_transaction_costs + money_borrowed = house_price
 -->
 
-```{ojs}
-//| echo: false
-import { slider } from "@jashkenas/inputs"
-```
 
-```{ojs}
-//| echo: false
-viewof moneySaved = slider({
-  min: 2e+3,
-  max: 5e+6,
-  value: 6e+5,
-  step: 1e+3,
-  transform: Math.log,
-  width: 600,
-  format: "$,",
-  description: "Money saved"
- });
-```
-
-```{ojs}
-//| echo: false
-viewof depositFrac = slider({
-  min: 0.01,
-  max: 0.99,
-  value: 0.2,
-  format: ".0%",
-  step: 0.01,
-  description: "Deposit fraction"
- });
-```
-
-```{ojs}
-//| echo: false
-viewof interestRate = slider({
-  min: 0.0005,
-  max: 0.2000,
-  value: 0.0345,
-  format: ".2%",
-  step: 0.0005,
-  description: "Interest rate"
- });
-```
-
-```{ojs}
-testFormat = d3.format(".2%")
-```
-
-Test: 0.0345 = ${testFormat(0.0345)}
