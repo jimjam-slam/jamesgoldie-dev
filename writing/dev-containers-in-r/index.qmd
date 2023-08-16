@@ -110,7 +110,7 @@ It's generally best to specify tools you want in the container in `devcontainer.
 
 If you commit `devcontainer.json` to version control, other people who clone your repo and open it in VSCode will be able to launch it in a dev container, making it easy for them to match your environment. But that's not the best part.
 
-![Use the Code button on a GitHub repository to launch a codespace.](launch-codespace.png)
+![Use the Code button on a GitHub repository to launch a codespace, or to get a link that you can share with others to launch one.](launch-codespace.png)
 
 GitHub has [Codespaces](https://github.com/features/codespaces), a way to launch a repository in a cloud environment running VSCode in your browser. (If you've ever used [Posit Cloud](https://posit.cloud), this is very much the same deal!)
 
@@ -118,14 +118,19 @@ If you open a Codespace on a repository that includes a devcontainer spec, the C
 
 You can also share a link to open a specific repo in Codespaces—a great way to get students and workshop participants started when you don't want to bother with installation pre-requisites. As long as they have a GitHub account, they can get started, and there're plenty of free hours each month for most use cases.
 
-To get the link, go to <http://github.com/codespaces/new>, select the repository, and then copy and paste the updated URL in the address bar:
-
-
-> https://github.com/codespaces/new**?repo=621160564&ref=main**
-
-::: {.aside}
-Most of the extra parts of this URL aren't important, but you do at least want the `repo` number and probably the `ref` (branch) to open.
+::: {.callout}
+I've updated this section, having a discovered an [easier and clearer way](https://github.blog/changelog/2023-04-24-one-click-into-github-codespaces) to share links that start Codespaces!
 :::
+
+If you use the "Share deep link" button on a repo, you can create a link that others can use to launch a Codespace from a repo (provided they have access to it). Or you can type it straight out using the repo owner and name:
+
+```
+https://codespaces.new/jimjam-slam/quarto-devcontainer-demo
+```
+
+You can also add `?quickstart=1` to the end if you'd prefer not to give users confusing additional options like the region or the amount of computing power. You can also use the "Share deep link" button to get HTML or Markdown code for a nice badge to put on your README or blog post!
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jimjam-slam/quarto-devcontainer-demo?quickstart=1)
 
 Now anyone with a GitHub account can click it to start a Codespace with your repo!
 
