@@ -19,7 +19,7 @@ import { interval } from "@mootari/range-slider"
 ::: {.callout-warning}
 # Disclaimer
 
-None of this is legal or financial advice! I made it to help myself understand my situation. If it's helpful for you, great! But please do other research.
+None of this constitutes legal or financial advice! I made it to help myself understand my situation. If it's helpful for you, great! But please do other research.
 :::
 
 # What kind of house can I buy with my saved deposit?
@@ -35,7 +35,7 @@ priceStep = 10000
 ```
 
 ```{ojs}
-//| panel: sidebar
+//| panel: input
 
 viewof housePriceRange = interval([minPrice, maxPrice], {
   step: priceStep,
@@ -91,8 +91,6 @@ colsToShow = [
 ```
 
 ```{ojs}
-// house price from $10k to $2M in 10k increments
-
 priceTable = aq.table({
   "housePrice": Array.from(
     {length: ((maxPrice - minPrice) / priceStep) + 1},
@@ -156,7 +154,6 @@ Inputs.table(priceTable, {
 ## Cost breakdown chart
 
 ```{ojs}
-
 priceTableLong = priceTable
   .select(["housePrice", "stampDuty", "deposit", "toBorrow"])
   .fold(["stampDuty", "deposit", "toBorrow"])
@@ -190,12 +187,13 @@ costsChart = Plot.plot({
   marginTop: 40,
   marginRight: 40,
   marginBottom: 40,
-  marginLeft: 80
+  marginLeft: 80,
+  width: width
 })
 ```
 
 ```{ojs}
-costsChart.setAttribute("font-size", 14);
+costsChart.setAttribute("font-size", 16);
 ```
 
 ::::
