@@ -197,7 +197,7 @@ header.quarto-title-block {
 
 /* make category/tag pills opaque bg */
 div.quarto-post .listing-categories .listing-category,
-quarto-title .quarto-categories .quarto-category {
+div.quarto-title div.quarto-categories div.quarto-category {
   background-color: white;
 }
 
