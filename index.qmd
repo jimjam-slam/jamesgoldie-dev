@@ -10,10 +10,10 @@ about:
   image-shape: round
   image-width: 10em
   links:
-    - icon: twitter
-      text: Twitter
-      aria-label: "James's Twitter"
-      href: https://twitter.com/jimjam_slam
+    - icon: meta
+      text: Threads
+      aria-label: "James's Threads"
+      href: https://threads.net/@jimjam.slam
     - icon: mastodon
       text: Mastodon
       aria-label: "James's Mastodon"

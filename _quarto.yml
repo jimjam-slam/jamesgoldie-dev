@@ -16,9 +16,9 @@ website:
       - text: writing
         href: /writing
     right:
-      - icon: twitter
-        aria-label: "James's Twitter"
-        href: https://twitter.com/jimjam_slam
+      - icon: meta
+        aria-label: "James's Threads"
+        href: https://threads.net/@jimjam.slam
       - icon: mastodon
         aria-label: "James's Mastodon"
         href: https://aus.social/@jimjamslam

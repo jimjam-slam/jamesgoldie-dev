@@ -53,8 +53,10 @@ body {
         font-weight: 800;
       }
 
-      .navbar-collapse .nav-link {
-        text-transform: uppercase;
+      .navbar-collapse {
+        .nav-link {
+          text-transform: uppercase;
+        }
       }
     }
   }
