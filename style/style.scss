@@ -202,3 +202,19 @@ div.quarto-post .listing-categories .listing-category,
 quarto-title .quarto-categories .quarto-category {
   background-color: white;
 }
+
+/* fix code block headers not pushing out to the left with block */
+@media (min-width: 992px) {
+  .code-with-filename-file {
+    margin-left: calc(calc(-0.6em + -3px) + 2px);
+  }
+  .sourceCode {
+    border-radius: 0 0 0.25rem 0.25rem;
+  }
+}
+
+/* fix code block header shading */
+.code-with-filename .code-with-filename-file,
+.code-with-filename .code-with-filename-file pre {
+  background-color: rgb(219, 219, 219)
+}
