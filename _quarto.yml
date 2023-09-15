@@ -49,4 +49,4 @@ format:
   html:
     theme: [flatly, "style/style.scss", "style/light.scss"]
     mainfont: "Inter"
-    monofont: "Dank Mono"
+    monofont: "JetBrains Mono"
