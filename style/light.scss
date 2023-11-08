@@ -45,8 +45,9 @@ body {
       -webkit-text-fill-color: transparent;
   
       span, a {
-        font-family: "JetBrains Mono";
-        font-style: italic;
+        font-family: "Inter";
+        // font-style: italic;
+        font-variation-settings: "slnt" -5;
       }
   
       .navbar-title {
