@@ -28,14 +28,6 @@ Here are some of the more ambitious interactives I've produced:
 :::
 ::::
 
-I also occasionally commission and edit stories alongside our other editors. Here're some of the stories I've written or commissioned:
-
-- [How dangerous is extreme heat to humans](https://360info.org/how-dangerous-is-extreme-heat-to-humans/) (Commissioned August 2023)
-- [Renters in older homes feeling the heat ](https://360info.org/renters-in-older-homes-feeling-the-heat/) (Written March 2023)
-- [Extreme heat will put more pressure on workers](https://360info.org/extreme-heat-will-put-more-pressure-on-workers/) (Written February 2023)
-- [The ecological crisis in the Arctic Ocean](https://360info.org/the-ecological-crisis-in-the-arctic-ocean/) (Comissioned October 2022)
-- [Seeing emotions just the start for brain-reading technology](https://360info.org/seeing-emotions-just-the-start-for-brain-reading-technology/) (Comissioned September 2022)
-
 :::{.column-margin}
 
 ```{=html}
@@ -45,6 +37,14 @@ I also occasionally commission and edit stories alongside our other editors. Her
 <figcaption class="figure-caption">360info video on marine heatwaves</figcaption>
 ```
 :::
+
+I also occasionally commission and edit stories alongside our other editors. Here're some of the stories I've written or commissioned:
+
+- [How dangerous is extreme heat to humans](https://360info.org/how-dangerous-is-extreme-heat-to-humans/) (Commissioned August 2023)
+- [Renters in older homes feeling the heat ](https://360info.org/renters-in-older-homes-feeling-the-heat/) (Written March 2023)
+- [Extreme heat will put more pressure on workers](https://360info.org/extreme-heat-will-put-more-pressure-on-workers/) (Written February 2023)
+- [The ecological crisis in the Arctic Ocean](https://360info.org/the-ecological-crisis-in-the-arctic-ocean/) (Comissioned October 2022)
+- [Seeing emotions just the start for brain-reading technology](https://360info.org/seeing-emotions-just-the-start-for-brain-reading-technology/) (Comissioned September 2022)
 
 Beyond our big interactives, I produce static charts and infographics, train our interns in data storytelling, work with our media partners to help them use our interactives and datasets, and manage our [GitHub presence](https://github.ciom/360-info), working to make our data and graphics more discoverable.
 
