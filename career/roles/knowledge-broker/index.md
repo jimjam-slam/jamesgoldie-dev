@@ -9,9 +9,7 @@ After spending a year in a joint role as a Knowledge Broker for the [ARC Centre 
 
 The Hub is a unique team with a unique mission: we bridge the gap between climate scientists and the media in order to help Australians understand and tackle climate change.
 
-On the one hand, we do [sociologial research](https://monash.edu/mcccrh/research) encompassing audience views, media framing and climate impacts. On the other, we run [national climate communication programs](https://monash.edu/mcccrh/projects) that get Australians thinking about local and regional climate trends. We publish weekly columns in Quest Community News, as well as working with weather presenters across the country:
-
-{{< tweet 1313322907079122946 >}}
+On the one hand, we do [sociologial research](https://monash.edu/mcccrh/research) encompassing audience views, media framing and climate impacts. On the other, we run [national climate communication programs](https://monash.edu/mcccrh/projects) that get Australians thinking about local and regional climate trends. We publish weekly columns in Quest Community News, as well as working with weather presenters across the country.
 
 My role as a Knowledge Broker has a few aspects. The first is to be the Hub's link to climate scientists. As a former climate change researcher, I maintain active links with Australia's preeminent climate science organisations, and I regularly work with other organisations that disseminate and translate climate science, like the [Earth Systems and Climate Change Hub](http://nespclimate.com.au/), to ensure that I'm aware of the latest research and cutting edge datasets.
 
