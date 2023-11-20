@@ -30,9 +30,23 @@
   src: url("/style/fonts/Inter-BoldItalic.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/style/fonts/Inter-Extrabold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/style/fonts/Inter-ExtraboldItalic.woff2") format("woff2");
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=JetBrains+Mono:ital,wght@0,300;0,700;1,300;1,700&display=swap');
-
-
 
 /*-- scss:uses --*/
 
@@ -45,15 +59,15 @@ $code-block-border-left: true;
 /* -- scss:mixins --*/
 
 // noise effect for text
-@mixin scratched($baseTurbFreq: 0.005, $turbOctaves: 1, $displaceScale: 5) {
-  filter: url('data:image/svg+xml,\
-    <svg xmlns="http://www.w3.org/2000/svg">\
-      <filter id="filter" x="-10%" y="-10%" width="120%" height="120%">\
-        <feTurbulence baseFrequency="#{$baseTurbFreq}" numOctaves="#{$turbOctaves}" result="turbulence" />\
-        <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="#{$displaceScale}" xChannelSelector="R" yChannelSelector="G"/>\
-      </filter>\
-    </svg>#filter');
-}
+// @mixin scratched($baseTurbFreq: 0.005, $turbOctaves: 1, $displaceScale: 5) {
+//   filter: url('data:image/svg+xml,\
+//     <svg xmlns="http://www.w3.org/2000/svg">\
+//       <filter id="filter" x="-10%" y="-10%" width="120%" height="120%">\
+//         <feTurbulence baseFrequency="#{$baseTurbFreq}" numOctaves="#{$turbOctaves}" result="turbulence" />\
+//         <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="#{$displaceScale}" xChannelSelector="R" yChannelSelector="G"/>\
+//       </filter>\
+//     </svg>#filter');
+// }
 
 /*-- scss:rules --*/
 
@@ -67,8 +81,9 @@ $code-block-border-left: true;
 
 
 h1, h2, .h1, .h2 {
-  @include scratched();
+  // @include scratched();
   font-weight: 800;
+  font-style: italic;
 
   &.text-lime-cyan {
     background: linear-gradient(45deg, #00aadd, #66dd00);
@@ -147,25 +162,20 @@ span {
 
 .listing-title {
   font-weight: 800;
+  font-style: italic;
 }
 
 .category-cloud {
-  font-variant: all-small-caps;
   font-size: 0.75rem;
 }
 
-main.content a, .listing-category {
+main.content a {
   font-weight: 600;
 }
 
-main.content .quarto-listing .listing-description {
+main.content .quarto-listing .listing-description a {
   font-weight: normal;
 }
-
-figcaption.figure-caption {
-  font-variant: all-small-caps;
-}
-
 
 /* home page header only (not post headers hopefully!) */
 .quarto-about-jolla {
