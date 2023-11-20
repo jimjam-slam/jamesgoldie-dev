@@ -42,6 +42,7 @@ body {
     nav.navbar {
       background: linear-gradient(30deg, $gradient-from, $gradient-to);
       background-clip: text;
+      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
   
       span, a {
