@@ -58,30 +58,9 @@ $code-block-border-left: true;
 
 /* -- scss:mixins --*/
 
-// noise effect for text
-// @mixin scratched($baseTurbFreq: 0.005, $turbOctaves: 1, $displaceScale: 5) {
-//   filter: url('data:image/svg+xml,\
-//     <svg xmlns="http://www.w3.org/2000/svg">\
-//       <filter id="filter" x="-10%" y="-10%" width="120%" height="120%">\
-//         <feTurbulence baseFrequency="#{$baseTurbFreq}" numOctaves="#{$turbOctaves}" result="turbulence" />\
-//         <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="#{$displaceScale}" xChannelSelector="R" yChannelSelector="G"/>\
-//       </filter>\
-//     </svg>#filter');
-// }
-
 /*-- scss:rules --*/
 
-// #quarto-document-content .about-entity {
-//   align-items: end;
-
-//   #title-block-header {
-//     text-align: right;
-//   }
-// }
-
-
 h1, h2, .h1, .h2 {
-  // @include scratched();
   font-weight: 800;
   font-style: italic;
 
@@ -260,3 +239,34 @@ div.quarto-title div.quarto-categories div.quarto-category {
 .code-with-filename .code-with-filename-file pre {
   background-color: rgb(219, 219, 219)
 }
+
+/* nicer sesrch style */
+
+.aa-DetachedOverlay {
+  backdrop-filter: blur(5px)
+}
+
+.aa-DetachedContainer {
+  box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.45)
+  font-family: "Inter";
+}
+
+.aa-DetachedFormContainer {
+  border-bottom: none;
+  
+  .aa-Form {
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    border-radius: 0px;
+      
+    &:focus-within {
+      border-bottom: 1px solid indigo;
+      box-shadow: 0 1px 0 0 indigo;
+    }
+  }
+}
+
+.aa-DetachedOverlay .aa-Item .search-item i.bi {
+  margin-top: 2px;
+}
+
