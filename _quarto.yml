@@ -1,6 +1,6 @@
 project:
   type: website
-  resources: fonts/*.woff2
+  resources: style/fonts/*.woff2
 
 execute:
   freeze: auto
