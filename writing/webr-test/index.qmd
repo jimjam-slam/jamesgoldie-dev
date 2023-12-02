@@ -1,0 +1,63 @@
+---
+title: "Your new R package? Write a WebR blog post for it"
+engine: knitr
+filters:
+  - webr
+webr:
+  packages: ["dplyr", "tidyr", "tibble", "crayon"]
+format:
+  html:
+    css:
+      - "webr.css"
+---
+
+Your R package is ready to go out into the world? That's great news!
+
+You're probably thinking about writing a blog post to celebrate the release, to tell everyone how your package works and what they can do with it.
+
+But what if people could try your package out, _right there inside the blog post_, without installing anything? Not just running the examples that you give them, but modifying them and playing with them?
+
+If you have a Quarto blog, you can do this right now, thanks to the power of WebR.
+
+In fact, why don't you give one of my old packages a test run?
+
+```{webr-r}
+#| context: setup
+#| label: install-pkg
+webr::install("collateral",
+  repos = c("https://jimjam-slam.r-universe.dev"))
+```
+
+```{webr-r}
+#| label: spike-data
+#| context: setup
+mtcars |>
+  tibble::rownames_to_column(var = "car") |>
+  tibble::as_tibble() |>
+  dplyr::select(car, cyl, disp, wt) |>
+  # spike some rows in cyl == 4 to make them fail
+  dplyr::mutate(wt = dplyr::case_when(
+    wt < 2 ~ -wt,
+    TRUE ~ wt)) ->
+bad_mtcars
+```
+
+The package is called `{collateral}`. It's designed to help you catch errors and warnings when you're working on large, grouped datasets.
+
+To demonstrate, I've taken the famous `mtcars` data set and sabotaged a few of the rows so that they have a negative `wt` column.
+
+Take a look at it by clicking the **Run** button below:
+
+```{webr-r}
+#| label: spike-data
+bad_mtcars
+```
+
+```{webr-r}
+#| label: test-collateral
+bad_mtcars |>
+  tidyr::nest(data = -cyl) |>
+  mutate(qlog = map_peacefully(data, ~ log(.$wt))) |>
+  mutate(warn_msg = purrr::map_chr(qlog,
+    ~ paste(.x$warnings, collapse = ", ")))
+```

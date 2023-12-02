@@ -1,0 +1,67 @@
+button.qwebr-button-run {
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0px 8px 5px -5px rgba(0, 128, 32, 0.15);
+  background-color: white;
+  border-color: rgba(0, 128, 32, 0.35);
+  border-width: 1.5px;
+  text-transform: uppercase;
+  font-size: 70%;
+  font-weight: bold;
+}
+
+button.qwebr-button-run:disabled {
+  background-color: white;
+  border-color: rgba(220, 220, 220, 0.35);
+  box-shadow: 0px 8px 5px -5px rgba(64, 64, 64, 0.15);
+  color: #dddddd;
+}
+
+.qwebr-editor {
+  font-style: italic;
+  border-radius: 5px;
+  font-size: 85%;
+  /* box-shadow: 0px 8px 5px -5px rgba(122, 122, 122, 0.15); */
+
+  /* padding: 3px;
+  background: linear-gradient(to right, red, purple);
+  border-radius: 6.5px; */
+
+}
+
+.qwebr-editor .monaco-editor .line-numbers {
+  color: lightgrey;
+}
+
+.qwebr-editor .monaco-editor .line-numbers,
+.qwebr-editor .monaco-editor .view-line {
+  font-size: 85%;
+}
+
+#startup {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-size: 70%;
+  font-weight: bold;
+}
+
+.qwebr-output-code-area {
+  margin-top: 10px;
+}
+
+.qwebr-output-code-area pre div {
+  transform: scale(0.99);
+}
+
+.quarto-title-meta-heading {
+  display: none;
+}
+
+.quarto-title-meta p {
+  z-index: 100;
+}
