@@ -3,7 +3,9 @@ title: "Your new R package? Write a WebR blog post for it"
 categories: [tutorial, rstats, webr, quarto]
 date: 2024-01-19
 description: If you can write a blog post, you can let people try your R package out, right in the browser.
-image: https://jamesgoldie.dev/writing/your-new-r-package-webr/webr-post-banner.jpg
+image: webr-post-banner.jpg
+resources:
+  - webr-post-banner.jpg
 engine: knitr
 filters:
   - "webr"
