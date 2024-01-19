@@ -55,6 +55,8 @@ bad_mtcars
 
 ```{webr-r}
 #| label: test-collateral
+library(collateral)
+
 bad_mtcars |>
   tidyr::nest(data = -cyl) |>
   mutate(qlog = map_peacefully(data, ~ log(.$wt))) |>
