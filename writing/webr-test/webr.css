@@ -1,32 +1,61 @@
 button.qwebr-button-run {
   margin-bottom: 15px;
   border-radius: 4px;
-  box-shadow: 0px 8px 5px -5px rgba(0, 128, 32, 0.15);
   background-color: white;
-  border-color: rgba(0, 128, 32, 0.35);
+  /* border-color: rgba(0, 128, 32, 0.35); */
   border-width: 1.5px;
   text-transform: uppercase;
   font-size: 70%;
   font-weight: bold;
+  
+  animation: 8s infinite alternate pulse;
 }
+
+@keyframes pulse {
+  from {
+    box-shadow: 0px 8px 5px -5px rgba(0, 128, 32, 0.15);
+    border-color: rgba(0, 128, 32, 0.35);
+  }
+  85% {
+    box-shadow: 0px 8px 5px -5px rgba(0, 128, 32, 0.15);
+    border-color: rgba(0, 128, 32, 0.35);
+  }
+  to {
+    box-shadow: 0px 8px 10px -5px rgba(0, 128, 32, 0.35);
+    border-color: rgba(0, 128, 32, 0.65);
+  }
+}
+
+button.qwebr-button-run i {
+  margin-inline-end: 0.2rem;
+}
+
 
 button.qwebr-button-run:disabled {
   background-color: white;
-  border-color: rgba(220, 220, 220, 0.35);
+  border-color: rgba(233, 236, 239, 0.65);
   box-shadow: 0px 8px 5px -5px rgba(64, 64, 64, 0.15);
   color: #dddddd;
+  animation: none;
 }
 
 .qwebr-editor {
   font-style: italic;
-  border-radius: 5px;
+  border-radius: 0.5rem;
+  overflow: hidden;
   font-size: 85%;
+  
   /* box-shadow: 0px 8px 5px -5px rgba(122, 122, 122, 0.15); */
 
   /* padding: 3px;
   background: linear-gradient(to right, red, purple);
   border-radius: 6.5px; */
 
+}
+
+.qwebr-editor .monaco-editor .margin,
+.qwebr-editor .monaco-editor .monaco-editor-background {
+  background-color: #eee;
 }
 
 .qwebr-editor .monaco-editor .line-numbers {
@@ -38,7 +67,7 @@ button.qwebr-button-run:disabled {
   font-size: 85%;
 }
 
-#startup {
+#qwebr-status-message-area {
   position: fixed;
   bottom: 5px;
   right: 5px;
@@ -65,3 +94,32 @@ button.qwebr-button-run:disabled {
 .quarto-title-meta p {
   z-index: 100;
 }
+
+/* loading cells */
+
+.qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation,
+.qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
+  border: 1.5px dashed rgba(233, 236, 239, 0.65);
+}
+
+.qwebr-r-project-logo {
+  display: none;
+}
+
+.qwebr-non-interactive-loading-container div {
+  display: flex;
+  flex-flow: row;
+  align-items: baseline;
+  padding: 10px;
+  gap: 10px;
+  text-transform: uppercase;
+  font-size: 70%;
+  font-weight: bold;
+}
+
+.qwebr-non-interactive-loading-container div i.qwebr-icon-status-spinner,
+.qwebr-non-interactive-loading-container div p.qwebr-status-text {
+  color: rgb(175, 185, 195);
+  margin-bottom: 0;
+}
+
