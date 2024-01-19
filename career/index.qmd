@@ -9,6 +9,7 @@ listing:
     page-size: 3
     sort-ui: false
     filter-ui: false
+    fields: [title, subtitle, date]
   - contents: portfolio
     id: about-portfolio
     type: grid

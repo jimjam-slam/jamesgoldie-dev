@@ -152,9 +152,11 @@ main.content a {
   font-weight: 600;
 }
 
-main.content .quarto-listing .listing-description a {
+main.content .quarto-listing .listing-description a,
+main.content .quarto-listing .card-text.listing-description {
   font-weight: normal;
 }
+
 
 /* home page header only (not post headers hopefully!) */
 .quarto-about-jolla {
@@ -247,7 +249,7 @@ div.quarto-title div.quarto-categories div.quarto-category {
 }
 
 .aa-DetachedContainer {
-  box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.45)
+  box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.45);
   font-family: "Inter";
 }
 

@@ -1,0 +1,15 @@
+{
+  "hash": "b035f64fdda0d9c620b665098d17bbf1",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Your new R package? Write a WebR blog post for it\"\nengine: knitr\nfilters:\n  - webr\nwebr:\n  packages: [\"dplyr\", \"tidyr\", \"tibble\", \"crayon\"]\nformat:\n  html:\n    css:\n      - \"webr.css\"\n---\n\n\nYour R package is ready to go out into the world? That's great news!\n\nYou're probably thinking about writing a blog post to celebrate the release, to tell everyone how your package works and what they can do with it.\n\nBut what if people could try your package out, _right there inside the blog post_, without installing anything? Not just running the examples that you give them, but modifying them and playing with them?\n\nIf you have a Quarto blog, you can do this right now, thanks to the power of WebR.\n\nIn fact, why don't you give one of my old packages a test run?\n\n```{webr-r}\n#| context: setup\n#| label: install-pkg\nwebr::install(\"collateral\",\n  repos = c(\"https://jimjam-slam.r-universe.dev\"))\n```\n\n```{webr-r}\n#| label: spike-data\n#| context: setup\nmtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  # spike some rows in cyl == 4 to make them fail\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt)) ->\nbad_mtcars\n```\n\nThe package is called `{collateral}`. It's designed to help you catch errors and warnings when you're working on large, grouped datasets.\n\nTo demonstrate, I've taken the famous `mtcars` data set and sabotaged a few of the rows so that they have a negative `wt` column.\n\nTake a look at it by clicking the **Run** button below:\n\n```{webr-r}\n#| label: spike-data\nbad_mtcars\n```\n\n```{webr-r}\n#| label: test-collateral\nlibrary(collateral)\n\nbad_mtcars |>\n  tidyr::nest(data = -cyl) |>\n  mutate(qlog = map_peacefully(data, ~ log(.$wt))) |>\n  mutate(warn_msg = purrr::map_chr(qlog,\n    ~ paste(.x$warnings, collapse = \", \")))\n```",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
