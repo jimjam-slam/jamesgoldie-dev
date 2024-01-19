@@ -2,8 +2,8 @@
 title: "Your new R package? Write a WebR blog post for it"
 categories: [tutorial, rstats, webr, quarto]
 date: 2024-01-19
-description: Let people try your new R package out, right in the browser.
-image: twitter-post-banner.jpg
+description: If you can write a blog post, you can let people try your R package out, right in the browser.
+image: webr-post-banner.jpg
 engine: knitr
 filters:
   - "webr"
@@ -103,7 +103,7 @@ WebR does away with all that. The browser, whether it's on Windows or Mac, downl
 
 WebR can power a whole range of experiences, whether it's a full R-Studio development environment in your browser or something more restrained. But it's also designed for web developers.
 
-James Balamuta ([@coatless](https://github.com/coatless)) has been working on opening WebR up to regular Quarto users. [`quarto-webr`](https://github.com/coatless/quarto-webr) is the Quarto extension you see above: instead of running R code when an author renders the page and having the results baked in for all users, the code can be run at any time — or eveb modified — by the _reader_.
+James Balamuta ([@coatless](https://github.com/coatless)) has been working on opening WebR up to regular Quarto users. [`quarto-webr`](https://github.com/coatless/quarto-webr) is the Quarto extension you see above: instead of running R code when an author renders the page and having the results baked in for all users, the code can be run at any time — or even modified — by the _reader_.
 
 The biggest constraint on WebR initially was that you only had the base R packages. Then the WebR developers set up a version of CRAN exclusively for WebR, so you can install most CRAN packages either by adding them to the post frontmatter or by running `webr::install()`.^[Soon, it'll be even easier: you'll just be able to use `install.packages()` as usual!]
 
@@ -196,4 +196,19 @@ nested_mtcars |>
 
 There are a _lot_ of possibilities here for teaching. No worrying about one reader getting an error that you can't reproduce: the WebR environment is the same for everybody. And you still have all the power of the web to make a very tailored learning experience.
 
-I think it's going to be pretty rad.
+:::{.callout-note collapse="true"}
+
+## Yes, it can do plots too
+
+This post's example with `{collateral}` just has text output, but yes, `quarto-webr` can do plots too! Here's a basic example with base R plotting, but you can install ggplot2 and any of your usual extensions through CRAN or R-Universe, of course!
+
+```{webr-r}
+#| label: plot-demo
+plot(sin, -pi, 2 * pi)
+```
+
+:::
+
+It's is also a great way to expose open data and encourage people to experiment with it!
+
+I think [`quarto-webr`](https://github.com/coatless/quarto-webr) is going to be pretty rad. The next time you publish an R package, try it out—or write a post to reintroduce people to your old packages!
