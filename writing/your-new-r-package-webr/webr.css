@@ -56,6 +56,7 @@ button.qwebr-button-run:disabled {
 .qwebr-editor .monaco-editor .line-numbers,
 .qwebr-editor .monaco-editor .view-line {
   font-size: 85%;
+  font-family: "JetBrains Mono", Menlo, Monaco, "Courier New", monospace;
 }
 
 /* global webr status message */
