@@ -1,12 +1,17 @@
 ---
 title: "Your new R package? Write a WebR blog post for it"
+categories: [tutorial, rstats, webr, quarto]
+date: 2024-01-19
+description: Let people try your new R package out, right in the browser.
+image: twitter-post-banner.jpg
 engine: knitr
 filters:
-  - webr
+  - "webr"
 webr:
   packages: ["dplyr", "tidyr", "tibble", "crayon"]
 format:
   html:
+    highlight-style: github-dark
     css:
       - "webr.css"
 ---
@@ -21,11 +26,12 @@ If you have a Quarto blog, you can do this right now, thanks to the power of Web
 
 In fact, why don't you give one of my old packages a test run?
 
+## Try it out
+
 ```{webr-r}
 #| context: setup
 #| label: install-pkg
-webr::install("collateral",
-  repos = c("https://jimjam-slam.r-universe.dev"))
+webr::install("collateral", repos = c("https://jimjam-slam.r-universe.dev"))
 ```
 
 ```{webr-r}
@@ -46,20 +52,148 @@ The package is called `{collateral}`. It's designed to help you catch errors and
 
 To demonstrate, I've taken the famous `mtcars` data set and sabotaged a few of the rows so that they have a negative `wt` column.
 
-Take a look at it by clicking the **Run** button below:
+Take a look the new dataset by clicking the **Run** button below:
 
 ```{webr-r}
 #| label: spike-data
 bad_mtcars
 ```
 
+At first glance, it doesn't look too different from the first few rows.
+
+:::{.callout-tip}
+Try tapping on that textbox and changing the code to `bad_mtcars |> summary()`.
+:::
+
+_Now_ you can see that I've tampered with the `wt` column, making some of its values negative.
+
+These boxes aren't just displaying code — you can run _any_ R code directly in your browser!
+
 ```{webr-r}
 #| label: test-collateral
 library(collateral)
 
+# nest our `bad_mtcars` into groups based on the `cyl`
 bad_mtcars |>
-  tidyr::nest(data = -cyl) |>
-  mutate(qlog = map_peacefully(data, ~ log(.$wt))) |>
-  mutate(warn_msg = purrr::map_chr(qlog,
-    ~ paste(.x$warnings, collapse = ", ")))
+  tidyr::nest(data = -cyl) ->
+nested_mtcars
+
+# try to take the log of each `wt`... even the negative ones
+nested_mtcars |>
+  mutate(qlog = map_peacefully(data, ~ log(.$wt)))
 ```
+
+`{collateral}` lets you run an operation — building a plot, fitting a model, or something more complex — on many groups of data, while identifying any errors or warnings that crop up.
+
+It's good for people who aren't ready to step up to a full data pipeline framework like [`{targets}`](https://books.ropensci.org/targets) but who find themselves running the same code over and over, solving edge cases in order to get any results at all.
+
+It's also the sort of package that is best demoed, rather than described. But it's always an uphill push to get someone to install a package locally — a lot of people will just close the blog post and forget the package altogether.
+
+Two great technologies have come together to let you, or anybody, take an R package for a spin directly in the browser: R-Universe and WebR.
+
+## R code in the browser
+
+This blog post uses [WebR](https://docs.r-wasm.org/webr/latest/) to run a copy of R directly in your browser as you read it.
+
+If you've used frameworks like [Shiny](https://www.rstudio.com/products/shiny/) before, you know that it requires a copy of R to be constantly running, or at least _waiting to run_, 24/7 in the cloud somewhere.
+
+Whenever someone flicks a switch, or drags a slider, their browser sends a request off to the cloud to request that a new graphic be made or model be fitted. Keeping that copy of R running all the time isn't always cheap!
+
+WebR does away with all that. The browser, whether it's on Windows or Mac, downloads a copy of R that is safely sandboxed away from the rest of the computer, and the page interacts with that.
+
+WebR can power a whole range of experiences, whether it's a full R-Studio development environment in your browser or something more restrained. But it's also designed for web developers.
+
+James Balamuta ([@coatless](https://github.com/coatless)) has been working on opening WebR up to regular Quarto users. [`quarto-webr`](https://github.com/coatless/quarto-webr) is the Quarto extension you see above: instead of running R code when an author renders the page and having the results baked in for all users, the code can be run at any time — or eveb modified — by the _reader_.
+
+The biggest constraint on WebR initially was that you only had the base R packages. Then the WebR developers set up a version of CRAN exclusively for WebR, so you can install most CRAN packages either by adding them to the post frontmatter or by running `webr::install()`.^[Soon, it'll be even easier: you'll just be able to use `install.packages()` as usual!]
+
+But if your package isn't on CRAN, how can you demo it?
+
+## R-Universe to the rescue
+
+R-Universe is a less onerous alternative to CRAN. It lets anybody build their own R packages in the cloud, and it does it _automatically_. It now builds versions of your packages that work with WebR, so any R-Universe package can be run with `quarto-webr`.
+
+These kinds of services that built your code automatically intimidated me for a long time. But R-Universe makes it incredibly simple: you [connect the R-Universe app to your GitHub](https://github.com/apps/r-universe/installations/new), and it creates a place where you can list the R packages you want built (like [this one for me](https://github.com/jimjam-slam/universe/blob/main/packages.json)). They can be your packages, or they can be someone else's (like members of a lab group or team, or dependencies that you rely on).
+
+R-Universe takes care of building the packages any time they receives pushes on GitHub. You just worry about [building the R package](https://r-pkgs.org).
+
+## Setting 
+
+Using `quarto-webr` is a pretty seamless process:
+
+1. Install the extension alongside your blog post by running `quarto add coatless/quarto-webr`
+2. Add the extension to your blog by adding `filters: ["webr"]` to your post's frontmatter
+3. Instead of `{r}` code chunks, use `{webr-r}` ones
+
+If you want to have CRAN packages installed when someone opens the page, the fourth step is to add a `webr` key to your frontmatter, with a list of `packages` below it:
+
+```yaml
+filters:
+  - "webr"
+webr:
+  packages:
+  - "dplyr"
+  - "tidyr"
+  - "purrr"
+  - "tibble"
+  - "crayon"
+```
+
+If you want to install an R-Universe package, you need to use a code chunk to do so:
+
+````yaml
+```{webr-r}
+#| context: setup
+webr::install("collateral", repos = c("https://jimjam-slam.r-universe.dev"))
+```
+````
+
+There's a really important property on that code chunk: `context: setup`. If you add this to a WebR code chunk, it'll run automatically when the page opens, without the user doing anything.
+
+This doesn't just have to be for package installation. For example, [I used it above to create `bad_mtcars`](https://github.com/jimjam-slam/jamesgoldie-dev/tree/main/writing/your-new-r-package-webr), since I didn't want to slow the blog post down with the details of making some sample data.
+
+:::{.callout-note}
+If you install an R-Universe package, you currently have to install its dependencies manually. For example, I added `crayon`, a dependency of `collateral`, to my frontmatter under `webr.packages`.
+:::
+
+## Downsides
+
+`quarto-webr` isn't an entirely free lunch, although it gets pretty close. A few things to keep in mind:
+
+1. **Your readers have to wait while R and the packages download when they first open the page.** WebR itself is about a 5 MB download — about as big as a photo from a modern phone. Other packages might be a few hundred kB apiece on top of that. Which means that...
+
+2. **Your users will need to wait several seconds for R and the packages to install.** That might be acceptable in a lot of cases, particularly if you can give them something to look at (like a blog post introduction!) in the mean time. In other contexts, it might be unacceptable.
+
+3. **Including private data in your WebR blog post will expose it to users.** An advantage of frameworks like Shiny is that the analysis happens in the cloud, and your users only get the graphic or summary at the end, without seeing, say, individual medical data.
+
+But there are lot of upsides too! You can get early feedback on a new package, without the hassle of waiting for CRAN submission (you can even set up R-Universe to build from a development branch). You can invite people to _experiment_ with your package, rather than try a single example.
+
+You can even suggest several options for people to run, using Quarto's tabsets:
+
+:::{.panel-tabset}
+
+## 1. Operate on groups
+
+```{webr-r}
+#| label: operate-groups
+nested_mtcars |>
+  mutate(
+    qlog = map_peacefully(data, ~ log(.$wt)))
+```
+
+## 2. Add messages
+
+```{webr-r}
+#| label: add-messages
+nested_mtcars |>
+  mutate(
+    qlog = map_peacefully(data, ~ log(.$wt)),
+    warn_msg = purrr::map_chr(qlog,
+      \(x) paste(x$warnings, collapse = ", ")))
+```
+
+:::
+
+There are a _lot_ of possibilities here for teaching. No worrying about one reader getting an error that you can't reproduce: the WebR environment is the same for everybody. And you still have all the power of the web to make a very tailored learning experience.
+
+I think it's going to be pretty rad.
