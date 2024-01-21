@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: a579c4dc-b1dc-429d-8df8-20b2522f5cba
+      url: 'https://jamesgoldie.dev'
