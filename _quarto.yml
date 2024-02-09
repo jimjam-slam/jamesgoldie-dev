@@ -50,3 +50,11 @@ format:
     theme: [flatly, "style/style.scss", "style/light.scss"]
     mainfont: "Inter"
     monofont: "JetBrains Mono"
+    # preload fonts to try and avoid unstyled text
+    include-in-header:
+      text: |
+        <link rel="preload" href="/style/fonts/Inter-Light.woff2" as="font" crossorigin>
+        <link rel="preload" href="/style/fonts/Inter-LightItalic.woff2" as="font" crossorigin>
+        <link rel="preload" href="/style/fonts/Inter-Bold.woff2" as="font" crossorigin>
+        <link rel="preload" href="/style/fonts/Inter-BoldItalic.woff2" as="font" crossorigin>
+        <link rel="preload" href="/style/fonts/Inter-ExtraBoldItalic.woff2" as="font" crossorigin>

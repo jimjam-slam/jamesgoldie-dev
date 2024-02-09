@@ -32,14 +32,6 @@
 
 @font-face {
   font-family: Inter;
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("/style/fonts/Inter-ExtraBold.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Inter;
   font-style: italic;
   font-weight: 800;
   font-display: swap;
@@ -149,12 +141,16 @@ span {
 }
 
 main.content a {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 main.content .quarto-listing .listing-description a,
 main.content .quarto-listing .card-text.listing-description {
   font-weight: normal;
+}
+
+.quarto-listing .listing-category {
+  font-weight: 700;
 }
 
 
