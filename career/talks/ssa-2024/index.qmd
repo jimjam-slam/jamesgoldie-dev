@@ -1,0 +1,14 @@
+---
+title: "No installation required: Instant coding demos and workshops using dev containers and WebR"
+description: "For the Statistical Society of Australia's Vic and Tas branches"
+categories: ["talk"]
+date: 2024-02-20
+---
+
+I gave a talk to the Statistical Society of Australia's Victorian and Tasmanian branches on using tools like dev containers and WebR/Pyodide to drive demos and workshops.
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 56.25%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://ssa2024.talks.jamesgoldie.dev" allowfullscreen></iframe>
+</div>
+```
