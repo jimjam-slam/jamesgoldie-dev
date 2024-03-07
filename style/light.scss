@@ -64,13 +64,19 @@ body {
       }
     }
   }
-
-
+  
   .btn-gradient {
     background: linear-gradient(30deg, $gradient-from, $gradient-to);
     color: $navbar-fg;
     width: 100%;
     border: none;
     box-shadow: 0px 10px 10px 0px 10px 10px #fa989811;
+  }
+}
+
+// (disable animated bg if people prefer less motion) 
+@media (prefers-reduced-motion) {
+  body {
+    animation: none;
   }
 }
