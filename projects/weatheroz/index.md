@@ -4,6 +4,9 @@ work-type: package
 categories: [rstats, package]
 date: 2024-11-02
 description: Download weather and climate data from Australian data sources
+image: weatheroz.png
+twitter-card:
+  image: weatheroz.png
 ---
 
 [Find this at docs.ropensci.org](https://docs.ropensci.org/weatherOz){.btn .btn-gradient}
