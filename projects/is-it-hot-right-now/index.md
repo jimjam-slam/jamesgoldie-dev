@@ -1,6 +1,6 @@
 ---
 title: Is It Hot Right Now?
-categories: [js, rstats, python, quarto, ojs, webapp, climatechange, weather]
+categories: [js, rstats, python, quarto, ojs, webapp, climatechange, weather, dataviz]
 date: 2024-02-08
 description: Is it really hot today, or does it just feel that way?
 image: isithotrightnow.png
