@@ -44,7 +44,10 @@ website:
     site: "@jimjam-slam"
     card-style: "summary"
     image: "/profile.jpg"
-  google-analytics: G-2WJLV09KE6
+  google-analytics:
+    tracking-id: G-2WJLV09KE6
+    storage: none
+    anonymize-ip: true
     
 
 format:
