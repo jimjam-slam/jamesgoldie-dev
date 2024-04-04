@@ -1,6 +1,8 @@
 project:
   type: website
-  resources: style/fonts/*.woff2
+  resources:
+    - style/fonts/*.woff2
+    - style/grainy-blur.svg
 
 execute:
   freeze: auto
@@ -50,6 +52,7 @@ format:
     theme: [flatly, "style/style.scss", "style/light.scss"]
     mainfont: "Inter"
     monofont: "JetBrains Mono"
+    callout-appearance: simple
     # preload fonts to try and avoid unstyled text
     include-in-header:
       text: |

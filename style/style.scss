@@ -137,9 +137,13 @@ header.quarto-title-block {
   border-bottom: 1px solid #edaaaf;
 }
 
-/* gentle shadow on cards */
-.card {
-  box-shadow: 0px 15px 15px -5px rgba(0, 0, 0, 0.1);
+/* gentle shadow on cards and callouts */
+.card, .callout {
+  box-shadow: $standard-shadow;
+}
+
+.callout {
+  background-color: white;
 }
 
 /* make category/tag pills opaque bg */
