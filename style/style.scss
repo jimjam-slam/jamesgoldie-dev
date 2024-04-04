@@ -89,14 +89,12 @@ main.content .quarto-listing .card-text.listing-description {
     
     .description {
       text-align: center;
-      // font-size: 1.25rem;
     }
   }
 }
 
 header.quarto-title-block .description {
   font-size: 1.15rem;
-  // letter-spacing: 0.1rem; 
 }
 
 /* social links on mobile */
@@ -138,6 +136,7 @@ header.quarto-title-block {
 }
 
 /* gentle shadow on cards and callouts */
+
 .card, .callout {
   box-shadow: $standard-shadow;
 }
@@ -168,7 +167,12 @@ div.quarto-title div.quarto-categories div.quarto-category {
   background-color: rgb(219, 219, 219)
 }
 
-/* nicer sesrch style */
+.panel-caption, .figure-caption, .subfigure-caption, .table-caption, figcaption, caption {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+/* nicer search style */
 
 .aa-DetachedOverlay {
   backdrop-filter: blur(5px)
