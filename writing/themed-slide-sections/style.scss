@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,700&display=swap');
+
+/*-- scss:defaults --*/
+
+$font-family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+
+/*-- scss:uses --*/
+
+$section-styles:
+  "aqua"   "#00aadd" "#66dd00" "#16365a",
+  "sunset" "#c21500" "#ffc500" "#4b1625",
+  "carbon" "#222222" "#444444" "#222222",
+  "moss"   "#134E5E" "#71B280" "#0b2c36",
+  "indigo" "#4776E6" "#8E54E9" "#152447";
+
+/*-- scss:uses --*/
+
+.reveal {
+
+  // set heading fonts
+  --r-heading-font: "Source Serif 4", serif;
+  --r-heading-font-weight: 700;
+
+  // we'll use bolding to emphasise text...
+  strong {
+    filter: brightness(90%) contrast(150%);
+  }
+
+  // ... and this to de-emphasise text
+  .small {
+    font-size: 70%;
+    opacity: 75%;
+  }
+
+  // this block will repeat for each of our section-styles above
+
+  @each $name, $color1, $color2, $body-color in $section-styles {
+
+    // anything in here will cover the whole section
+    // that uses this identifier
+
+    section.stack:has(#section-#{$name}) {
+
+      p, li {
+        color: #{$body-color};
+      }
+
+      h1, h2, h3 {
+        background: linear-gradient(45deg, #{$color1}, #{$color2});
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+    }
+
+  }
+
+}

@@ -5,4 +5,5 @@ listing:
   type: default
   sort: "date desc"
   categories: cloud
+  contents: "*/index.qmd"
 ---

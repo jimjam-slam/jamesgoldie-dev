@@ -1,0 +1,185 @@
+---
+title: Themed slide sections
+categories: [tutorial, quarto]
+date: 2024-04-05
+description: Why have one theme for your slides when you can have a bunch?
+image: themed-slide-sections.jpg
+resources:
+  - themed-slide-sections.jpg
+---
+
+When I present, I really like to theme the individual sections of my slide deck visually — both as a way to break things up and to help reinforce the structure of the talk.
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 56.25%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="demo.html" allowfullscreen></iframe>
+</div>
+```
+
+When you make slides with [Quarto and Reveal](https://quarto.org/docs/presentations/revealjs), you can organise slides into sections with level 1 headers and into individual slides with (unnested) level 2 headers:
+
+
+```{.markdown filename="demo.qmd"}
+---
+title: "My great slides"
+format:
+  revealjs:
+    theme: [default, style.scss]
+---
+
+# First section {#section1}
+
+## Slide 1A
+
+Non officia proident ad adipisicing Lorem Lorem qui Lorem nulla.
+Occaecat mollit excepteur velit.
+
+## Slide 1B
+
+Officia minim velit fugiat pariatur cillum duis.
+
+# Second section {#section2}
+
+## Slide 2A
+
+Fugiat minim commodo magna esse enim non consequat laborum ipsum
+enim ullamco nostrud.
+```
+
+Also note here that I've put IDs on each of these slides and sections: `#section1`, `#slide1a`, etc. Quarto generates these IDs automatically from the title if you don't add them, but it's good to be able to see them.
+
+At the top we've added a stylesheet to the default theme: `style.scss`.
+
+Stylesheets give us a lot of flexibility, but it's easy to get carried away with them. If I'm not careful, the front-end engineer in my heart will let me spend more time making my slides look pretty than the actual content.
+
+Plus, if we overload the slides with markup, the source file starts to get difficult to edit and read.
+
+What I really want is to just mark each section, then move on with my life.
+
+So I've settled on a stylesheet that starts like this:
+
+```{.scss filename="style.scss"}
+/* grab a nice font from google fonts for the headers */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,700&display=swap');
+
+/*-- scss:defaults --*/
+
+$presentation-heading-font: "Source Serif 4", serif;
+```
+
+The first part is pretty standard for a Quarto theme: pull in a font from Google Fonts and use it for the headings.
+
+But then we start to mix it up. The idea is that in the defaults layer we have one variable that defines all of the essential elements — names, colours, etc. — for each theme. That's our `$section-styles` variable.
+
+Then, we use `@each` to iterate over each theme, making a block of rules for it (instead of writing each one out manually).
+
+The stylesheet ends up continuing like this:
+
+```{.scss filename="style.scss"}
+// (scss:defaults continued)
+
+// name, color1, color2, body-color
+$section-styles:
+  "aqua"   "#00aadd" "#66dd00" "#16365a",
+  "sunset" "#c21500" "#ffc500" "#4b1625",
+  "carbon" "#222222" "#444444" "#222222",
+  "moss"   "#134E5E" "#71B280" "#0b2c36",
+  "indigo" "#4776E6" "#8E54E9" "#152447";
+
+/*-- scss:uses --*/
+
+.reveal {
+
+  // this block will repeat for each of our section-styles above
+
+  @each $name, $color1, $color2, $body-color in $section-styles {
+
+    // anything in here will cover the whole section
+    // that uses this identifier
+
+    section.stack:has(#section-#{$name}) {
+
+      p, li {
+        color: #{$body-color};
+      }
+
+      h1, h2, h3 {
+        background: linear-gradient(45deg, #{$color1}, #{$color2});
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+    }
+
+  }
+
+}
+```
+
+Instead of referring to a regular SCSS variable like `$variable-name`, we refer to the ones we're looping over with `#{$variable-name}`.
+
+## What's that `has()` rule?
+
+When you create sections in your Quarto presentation with a first level header, Quarto puts the ID for it on the title slide of the section, _not_ on the section itself. That makes targeting the entire section difficult.
+
+The [`:has(X)` rule](https://developer.mozilla.org/en-US/docs/Web/CSS/:has) is essentially "target all things that have an X inside them". When we use it above, we're saying, "target all of the `section`s with class `stack` that also have an element with the ID `#section-X` inside it, where `X` is one of our theme identifiers.
+
+That's a lot of new stuff if you haven't used SCSS or advanced CSS before, but once you have this boilerplate down you can fill it with whatever themable rules you want.
+
+The most basic case I use is to give each a theme a text colour that is quite dark but has some hue to it. like [#4b1625]{style="background-color: #4b1625; color: white; padding-inline: 0.3em; border-radius: 0.4em;"} or [#152447]{style="background-color: #152447; color: white; padding-inline: 0.3em; border-radius: 0.4em;"}.
+
+The `h1, h2, h3` block is an example of a CSS classic (and darling of every tech startup): [gradient text](https://cssgradient.io/blog/css-gradient-text/).
+
+You apply the gradient to the _background_ of the text and set the text itself to be transparent. Then you clip the background to only show through where text is. All done!
+
+In practice, I just grab this stylesheet, change the values up the top, and then get straight into my presentation. I just add sections IDs to my section slides but otherwise focus on my content:
+
+```markdown
+# Section 1 {#section-sunrise}
+
+## First slide
+
+Here's an **important point**  
+[And some less important, longer stuff]{.small}
+```
+
+Sometimes I'll add a class like `.small` or `.deemph` for a bit of extra visual hierarchy. You can also intensify the colour bolded text with a rule across all sections like: `strong { filter: brightness(90%) contrast(150%); }`. (We could theme this too, but I'm lazy 😅)
+
+Et voila! Mix up your slides from section to section, and from presentation to presentation, without having to start an entire frontend engineering project.
+
+Here's the complete demo again (or see the [Quarto doc](https://github.com/jimjam-slam/jamesgoldie-dev/blob/main/writing/themed-slide-sections/demo.qmd) and [stylesheet](https://github.com/jimjam-slam/jamesgoldie-dev/blob/main/writing/themed-slide-sections/style.scss)):
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 56.25%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="demo.html" allowfullscreen></iframe>
+</div>
+```
+
+## How about slide backgrounds?
+
+Okay, title slides with fancy backgrounds can also be a nice way to break the visual hierarchy up.
+
+Unfortunately, they're a little trickier to abstract away in a themed stylesheet. That's because Reveal keeps slide backgrounds entirely separate from slide content.
+
+This has a lot of upsides: it lets Reveal do cool things like its [parallax background](https://quarto.org/docs/presentations/revealjs/advanced.html#parallax-background) and [iframe background](https://quarto.org/docs/presentations/revealjs/#slide-backgrounds) effects, and it allows Reveal to keep slide content centered while backgrounds extend to the edge of the window, even at weird window sizes.
+
+But the backgrounds don't carry the IDs the way the content does. That makes it really hard to style slide backgrounds from external stylesheets at all.
+
+The canonical way to do Reveal backgrounds is to add them as attributes to the slide (or, in Quarto's case, to the slide or section title):
+
+```markdown
+# First section {#section1 background-color="aquamarine"}
+
+## Slide 1A
+
+# [Second section]{style="color: white;"} {#section2 background="linear-gradient(45deg, cyan, limegreen)"}
+
+## Slide 2B
+```
+
+Then Reveal sets up the backgrounds separately. I don't love this, but I don't really have a better solution.
+
+But, backgrounds aside, you have a lot of latitude to build a theme system that gives your slides character without having to slow down every time you give a talk!
+
+[Image credit: Helen Cheng / Unsplash](https://unsplash.com/photos/assorted-color-umbrellas-ty3FAU-hLUM){.small}

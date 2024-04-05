@@ -46,7 +46,7 @@
 
 /*-- scss:defaults --*/
 
-$code-block-border-left: true;
+$code-block-border-left: darkorange;
 
 /* -- scss:mixins --*/
 
@@ -164,7 +164,7 @@ div.quarto-title div.quarto-categories div.quarto-category {
 /* fix code block header shading */
 .code-with-filename .code-with-filename-file,
 .code-with-filename .code-with-filename-file pre {
-  background-color: rgb(219, 219, 219)
+  background-color: rgb(219, 219, 219);
 }
 
 .panel-caption, .figure-caption, .subfigure-caption, .table-caption, figcaption, caption {

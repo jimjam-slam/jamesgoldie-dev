@@ -1,0 +1,27 @@
+---
+title: "Themed slide demo"
+author: "[@jimjamslam](https://jamesgoldie.dev){.small}"
+format:
+  revealjs:
+    theme: [default, style.scss]
+---
+
+# First section {#section-sunset}
+
+## Slide 1A {#slide1a}
+
+Here's an **important point**  
+[And some less important, longer stuff]{.small}
+
+## Slide 1B
+
+Officia **minim velit** fugiat pariatur cillum duis  
+[Ad culpa sint voluptate Lorem velit qui cupidatat.]{.small}
+
+# Second section {#section-indigo}
+
+## Slide 2A
+
+Fugiat minim **commodo magna esse** enim non consequat laborum ipsum
+enim ullamco nostrud.  
+[Sunt est labore ullamco tempor ullamco eu anim ex exercitation minim.]{.small}
