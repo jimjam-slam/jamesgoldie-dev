@@ -52,6 +52,10 @@ $code-block-border-left: darkorange;
 
 /*-- scss:rules --*/
 
+:root {
+  --bs-card-inner-border-radius: 1.5em;
+}
+
 h1, h2, .h1, .h2 {
   font-weight: 800;
   font-style: italic;
@@ -77,6 +81,10 @@ main.content .quarto-listing .card-text.listing-description {
 
 .quarto-listing .listing-category {
   font-weight: 700;
+}
+
+.card {
+  border: none;
 }
 
 
