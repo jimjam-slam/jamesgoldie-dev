@@ -81,7 +81,7 @@ main.content .quarto-listing .card-text.listing-description {
 
 .card {
   --bs-card-border-radius: 1.25em;
-  --bs-card-inner-border-radius: 0;
+  --bs-card-inner-border-radius: 1.25em;
   border: none;
 
   .card-img {
