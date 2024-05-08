@@ -1,0 +1,16 @@
+---
+title: "Exploring Antarctica's ice"
+description: "There’s more to Antarctica than the ice you see on the maps. Go on a tour of the frozen continent."
+image: thumb-antarctic-ice.png
+categories: ["visual"]
+date: 2024-01-24
+---
+
+This visual unpeels the layers of Antarctica's ice, explaining why it behaves so differently to the melting ice in the north.
+
+```{=html}
+<div style="aspect-ratio: 13 / 20; width: 100%; min-height: 500px; max-height: 893px; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+  <iframe allow="fullscreen; clipboard-write self https://antarcticamap.360visuals.org" allowfullscreen="true" src="https://antarcticamap.360visuals.org/antarctic-map/"     title="Interactive: exploring Antarctica’s ice" style="width:100%; height:100%; position: relative; top: 0; left: 0; border:none; background-color: white;" scrolling="no">
+  </iframe>
+</div>
+```
