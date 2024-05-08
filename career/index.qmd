@@ -29,17 +29,7 @@ Here are some of the more ambitious interactives I've produced:
 :::
 ::::
 
-:::{.column-margin}
-
-```{=html}
-<div style="text-align:center; position: relative; height: 0; padding-bottom: 178%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
-	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white" src="https://youtube.com/embed/yDAae7EWqD8?si=EjRF6V9WIFivV8bX" allowfullscreen></iframe>
-</div>
-<figcaption class="figure-caption">360info video on marine heatwaves</figcaption>
-```
-:::
-
-I also occasionally commission and edit stories alongside our other editors. Here're some of the stories I've written or commissioned:
+I also occasionally write, commission and edit stories alongside our other editors. Here're some of the stories I've been involved in:
 
 - [How dangerous is extreme heat to humans](https://360info.org/how-dangerous-is-extreme-heat-to-humans/) (Commissioned August 2023)
 - [Renters in older homes feeling the heat ](https://360info.org/renters-in-older-homes-feeling-the-heat/) (Written March 2023)
@@ -47,9 +37,7 @@ I also occasionally commission and edit stories alongside our other editors. Her
 - [The ecological crisis in the Arctic Ocean](https://360info.org/the-ecological-crisis-in-the-arctic-ocean/) (Comissioned October 2022)
 - [Seeing emotions just the start for brain-reading technology](https://360info.org/seeing-emotions-just-the-start-for-brain-reading-technology/) (Comissioned September 2022)
 
-Beyond our big interactives, I produce static charts and infographics, train our interns in data storytelling, work with our media partners to help them use our interactives and datasets, and manage our [GitHub presence](https://github.ciom/360-info), working to make our data and graphics more discoverable.
-
-I also appear in the odd video!
+Beyond our big interactives, I produce static charts and infographics, train our staff in data storytelling, work with our media partners to help them use our interactives and datasets, and manage our [GitHub presence](https://github.ciom/360-info), working to make our data and graphics more discoverable.
 
 Although I work in data journalism, I have a background researching the public health impacts of climate change. [Here's my published research.](https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en)
 
