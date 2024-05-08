@@ -1,0 +1,14 @@
+---
+title: "Nuclear trade map"
+description: "It takes more than just fuel to make nuclear power work. See the global flow of goods throughout the nuclear lifecycle, from raw ore to nuclear waste."
+image: thumb-nuclear-trade-map.png
+categories: ["visual"]
+date: 2024-04-15
+---
+
+```{=html}
+<div style="aspect-ratio: 10 / 9; width: 100%; min-height: 350px; max-height: 900px; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+  <iframe allow="fullscreen; clipboard-write self https://nuclearenergy.360visuals.org" allowfullscreen="true" src="https://nuclearenergy.360visuals.org/trademap/?" title="Map: Nuclear trade"  style="width:100%; height:100%; position: relative; top: 0; left: 0; border:none; background-color: white;" scrolling="no">
+  </iframe>
+</div>
+```
