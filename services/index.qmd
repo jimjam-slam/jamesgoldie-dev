@@ -37,7 +37,7 @@ For students and researchers:
 
 For journalists:
 
-- **Basics of scraping data from the web**
+- **Basics of finding and getting data from the web**
 - **Advanced scraping from adversarial sources**
 
 If those topics aren't quite what you're looking for, get in touch and we can develop a workshop that fits your needs!
