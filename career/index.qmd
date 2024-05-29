@@ -30,7 +30,13 @@ I also occasionally write, commission and edit stories alongside our other edito
 - [The ecological crisis in the Arctic Ocean](https://360info.org/the-ecological-crisis-in-the-arctic-ocean/) (Comissioned October 2022)
 - [Seeing emotions just the start for brain-reading technology](https://360info.org/seeing-emotions-just-the-start-for-brain-reading-technology/) (Comissioned September 2022)
 
-Beyond our big interactives, I produce static charts and infographics, train our staff in data storytelling, work with our media partners to help them use our interactives and datasets, and manage our [GitHub presence](https://github.ciom/360-info), working to make our data and graphics more discoverable.
+Beyond building our big interactives, I:
+
+- produce static charts and infographics
+- train our staff in data storytelling
+- work with our media partners to help them use our interactives and datasets
+- work with our infrastructure providers to test updates and plan work
+- manage our [GitHub presence](https://github.ciom/360-info) and the [360 Visuals](https://360info.org/visuals) site
 
 Although I work in data journalism, I have a background researching the public health impacts of climate change. [Here's my published research.](https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en)
 
