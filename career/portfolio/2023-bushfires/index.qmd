@@ -1,6 +1,6 @@
 ---
 title: "Bushfires"
-description: "Which countries are most prepared for climate change, and which are most vulnerable"
+description: "How is fire risk changing, and how vulnerable is your area?"
 image: thumb-bushfires.png
 categories: ["visual"]
 date: 2023-12-10
