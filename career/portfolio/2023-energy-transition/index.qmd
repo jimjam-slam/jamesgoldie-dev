@@ -1,0 +1,18 @@
+---
+title: "The renewables transition"
+description: "Nations are slowly but surely moving to cleaner sources of electricity."
+image: thumb-energy-transition.png
+categories: ["visual"]
+date: 2023-11-11
+---
+
+Nations are slowly but surely moving to cleaner sources of electricity.
+
+After taking a first pass at this map in late 2021 with data from the [International Renewable Energy Agency](https://www.irena.org), we updated this in 2022 and 2023 in time for the [annual UN climate talks](https://unfccc.int/).
+
+```{=html}
+<div style="aspect-ratio: 4 / 3; width: 100%;  margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+  <iframe allow="fullscreen; clipboard-write self https://dec2023.360info-electricitytransition.pages.dev" allowfullscreen="true" src="https://dec2023.360info-electricitytransition.pages.dev/map/" title="Interactive: renewable electricity" style="width:100%; height: 100%; border:none; background-color: black;" scrolling="no">
+  </iframe>
+</div>
+```

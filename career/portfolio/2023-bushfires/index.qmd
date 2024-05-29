@@ -1,0 +1,43 @@
+---
+title: "Bushfires"
+description: "Which countries are most prepared for climate change, and which are most vulnerable"
+image: thumb-bushfires.png
+categories: ["visual"]
+date: 2023-12-10
+---
+
+For our package on bushfires last summer, we worked with Dean Marchiori of [Wave Data Labs](https://www.wavedatalabs.com.au/) to bring together state data on areas marked as being either vulnerable to Bushfire-prone Areas or Bushfire Protection Areas. These maps visualise how much of your suburb falls within them:
+
+```{ojs}
+//| echo: false
+//| label: bushfire-map
+viewof selectedRegion = Inputs.select(
+  new Map([
+    ["New South Wales", "nsw"],
+    ["Victoria", "vic"],
+    ["Tasmania", "tas"],
+    ["Queensland", "qld"],
+    ["South Australia", "sa"],
+    ["Northern Territory", "nt"],
+    ["Western Australia", "wa"],
+    ["Australian Capital Territory", "act"]
+  ]), {
+    value: ["New South Wales", "nsw"]
+  })
+
+html`
+  <div style="position:relative; padding-bottom: 75%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+  <iframe allow="fullscreen; clipboard-write self https://dec2023-news.360info-bushfire-prone-land.pages.dev" allowfullscreen="true" src="https://dec2023-news.360info-bushfire-prone-land.pages.dev/map/?state=${selectedRegion}" title="Interactive: bushfire prone areas" style="width:100%; height:100%; position: absolute; top: 0; left: 0; border:none; background-color: white;" scrolling="no">
+  </iframe>
+</div>
+`
+```
+
+I also analysed climate data to see how the frequency of severe fire danger has changed:
+
+```{=html}
+<div style="aspect-ratio: 20 / 19; width: 100%; min-height: 500px; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+  <iframe allow="fullscreen; clipboard-write self https://bushfire-seasons.360visuals.org" allowfullscreen="true" src="https://bushfire-seasons.360visuals.org/aus-fire-season/" title="Interactive: the changing fire season areas" style="width:100%; height:100%; position: relative; top: 0; left: 0; border:none; background-color: white;" scrolling="no">
+  </iframe>
+</div>
+```

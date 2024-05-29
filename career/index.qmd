@@ -2,14 +2,6 @@
 title: "Career"
 description: I'm a researcher and data journalist with a focus on visualising and communicating climate change.
 listing:
-  - contents: talks
-    id: about-talks
-    type: grid
-    sort: "date desc"
-    page-size: 3
-    sort-ui: false
-    filter-ui: false
-    fields: [title, subtitle, date]
   - contents: portfolio
     id: about-portfolio
     type: grid
@@ -31,6 +23,7 @@ Here are some of the more ambitious interactives I've produced:
 
 I also occasionally write, commission and edit stories alongside our other editors. Here're some of the stories I've been involved in:
 
+- [Inflation pushes student debts up despite repayments](https://www.crikey.com.au/2024/05/10/inflation-pushes-student-help-debts-up-despite-repayments/) Written May 2024
 - [How dangerous is extreme heat to humans](https://360info.org/how-dangerous-is-extreme-heat-to-humans/) (Commissioned August 2023)
 - [Renters in older homes feeling the heat ](https://360info.org/renters-in-older-homes-feeling-the-heat/) (Written March 2023)
 - [Extreme heat will put more pressure on workers](https://360info.org/extreme-heat-will-put-more-pressure-on-workers/) (Written February 2023)
@@ -41,12 +34,6 @@ Beyond our big interactives, I produce static charts and infographics, train our
 
 Although I work in data journalism, I have a background researching the public health impacts of climate change. [Here's my published research.](https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en)
 
-I sometimes give talks on data visualisation, storytelling, open data science and climate change:
+Have ideas about communicating climate change or other big ideas better? I'm always happy to talk!
 
-::::{.column-screen-inset}
-### **Talks**
-:::{#about-talks}
-:::
-::::
-
-Have ideas about communicating climate change or other big ideas better? [I'm always happy to talk!](mailto:me@jamesgoldie.dev)
+[Get in touch](mailto:me@jamesgoldie.dev){.btn .btn-gradient style="width: fit-content; padding-inline: 1em;"}

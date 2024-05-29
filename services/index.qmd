@@ -1,6 +1,15 @@
 ---
 title: "Services"
-description: I can help your staff or students tell stories or gain insights with data 
+description: I can help your staff or students tell stories or gain insights with data
+listing:
+  - contents: talks
+    id: about-talks
+    type: grid
+    sort: "date desc"
+    page-size: 3
+    sort-ui: false
+    filter-ui: false
+    fields: [title, subtitle, date]
 ---
 
 # Workshops
@@ -43,6 +52,16 @@ For journalists:
 If those topics aren't quite what you're looking for, get in touch and we can develop a workshop that fits your needs!
 
 [Reach out](mailto:me@jamesgoldie.dev){.btn .btn-gradient style="width: fit-content; padding-inline: 1em;"}
+
+# Talks
+
+I give talks on data visualisation, storytelling, open data science and climate change:
+
+::::{.column-screen-inset}
+### **Talks**
+:::{#about-talks}
+:::
+::::
 
 # Consulting
 

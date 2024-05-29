@@ -14,3 +14,16 @@ This visual unpeels the layers of Antarctica's ice, explaining why it behaves so
   </iframe>
 </div>
 ```
+
+As part of this package, we also produced a live sea ice tracker, showing the decline in the sea ice that makes up the Arctic and that encircles Antarctica:
+
+```{=html}
+<div style="aspect-ratio: 21 / 20; width: 100%; min-height: 350px; max-height: 576px; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
+  <iframe
+    allow="fullscreen; clipboard-write self https://seaicetracker.360visuals.org"
+    allowfullscreen="true"
+    src="https://seaicetracker.360visuals.org/seaice-chart/"
+    title="Interactive: shrinking sea ice"
+    style="width:100%; height:100%; position: relative; top: 0; left: 0; border:none; background-color: white;" scrolling="no"></iframe>
+</div>
+```
