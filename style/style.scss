@@ -213,3 +213,31 @@ div.quarto-title div.quarto-categories div.quarto-category {
   margin-top: 2px;
 }
 
+.testimonial {
+  padding-block: 3em;
+  font-style: italic;
+  font-size: 125%;
+  color: slategrey;
+}
+
+// .testimonial::before {
+//   content: '“';
+//   font-size: 800%;
+//   font-family: serif;
+//   // position: absolute;
+//   z-index: -1;
+//   width: 3em;
+//   color: #70809033;
+// }
+
+@include media-breakpoint-up(md) {
+  .testimonial {
+    font-size: 150%;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .testimonial {
+    font-size: 200%;
+  }
+}

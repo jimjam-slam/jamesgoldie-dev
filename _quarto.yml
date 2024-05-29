@@ -11,11 +11,13 @@ website:
   title: "James Goldie"
   navbar:
     left:
-      - text: career
+      - text: Career
         href: /career
-      - text: projects
+      - text: Services
+        href: /services
+      - text: Projects
         href: /projects
-      - text: writing
+      - text: Writing
         href: /writing
     right:
       - icon: meta

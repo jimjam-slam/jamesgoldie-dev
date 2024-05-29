@@ -82,7 +82,8 @@ body {
   
   .btn-gradient {
     background: linear-gradient(30deg, $gradient-from, $gradient-to);
-    color: $navbar-fg;
+    // color: $navbar-fg;
+    color: white;
     width: 100%;
     border: none;
     box-shadow: $standard-shadow;

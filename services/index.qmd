@@ -1,0 +1,53 @@
+---
+title: "Services"
+description: I can help your staff or students tell stories or gain insights with data 
+---
+
+# Workshops
+
+I regularly run workshops designed to help beginners get comfortable with data. 
+
+You don't need to be data science experts to benefit from my training! Attendees could be:
+
+- **New researchers or students** who are working with data for the first time
+- **Journalists** who haven't worked with data before but are ready to expand their skills
+- **Analysts or policy researchers** who are comfortable with Excel or Google Sheets but are ready to take the next step with coding
+
+My data science workshops are run in a disposable cloud environment that **attendees can access with just a link**, so we can skip the setup issues and make the most of your time.
+
+::::{.testimonial .column-body-outset}
+James’ data visual workshops provided immensely invaluable tools, resources, and expert guidance for early career researchers in our centre. It is a workshop that all STEM researchers should take.
+
+:::{style="font-size: 75%; text-align: end;"}
+**Melissa Hart**  
+Graduate Director  
+[ARC Centre of Excellence for Climate Extremes](https://climateextremes.org)
+:::
+::::
+
+Workshops I can run for your team range can be as short as 3-hour "taster" workshops that give attendees awareness and skills for future practice, through to full-day or multi-day workshops designed to give attendees a full set of data storytelling skills.
+
+- **Why code? Saving time with data**
+- **Data science fundamentals: collecting, wrangling and visualising data**
+
+For students and researchers:
+
+- **Designing graphics for journal publication**
+- **Designing graphics for outreach**
+
+For journalists:
+
+- **Basics of scraping data from the web**
+- **Advanced scraping from adversarial sources**
+
+If those topics aren't quite what you're looking for, get in touch and we can develop a workshop that fits your needs!
+
+[Reach out](mailto:me@jamesgoldie.dev){.btn .btn-gradient style="width: fit-content; padding-inline: 1em;"}
+
+# Consulting
+
+I'm also happy to help you and your team directly, whether it's building impactful data-driven visuals for an upcoming report or simply helping you strategise.
+
+[As a data journalist](/career), I've built accessible, interactive visuals from complex data for years. If you're excited by the possibilities of embracing data storytelling but aren't sure where to start, email me!
+
+[Get in touch](mailto:me@jamesgoldie.dev){.btn .btn-gradient style="width: fit-content; padding-inline: 1em;"}
