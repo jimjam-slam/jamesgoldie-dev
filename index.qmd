@@ -1,6 +1,6 @@
 ---
 title: "James Goldie"
-description: "Building things for fun and for social good 🥳<br>#climatehealth → #datajournalism"
+description: "Building things and telling stories with data 🥳<br>#climatehealth → #datajournalism"
 image: profile.jpg
 twitter-card:
   image: profile.jpg
