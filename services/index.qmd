@@ -1,6 +1,6 @@
 ---
 title: "Services"
-description: I can help your staff or students tell stories or gain insights with data
+description: I can help your staff or students tell stories or gain insights with data.
 listing:
   - contents: talks
     id: about-talks
