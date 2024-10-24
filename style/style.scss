@@ -241,3 +241,13 @@ div.quarto-title div.quarto-categories div.quarto-category {
     font-size: 200%;
   }
 }
+
+#quarto-toc-toggle.quarto-sidebar-toggle {
+  margin-top: 1.6em;
+  border-top-width: 1px;
+  border-radius: 1em;
+
+  .quarto-sidebar-toggle-title {
+    padding-block: 0.25em;
+  }
+}
