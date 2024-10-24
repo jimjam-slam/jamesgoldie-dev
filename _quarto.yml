@@ -66,3 +66,4 @@ format:
         <link rel="preload" href="/style/fonts/Inter-Bold.woff2" as="font" crossorigin>
         <link rel="preload" href="/style/fonts/Inter-BoldItalic.woff2" as="font" crossorigin>
         <link rel="preload" href="/style/fonts/Inter-ExtraBoldItalic.woff2" as="font" crossorigin>
+        <meta name="fediverse:creator" content="@jimjamslam@aus.social">
