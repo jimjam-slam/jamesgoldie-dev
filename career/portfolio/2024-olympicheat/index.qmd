@@ -1,0 +1,64 @@
+---
+title: "The Olympics are hotter and more humid than ever"
+description: "The Olympics are now regularly held in conditions too hot and humid for most people to exercise in. How much can the world's elite athletes withstand?"
+image: thumb-olympic-heat.jpg
+categories: ["visual"]
+date: 2024-07-26
+---
+
+[_By James Goldie, 360info (edited by Reece Hooker, 360info)_]{.small}
+
+[Find this on 360info.org](https://360info.org/the-olympics-are-hotter-and-more-humid-than-ever/){.btn .btn-gradient}
+
+As final preparations for the Paris Olympic Games ramped up in June, athletes voiced concerns about the potential for heat stress during July and August, Paris’s hottest months.
+
+Their concerns are built on a trend over the past 50 years towards hotter and more humid conditions during the Olympics.
+
+```{=html}
+<div style="text-align:center; position: relative; height: 0; padding-bottom: 56.25%; border-radius: 1em;">
+	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 1em;" src="https://www.youtube.com/embed/b0EH97WKW4k" frameborder="0" allowfullscreen></iframe>
+</div>
+```
+
+\
+
+Not all of this trend is climate change. The games move from city to city each year, and some places, like London, are cooler than others.
+
+The move to diversify host cities has also pushed the games outside the temperate climates and seasonal cycles of Europe, which makes scheduling more complicated.
+
+Australia, for example, has hosted the Olympics twice: Melbourne in 1956 and Sydney in 2000.
+
+The Melbourne Games were held in November and December, at the start of the southern hemisphere’s summer, but the Sydney Games, like most of the recent games, were held in September and October, during its spring.
+
+But the games are also pushing into places that are much hotter than Europe in July and August.
+
+The Beijing Games in 2008 pushed past a [wet bulb temperature](https://360info.org/how-dangerous-is-extreme-heat-to-humans/) of 27 degrees Celsius for the first time, while the Tokyo Games in 2021, delayed because of the COVID-19 pandemic, averaged the highest wet bulb during the day (7am to 11pm) of all the games.
+
+```{=html}
+<iframe title="The Olympics are heating up" aria-label="Scatter Plot" id="datawrapper-chart-Ji1gb" src="https://datawrapper.dwcdn.net/Ji1gb/7/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="1198" data-external="1"></iframe>
+<script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();</script>
+```
+
+How much can athletes handle? The specifics vary from person to person and from sport to sport, as how hard a person exercises, the clothes they wear, the sport they do and the time they work for all factor into heat stress.
+
+In 2010, researchers [picked](https://doi.org/10.1073/pnas.0913352107) a wet bulb of 35 degrees as a starting point for heat stress limits.
+
+Indeed, 35 degrees is a theoretical upper limit: at this point it’s impossible to lose any heat on your own, either by evaporating sweat off your skin or conducting heat away. You need air conditioning or cooler conditions to avoid heat stroke.
+
+But most people need to do a bit better than lose just a little heat: a typical person [generates](https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/metabolism#basal-metabolic-rate-bmr) about 70–80 watts of heat internally before they even start exercising.
+
+That’s about as much power as a professional laptop computer draws. The wet bulb temperature also doesn’t factor in additional heat from the sun when people are out of the shade.
+
+In 2022, researchers [found](https://doi.org/10.1152/japplphysiol.00738.2021) that wet bulbs in the range of 31 degrees, or as low as 26 degrees in hot-dry conditions, were enough to get healthy volunteers overheating as they exercised.
+
+Olympic athletes are not regular people. They are supported during the games by a range of technologies, such as ice baths, ice vests and constant monitoring, but they also generate more heat while exercising than most of us.
+
+But regular people need to be able to attend the games as well, so organisers need to consider how to make the event safe for everyone — whether that’s by making cooling available, rescheduling individual events to avoid the hottest conditions or by rescheduling the games as a whole.
+
+Cooling is particularly contentious, as air conditioning is power-intense, generating greenhouse gas emissions that go on to raise global temperatures further.
+
+Earlier this month, organisers of the Paris Games [abandoned](https://www.france24.com/en/live-news/20240702-no-ac-ambition-for-paris-olympic-village-melts-away  ) plans to go without air conditioning. Instead, they are asking teams to pay to have air conditioning installed in their athletes’ accommodation.
+
+The 2028 Olympic Games are returning to [Los Angeles](https://olympics.com/en/olympic-games/los-angeles-2028) for a third time. They’re to be held once again in the peak of LA’s summer, but the city has [warmed](https://berkeleyearth.org/temperature-location/34.56N-118.70W) by nearly a full degree since it last hosted in 1984. Organisers will have an unprecedented challenge ahead of them.
+
+_Originally published under Creative Commons by 360info™._
