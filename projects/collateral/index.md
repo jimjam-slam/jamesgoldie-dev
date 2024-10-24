@@ -4,11 +4,12 @@ work-type: package
 categories: [rstats, package]
 date: 2018-11-02
 description: Automatically map complex operations safely or quietly, and quickly see the captured side effects.
+image: collateral.svg
 ---
 
 [Find this at collateral.jamesgoldie.dev](https://collateral.jamesgoldie.dev){.btn .btn-gradient}
 
-Toward the end of my PhD analysis, I've started leaning on [`purrr`](https://purrr.tidyverse.org/) more and more to get analysis done on small multiples quickly and _safely_. Where before I might have used nested loops and potentially missed a lot of problems, I now split data frames out, build statistical models, extract model parameters and print plots all in one workflow.
+Toward the end of my PhD analysis, I started leaning on [`purrr`](https://purrr.tidyverse.org/) more and more to get analysis done on small multiples quickly and _safely_. Where before I might have used nested loops and potentially missed a lot of problems, I now split data frames out, build statistical models, extract model parameters and print plots all in one workflow.
 
 This has incredible benefits for workflow: instead of having to track group identifiers across each output you produce, data and outputs and are linked to group identifiers by row, and you can do further tidying to summarise these complex outputs. You essentially have a summary of your analysis right there in the data frame.
 

@@ -4,9 +4,10 @@ work-type: package
 categories: [package, quarto, pandoc]
 date: 2024-08-13
 description: Easy and powerful scrollytelling in Quarto
+image: thumb-closeread.png
 ---
 
-[Find this on github.com](https://github.com/qmd-lab/closeread){.btn .btn-gradient}
+[Find this on closeread.dev](https://closeread.dev){.btn .btn-gradient}
 
 Scrollytelling is a powerful way of telling stories on the web: elements "stick" the reader's screen and change as the user scrolls through an accompanying narrative.
 
