@@ -20,12 +20,12 @@ website:
       - text: Writing
         href: /writing
     right:
-      - icon: meta
-        aria-label: "James's Threads"
-        href: https://threads.net/@jimjam.slam
       - icon: mastodon
         aria-label: "James's Mastodon"
         href: https://aus.social/@jimjamslam
+      - icon: bootstrap-fill
+        aria-label: "James's Bluesky"
+        href: https://bsky.app/profile/jimjamslam.bsky.social
       - icon: linkedin
         aria-label: "James's LinkedIn"
         href: https://www.linkedin.com/in/jamesgoldie

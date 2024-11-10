@@ -10,14 +10,14 @@ about:
   image-shape: round
   image-width: 10em
   links:
-    - icon: meta
-      text: Threads
-      aria-label: "James's Threads"
-      href: https://threads.net/@jimjam.slam
     - icon: mastodon
       text: Mastodon
       aria-label: "James's Mastodon"
       href: https://aus.social/@jimjamslam
+    - icon: bootstrap-fill
+      text: Bluesky
+      aria-label: "James's Bluesky"
+      href: https://bsky.app/profile/jimjamslam.bsky.social
     - icon: linkedin
       text: LinkedIn
       aria-label: "James's LinkedIn"
