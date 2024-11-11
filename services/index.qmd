@@ -31,7 +31,7 @@ My data science workshops are run in a disposable cloud environment that **atten
 
 ::::{.testimonial .column-page style="position: relative;"}
 
-:::{style="position: absolute; top: -0.35em; left: -0.15em; font-size: 500%; font-weight: bold; font-feature-settings: \"ss08\" on; opacity: 0.2;"}
+:::{style="position: absolute; top: -0.35em; left: -0.15em; font-size: 500%; font-weight: bold; font-feature-settings: \"ss08\" on; opacity: 0.2;" aria-hidden="true"}
 ‟
 :::
 
