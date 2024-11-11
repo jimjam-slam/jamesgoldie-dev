@@ -1,6 +1,6 @@
 ---
 title: "Services"
-description: I can help your staff or students tell stories or gain insights with data.
+description: I can help your team or your students tell stories or find insights with data.
 toc: true
 listing:
   - contents: talks
@@ -25,7 +25,16 @@ You don't need to be data science experts to benefit from my training! Attendees
 
 My data science workshops are run in a disposable cloud environment that **attendees can access with just a link**, so we can skip the setup issues and make the most of your time.
 
-::::{.testimonial .column-body-outset}
+\
+\
+\
+
+::::{.testimonial .column-page style="position: relative;"}
+
+:::{style="position: absolute; top: -0.35em; left: -0.15em; font-size: 500%; font-weight: bold; font-feature-settings: \"ss08\" on; opacity: 0.2;"}
+‟
+:::
+
 James’ data visual workshops provided immensely invaluable tools, resources, and expert guidance for early career researchers in our centre. It is a workshop that all STEM researchers should take.
 
 :::{style="font-size: 75%; text-align: end;"}
@@ -33,6 +42,7 @@ James’ data visual workshops provided immensely invaluable tools, resources, a
 Graduate Director  
 [ARC Centre of Excellence for Climate Extremes](https://climateextremes.org)
 :::
+
 ::::
 
 Workshops I can run for your team range can be as short as 3-hour "taster" workshops that give attendees awareness and skills for future practice, through to full-day or multi-day workshops designed to give attendees a full set of data storytelling skills.
