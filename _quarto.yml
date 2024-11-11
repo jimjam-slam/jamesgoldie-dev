@@ -12,13 +12,13 @@ website:
   navbar:
     left:
       - text: Career
-        href: /career
+        href: /career/
       - text: Services
-        href: /services
+        href: /services/
       - text: Projects
-        href: /projects
+        href: /projects/
       - text: Writing
-        href: /writing
+        href: /writing/
     right:
       - icon: mastodon
         aria-label: "James's Mastodon"
