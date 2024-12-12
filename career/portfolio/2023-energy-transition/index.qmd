@@ -2,7 +2,7 @@
 title: "The renewables transition"
 description: "Nations are slowly but surely moving to cleaner sources of electricity."
 image: thumb-energy-transition.png
-categories: ["visual"]
+categories: ["visual", "360info"]
 date: 2023-11-11
 ---
 

@@ -251,3 +251,65 @@ div.quarto-title div.quarto-categories div.quarto-category {
     padding-block: 0.25em;
   }
 }
+
+/* role listing */
+
+#listing-roles {
+  .card-subtitle {
+    margin-bottom: 1em;
+    color: $secondary;
+    font-weight: normal;
+    font-size: 80%;
+  }
+
+  table.card-other-values {
+    margin-top: auto;
+    
+    tr:has(.date_range) {
+      :first-child {
+        display: none;
+      }
+  
+      .date_range {
+        color: $secondary;
+        font-weight: normal;
+        text-align: right;
+      }
+    }
+  }
+}
+
+// #listing-roles {
+
+//   ul {
+//     list-style: none;
+//     display: flex;
+//     flex-flow: column nowrap;
+//     gap: 2em;
+//   }
+
+//   .listing-role-daterange {
+//     font-size: 75%;
+//     font-weight: bold;
+//     // text-transform: uppercase;
+//     color: $secondary;
+//     margin-bottom: 0;
+//   }
+
+//   .listing-role-title {
+//     margin: 0;
+//     font-style: italic;
+
+//     a {
+//       text-decoration: none;
+//       color: $primary;
+//     }
+
+//     &.anchored {
+//       .anchorjs-link {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+

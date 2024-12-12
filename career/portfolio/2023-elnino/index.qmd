@@ -2,7 +2,7 @@
 title: "El Niño"
 description: "See how it works to affect weather around the world"
 image: thumb-elnino.webp
-categories: ["visual"]
+categories: ["visual", "360info"]
 date: 2023-06-12
 ---
 

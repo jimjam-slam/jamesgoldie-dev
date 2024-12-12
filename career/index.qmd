@@ -1,46 +1,23 @@
 ---
 title: "Career"
-description: I'm a researcher and data journalist with a focus on visualising and communicating climate change.
+description: I'm a data journalist and researcher with a focus on visualising and communicating climate change.
 listing:
-  - contents: portfolio
-    id: about-portfolio
+  - contents: roles
+    id: roles
     type: grid
     sort: "date desc"
-    page-size: 3
     sort-ui: false
     filter-ui: false
+    fields: [title, subtitle, description, date_range]
 ---
 
-I most recently worked at [360info](https://360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of an open newswire supported by Monash University.
+I have broad experience across data journalism, data science and engineering, science communication and research.
 
-Here are some of the more ambitious interactives I've produced:
+My most recent roles include:
 
-::::{.column-screen-inset}
-### **Featured work**
-:::{#about-portfolio}
+:::{#roles}
 :::
-::::
 
-I also occasionally wrote, commissioned and edited stories alongside our other editors. Here're some of the stories I've been involved in:
-
-- [The Olympics are hotter and more humid than ever](https://360info.org/the-olympics-are-hotter-and-more-humid-than-ever/) (written July 2024)
-- [Inflation pushes student debts up despite repayments](https://www.crikey.com.au/2024/05/10/inflation-pushes-student-help-debts-up-despite-repayments/) (written May 2024)
-- [How dangerous is extreme heat to humans](https://360info.org/how-dangerous-is-extreme-heat-to-humans/) (commissioned August 2023)
-- [Renters in older homes feeling the heat ](https://360info.org/renters-in-older-homes-feeling-the-heat/) (written March 2023)
-- [Extreme heat will put more pressure on workers](https://360info.org/extreme-heat-will-put-more-pressure-on-workers/) (written February 2023)
-- [The ecological crisis in the Arctic Ocean](https://360info.org/the-ecological-crisis-in-the-arctic-ocean/) (commissioned October 2022)
-- [Seeing emotions just the start for brain-reading technology](https://360info.org/seeing-emotions-just-the-start-for-brain-reading-technology/) (commissioned September 2022)
-
-Beyond building our big interactives, I:
-
-- produced static charts and infographics
-- trained our staff in data storytelling
-- worked with our media partners to help them use our interactives and datasets
-- worked with our infrastructure providers to test updates and plan work
-- managed our [GitHub presence](https://github.com/360-info) and the [360 Visuals](https://360info.org/visuals) site
-
-I have a research background in the public health impacts of climate change, including a PhD from [UNSW Sydney](https://unsw.edu.au). [Here's my published research.](https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en)
-
-Have ideas about communicating climate change or other big ideas better? I'm always happy to talk!
+Got a role you think I'd be perfect for? I'm always happy to talk!
 
 [Get in touch](mailto:me@jamesgoldie.dev){.btn .btn-gradient style="width: fit-content; padding-inline: 1em;"}

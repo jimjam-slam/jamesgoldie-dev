@@ -1,7 +1,9 @@
 ---
 title: "Senior Knowledge Broker"
-description: "I was previously a Knowledge Broker, helping Australians understand climate change and climate science."
+subtitle: "Monash University"
+description: "As a Knowledge Broker, I made graphics and built data platforms to help Australians understand climate change."
 date: 2019-03-01
+date_range: Mar 2019 to Oct 2021
 categories: ["role"]
 ---
 

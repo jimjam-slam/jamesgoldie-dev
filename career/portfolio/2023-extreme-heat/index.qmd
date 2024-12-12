@@ -2,7 +2,7 @@
 title: "Extreme heat"
 description: "How are hot days affecting workers?"
 image: thumb-extreme-heat.webp
-categories: ["visual"]
+categories: ["visual", "360info"]
 date: 2023-02-28
 ---
 

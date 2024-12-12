@@ -2,7 +2,7 @@
 title: "The Olympics are hotter and more humid than ever"
 description: "The Olympics are now regularly held in conditions too hot and humid for most people to exercise in. How much can the world's elite athletes withstand?"
 image: thumb-olympic-heat.jpg
-categories: ["visual"]
+categories: ["visual", "360info"]
 date: 2024-07-26
 ---
 

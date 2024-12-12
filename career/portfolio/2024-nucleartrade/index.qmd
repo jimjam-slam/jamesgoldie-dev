@@ -2,7 +2,7 @@
 title: "Nuclear trade map"
 description: "It takes more than just fuel to make nuclear power work. See the global flow of goods throughout the nuclear lifecycle, from raw ore to nuclear waste."
 image: thumb-nuclear-trade-map.png
-categories: ["visual"]
+categories: ["visual", "360info"]
 date: 2024-04-15
 ---
 

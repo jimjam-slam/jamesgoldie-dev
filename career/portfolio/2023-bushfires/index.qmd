@@ -2,7 +2,7 @@
 title: "Bushfires"
 description: "How is fire risk changing, and how vulnerable is your area?"
 image: thumb-bushfires.png
-categories: ["visual"]
+categories: ["visual", "360info"]
 date: 2023-12-10
 ---
 

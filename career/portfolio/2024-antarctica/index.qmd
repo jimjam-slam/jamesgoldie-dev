@@ -2,7 +2,7 @@
 title: "Exploring Antarctica's ice"
 description: "There’s more to Antarctica than the ice you see on the maps. Go on a tour of the frozen continent."
 image: thumb-antarctic-ice.png
-categories: ["visual"]
+categories: ["visual", "360info"]
 date: 2024-01-24
 ---
 
