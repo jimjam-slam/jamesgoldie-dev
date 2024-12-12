@@ -8,6 +8,10 @@ date: 2023-08-21
 
 This [live dataset updates each month](https://github.com/360-info/tracker-ocean-temperatures), processing the latest sea surface temperature data from [NOAA's Physical Science Laboratory](https://psl.noaa.gov/) to track the warming trend in oceans across the globe.
 
+:::{.callout-note}
+This live dataset finished updating in October 2024 after the 360info GitHub organisation was archived.
+:::
+
 ```{=html}
 <div style="text-align:center; position: relative; height: 0; padding-bottom: 90%; margin-top: 25px; margin-bottom: 25px; border: 1px solid #cccccc; border-radius: 5px;">
 	<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white" src="https://aug2023.360info-tracker-ocean-temperatures.pages.dev/vis-monthly-pub" allowfullscreen></iframe>
