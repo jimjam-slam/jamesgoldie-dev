@@ -5,7 +5,19 @@ description: |
   
   (I've also done a lot of data visualisation [for my day job](/career)!)
 listing:
-  type: grid
-  sort: "date desc"
-  categories: cloud
+  - id: projects-oss
+    contents: "oss/*/index.md"
+    template: hexgrid.ejs
+    sort: "date"
+  - id: projects-general
+    contents: "other/*/index.md"
+    type: grid
+    sort: "date desc"
+    # categories: cloud
 ---
+
+:::{#projects-oss}
+:::
+
+:::{#projects-general}
+:::
