@@ -1,0 +1,29 @@
+---
+title: "Projects"
+description: |
+  A collection of apps, websites, open source packages and other projects I've worked on.
+listing:
+  - id: projects-oss
+    contents: oss
+    template: hexgrid.ejs
+    sort: "date desc"
+  - id: projects-general
+    contents: other
+    type: grid
+    sort: "date desc"
+    # categories: cloud
+---
+
+# Open source tools
+
+:::{#projects-oss}
+:::
+
+# Websites and other projects
+
+:::{.column-margin}
+Looking for my data journalism? I have a gallery of my favourite data viusalisations and stories over on my [career](/career) page!
+:::
+
+:::{#projects-general}
+:::
