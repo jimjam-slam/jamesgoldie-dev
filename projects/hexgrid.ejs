@@ -84,6 +84,8 @@
     color: grey;
     font-size: 70%;
     align-self: center;
+    margin: 0;
+    padding-inline: 0.75em;
   }
 
   /* fallback appearance when there's no image */
@@ -91,6 +93,20 @@
   .hex-listing-container a:not(:has(img)) {
     background-color: #efefef;
   }
+
+  /* mobile sizing */
+
+  @media (max-width: 767.98px) {
+    .hex-listing-container {
+      --hex-width: 100px;
+    }
+
+    .hex-listing-container a p {
+      font-size: 50%;
+    }
+
+  }
+
 </style>
 
 <div class="hex-listing-container">
