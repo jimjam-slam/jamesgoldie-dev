@@ -6,11 +6,11 @@ description: |
   (I've also done a lot of data visualisation [for my day job](/career)!)
 listing:
   - id: projects-oss
-    contents: "oss/*/index.md"
+    contents: oss
     template: hexgrid.ejs
-    sort: "date"
+    sort: "date desc"
   - id: projects-general
-    contents: "other/*/index.md"
+    contents: other
     type: grid
     sort: "date desc"
     # categories: cloud
