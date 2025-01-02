@@ -3,7 +3,6 @@ title: unswthesisdown
 description: A package for writing your thesis in RMarkdown according to UNSW guidelines.
 categories: [rstats, package]
 date: 2017-07-09
-image: thesis.png
 twitter-card:
   image: thesis.png
 aliases:

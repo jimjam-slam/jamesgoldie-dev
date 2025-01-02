@@ -4,7 +4,6 @@ work-type: package
 categories: [package, quarto, pandoc]
 date: 2024-08-13
 description: Easy and powerful scrollytelling in Quarto
-image: thumb-closeread.png
 aliases:
   - ../../closeread/index.html
 ---
