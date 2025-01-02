@@ -1,47 +1,77 @@
+<!-- hex badge listing by jamesgoldie.dev, jan 2025-->
 
-<!-- hex listing by jamesgoldie.dev, based on
-  https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries\ -->
+<%
+  // wrap pairs of hexes
+  let pairs = [];
+  for (let i = 0; i < items.length; i += 2) {
+    pairs.push([
+      items[i],
+      items[i + 1] ||  null]
+    )
+  }
+%>
 
 <style>
-  .hex-listing-main {
-    display: flex;
-    --s: 100px;  /* size  */
-    --m: 4px;   /* margin */
-    --f: calc(var(--s) * 1.732 + 4 * var(--m) - 1px);
-  }
-  
   .hex-listing-container {
-    font-size: 0; /* disable white space between inline block element */
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    --hex-width: 150px;
+    --hex-height: calc(var(--hex-width) * 1.1547);
+    --hex-margin: 4px;
+    padding-inline-start: calc(var(--hex-width) * 0.5 - var(--hex-margin));
+    padding-block-start: calc(0.25 * var(--hex-height) - 2 * var(--hex-margin));
   }
 
-  .hex-listing-container::before {
-    content: "";
-    width: calc(var(--s)/2 + var(--m));
-    float: left;
-    height: 100%;
-    shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f));
+  .hex-listing-pair {
+    display: inline-flex;
+    align-items: start;
+    height: calc(2 * var(--hex-height) + 2 * var(--hex-margin) - 0.25 * var(--hex-height));
+    margin-inline-start: calc(var(--hex-width) * -0.5 + var(--hex-margin));
+    margin-block-start: calc(-0.25 * var(--hex-height) + 2 * var(--hex-margin));
   }
 
-  .hex-listing-item {
-    width: var(--s);
-    margin: var(--m);
-    height: calc(var(--s) * 1.1547);
-    display: inline-block;
-    font-size: initial; /* we reset the font-size if we want to add some content */
+  .hex-listing-container a {
+    width: var(--hex-width);
+    height: var(--hex-height);
     clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-    margin-bottom: calc(var(--m) - var(--s) * 0.2886); /* some negative margin to create overlap */
-    background-color: lightgrey;
+    display: inline-grid;
+    place-content: center;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .hex-listing-container a > * {
+    grid-area: 1 / 1;
+  }
+
+
+  .hex-listing-container a img {
+    width: var(--hex-width);
+    height: var(--hex-height);
+    object-fit: cover;
+  }
+
+  .hex-listing-container a p {
+    color: grey;
+    font-size: 50%;
+    align-self: center;
+  }
+
+  /* fallback when there's no image */
+
+  .hex-listing-container a:not(has(img)) {
+    background-color: #efefef;
+  }
+
+  .hex-listing-container a:nth-last-child(1) {
+    margin-inline-start: calc(-0.5 * var(--hex-width) + var(--hex-margin));
+    align-self: end;
   }
 </style>
 
-<div class="hex-listing-main">
-  <div class="hex-listing-container">
-    <% for (const item of items) { %>
-      <a href="<%- item.path %>">
-        <div class="hex-listing-item">
-          <%= item.title %>
-        </div>
-      </a>
-    <% } %>
-  </div>
-</div>
+<ul class="hex-listing-container">
+  <% for (const pair of pairs) { %>
+    <li class="hex-listing-pair"><a class="hex-listing-item" href="<%- pair[0].path %>"><p><%= pair[0].title %></p><% if (pair[0].image) { %><img loading="lazy" src="<%- pair[0].image %>"><% } %></a><% if (pair[1] != null) {%><a class="hex-listing-item" href="<%- pair[1].path %>"><p><%= pair[1].title %></p><% if (pair[1].image) { %><img loading="lazy" src="<%- pair[1].image %>"><% } %></a><% } %></li>
+  <% } %>
+</ul>
