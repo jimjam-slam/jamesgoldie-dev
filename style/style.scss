@@ -91,25 +91,54 @@ main.content .quarto-listing .card-text.listing-description {
 }
 
 
-/* home page header only (not post headers hopefully!) */
-.quarto-about-jolla {
-  
-  header.quarto-title-block {
-    border-bottom: none;
-    padding-bottom: 0px;
-    
-    .description {
-      text-align: center;
-    }
-  }
-}
+/* home page */
 
-header.quarto-title-block .description {
-  font-size: 1.15rem;
+main .homepage-block {
+
+  margin-block-start: 1.5rem;
+
+  div.quarto-about-jolla {
+    margin-top: 0;
+    padding-bottom: 0;
+
+    .description {
+      font-size: 1.15rem;
+    }
+    
+    header.quarto-title-block {
+      border-bottom: none;
+      padding-bottom: 0px;
+  
+      margin-block-end: 0;
+      
+      // .description {
+        //   text-align: center;
+        // }
+      }
+      
+    hr {
+      width: 0;
+      margin-block: 0.25em;
+    }
+
+  }
+
+  .intro {
+    font-size: 0.85em;
+    color: #666666;
+  }
 }
 
 /* social links on mobile */
 @include media-breakpoint-down(lg) {
+
+  main.page-columns.page-full .homepage-block.column-body-outset {
+    grid-column: screen-start-inset / screen-end-inset;
+  }
+  
+  .description {
+    text-align: center;
+  }
   
   // homepage socials
   div.quarto-about-jolla .about-links {
@@ -120,6 +149,7 @@ header.quarto-title-block .description {
     row-gap: 15px;
     width: auto;
     font-size: 1.5em;
+    padding-bottom: 0;
 
     .about-link-text {
       display: none;
@@ -133,6 +163,28 @@ header.quarto-title-block .description {
       }
     }
   }
+}
+
+/* right align about block content on desktop */
+@include media-breakpoint-up(lg) {
+
+  div.quarto-about-jolla {
+    align-items: end;
+
+    .quarto-title h1.title,
+    .description {
+      text-align: right;
+    }
+    
+    img.round {
+      margin-right: 0;
+    }
+  
+    .about-links {
+      justify-content: flex-end;
+    }
+
+  } 
 }
 
 /* customise post header */

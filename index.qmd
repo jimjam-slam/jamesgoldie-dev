@@ -37,8 +37,18 @@ about:
 page-layout: article
 ---
 
-:::: {#about}
+:::::{.grid .homepage-block .column-body-outset}
 
+::::{.g-col-lg-6 .g-col-12}
+::: {#about}
+:::
 ::::
+
+::::{.g-col-lg-6 .g-col-12 .intro}
+{{< lipsum 2 >}}
+::::
+
+:::::
+
 
 [Mastodon verification](https://aus.social/@jimjamslam){rel="me" style="display: none;"}
