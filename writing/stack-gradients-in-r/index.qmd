@@ -1,0 +1,235 @@
+---
+title: The guide to gradients in R and ggplot2
+categories: [tutorial, rstats]
+date: 2025-02-24
+description: Everything from the basics up to beautiful mesh gradients
+image: stack-gradients-in-r.png
+resources:
+  - stack-gradients-in-r.png
+title-block-banner: true   # manually styled
+knitr:
+  opts_chunk:
+    fig-width: 8
+---
+
+```{=html}
+<style>
+  .quarto-title-banner {
+    background-image:
+      linear-gradient(to bottom, white 10%, transparent 100%),
+      url(stack-gradients-in-r-notext.png);
+  }
+  header.quarto-title-block {
+    border-bottom: none;
+  }
+
+  img.figure-img {
+    margin: 0.75rem;
+    border-radius: 1rem;
+    box-shadow:
+      0 .2em .8em .2em rgba(0,0,0,.05),
+      0 .2em .6em .1em rgba(0,0,0,.025);
+  }
+</style>
+```
+
+We can do a lot of fancy stuff in [ggplot2](https://ggplot2.tidyverse.org) with considered use of fonts, sizes and colours. But there are still likely finishing touches that have us reaching for tools like Illustrator every so often.
+
+Until recently, sophisticated gradient backgrounds were one of those things. I often blur photos or use other similar patterns as slide backgrounds to provide a bit (a _bit!_) of visual interest.
+
+But now, it's not hard to do something like that directly in ggplot2!
+
+```{r}
+#| echo: false
+#| label: start-example
+stack_patterns_2 <- function(...) {
+  patterns <- list(...)
+
+  # helper function to check for solid colours
+  is_valid_colour <- function(x) {
+    is(x, "character") &&
+      (x %in% colours() ||
+        grepl("^\\#[0-9a-fA-F]{6}$", x) ||
+        grepl("^\\#[0-9a-fA-F]{8}$", x))
+  }
+
+  # check if any are not a pattern or colour
+  stopifnot(
+    "All supplied arguments must be patterns" =
+      patterns |>
+        sapply(\(x) is(x, "GridPattern") ||
+          is_valid_colour(x)) |>
+        all()
+  )
+
+  # wrap each gradient in a grob
+  patterns |>
+    lapply(\(x) grid::rectGrob(gp = grid::gpar(fill = x, colour = NA))) ->
+  pattern_grobs
+
+  # return as a compound pattern
+  grid::pattern(
+    do.call(grid::grobTree, pattern_grobs),
+    extend = "none")
+}
+
+light_gradient_bg <- stack_patterns_2(
+  "white",
+  grid::radialGradient(c("#5b91a844", "#5b91a800"),
+    cx1 = 0.77, cy1 = 0.08, r1 = 0,
+    cx2 = 0.77, cy2 = 0.08, r2 = 0.5),
+  grid::radialGradient(c("#5b6aa844", "#5b6aa800"),
+    cx1 = 0.36, cy1 = 0.11, r1 = 0,
+    cx2 = 0.36, cy2 = 0.11, r2 = 0.5),
+  grid::radialGradient(c("#725ba844", "#725ba800"),
+    cx1 = 0.88, cy1 = 0.33, r1 = 0,
+    cx2 = 0.88, cy2 = 0.33, r2 = 0.5),
+  grid::radialGradient(c("#a8725b44", "#a8725b00"),
+    cx1 = 0.02, cy1 = 0.88, r1 = 0,
+    cx2 = 0.02, cy2 = 0.88, r2 = 0.5))
+
+ggplot2::ggplot(mtcars) +
+  ggplot2::aes(mpg, hp) +
+  ggplot2::geom_point() +
+  ggplot2::theme_grey(base_size = 18, base_family = "Inter") +
+  ggplot2::labs(title = "Gradient test") +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(face = "bold"),
+    panel.background = ggplot2::element_blank(),
+    plot.background =
+      ggplot2::element_rect(fill = light_gradient_bg))
+```
+
+Gradients and patterns are looking reasonably mature now in R: they've been around [since R 4.1](https://stat.ethz.ch/pipermail/r-announce/2021/000670.html) (released in 2021), and ggplot2 began supporting them in version 3.5.0 (released in early 2024).
+
+That support comes via the `{grid}` package, which ships with R but isn't preloaded. That means you'll either need to call `library(grid)` or prefix a lot of functions with `grid::`.
+
+```{r}
+library(ggplot2)
+library(grid)
+```
+
+:::{.callout-tip}
+Some legacy R graphics devices don't support gradients and patterns at all. Install the [`{ragg}`](https://ragg.r-lib.org) package, which does — it's better for just about everything anyway!
+:::
+
+We get two basic gradient tools in `{grid}`: `linearGradient()` and `radialGradient()`. If you've used apps like Photoshop or Illustrator before, that might seem basic — it's no [mesh gradient](https://helpx.adobe.com/au/illustrator/using/meshes.html).
+
+But, as web developers know, we can make some powerful effects by stacking gradients on top of each other. And the third tool we have `pattern()`, lets us do exactly that.
+
+As @coolbutuseless [notes](https://coolbutuseless.github.io/2021/07/01/r-v4.1.0-grid-graphics-new-feature-patterns/), `pattern()` can turn any other `<abbr>grob</abbr>`{=html} (graphical object) into a repeating pattern. That grob could be a shape that is in turn filled with a pattern or gradient. Or it could be a list of shapes filled with gradients!
+
+So here's a helper function to help us "stack" gradients. It does two things.
+
+The first is to wrap each pattern in a rectabngle grob. Thankfully, the default sizing works well for overlaying gradients. We can just do `rectGrob(gp = gpar(fill = my_gradient)`.
+
+The second is to stack our new rectangles and make them into a pattern. We'll use `grobTree()` to hold the list of rectangles before passing them to `pattern()`.
+
+We'll also throw in some error checking to make sure that the arguments we're passing are actually patterns. But since we'll likely want to include at least one solid colour as well to serve as a background, let's keep those as well.
+
+:::{.column-margin}
+Valid colours are either those named in `colours()` or 6- or 8-digit [hex numbers](https://en.wikipedia.org/wiki/Web_colors#Hex_triplet) prefixed with a hashtag.
+:::
+
+```{r}
+stack_patterns <- function(...) {
+  patterns <- list(...)
+
+  # helper function to check for solid colours
+  is_valid_colour <- function(x) {
+    is(x, "character") &&
+      (x %in% colours() ||
+        grepl("^\\#[0-9a-fA-F]{6}$", x) ||
+        grepl("^\\#[0-9a-fA-F]{8}$", x))
+  }
+
+  # check if any are not a pattern or colour
+  stopifnot(
+    "All supplied arguments must be patterns" =
+      patterns |>
+        sapply(\(x) is(x, "GridPattern") ||
+          is_valid_colour(x)) |>
+        all()
+  )
+
+  # wrap each gradient in a grob
+  patterns |>
+    lapply(\(x) grid::rectGrob(gp = grid::gpar(fill = x))) ->
+  pattern_grobs
+
+  # return as a compound pattern
+  grid::pattern(
+    do.call(grid::grobTree, pattern_grobs),
+    extend = "none")
+}
+```
+
+We can use this directly as the `fill` for a theme element or geom in ggplot2. But what can we do with this power?
+
+There are lots of great tools for building mesh gradients out of radial ones available for web developers, like [this one on Colorffy](https://colorffy.com/mesh-gradient-generator).
+
+Although CSS gradients aren't specified exactly the same way as R's gradients, you can convert them pretty quickly. For example, here's the CSS code for [a more muted gradient](https://colorffy.com/mesh-gradient-generator?colors=2e4955-2e3655-3a2e55-553a2e):
+
+:::{.column-margin}
+On Colorffy, use the `<>` button to display the CSS code for the gradient.
+:::
+
+```{.css filename="CSS"}
+background:
+  radial-gradient(at 77% 92%, #2e4955 0px, transparent 50%),
+  radial-gradient(at 36% 89%, #2e3655 0px, transparent 50%),
+  radial-gradient(at 88% 67%, #3a2e55 0px, transparent 50%),
+  radial-gradient(at 2% 12%, #553a2e 0px, transparent 50%) #000000;
+```
+
+Using R's tools and our new helper this would be:
+
+```{r}
+dark_gradient_bg <- stack_patterns(
+  "black",
+  grid::radialGradient(c("#2e4955ff", "#2e495500"),
+    cx1 = 0.77, cy1 = 0.08, r1 = 0,
+    cx2 = 0.77, cy2 = 0.08, r2 = 0.5),
+  grid::radialGradient(c("#2e3655ff", "#2e365500"),
+    cx1 = 0.36, cy1 = 0.11, r1 = 0,
+    cx2 = 0.36, cy2 = 0.11, r2 = 0.5),
+  grid::radialGradient(c("#3a2e55ff", "#3a2e5500"),
+    cx1 = 0.88, cy1 = 0.33, r1 = 0,
+    cx2 = 0.88, cy2 = 0.33, r2 = 0.5),
+  grid::radialGradient(c("#553a2eff", "#553a2e00"),
+    cx1 = 0.02, cy1 = 0.88, r1 = 0,
+    cx2 = 0.02, cy2 = 0.88, r2 = 0.5))
+```
+
+:::{.callout-tip collapse="true"}
+
+## Wait, walk me through those gradients a little more
+
+In CSS, you start each `radial-gradient()` with coordinates for the centre of the gradient. In R, this becomes the `cx1` and `cy1` arguments. Repeat them for `cx2` and `cy2`.
+
+The y-coordinates in `{grid}` are flipped from the web (ie. top becomes bottom), so you'll want to subtract 1: 70% becomes 0.3, not 0.7!
+
+The CSS gradients also specify second and further colours at "stops": rings going out from the centre point. In this case, they're all transparent at 50%.
+
+We don't have `"transparent"` here. Instead, I'll repeat the original colour but make it transparent by adding zero opacity (`00`) to the end of it.
+:::
+
+Once we have our stack of gradients, we can use the gradient pattern as a plot background or just about anything else in `{ggplot2}`. Here's a full example using one as a plot background:
+
+
+```{r}
+gradient_bg_plot <- ggplot(mtcars) +
+  aes(mpg, hp) +
+  geom_point(colour = "white") +
+  theme_dark(base_size = 18, base_family = "Inter") +
+  labs(title = "Gradient test") +
+  theme(
+    text = element_text(colour = "white"),
+    plot.title = element_text(face = "bold"),
+    panel.background = element_blank(),
+    plot.background =
+      element_rect(fill = dark_gradient_bg))
+```
+
+
+This technique is powerful, but it definitely be used poorly! For statistical plots, you'll likely want to keep backgrounds super muted — brighter colours are probably more appropriate for simpler graphics and headlines.
