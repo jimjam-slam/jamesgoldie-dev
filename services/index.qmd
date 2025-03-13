@@ -27,7 +27,6 @@ My data science workshops are run in a disposable cloud environment that **atten
 
 \
 \
-\
 
 ::::{.testimonial .column-page style="position: relative;"}
 
