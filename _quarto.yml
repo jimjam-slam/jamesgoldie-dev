@@ -39,7 +39,7 @@ website:
         aria-label: Email James
         href: mailto:me@jamesgoldie.dev
   open-graph:
-    description: I work to visualise climate change and build things for fun and for social change 🥳
+    description: "Visualising data and building things for fun and for change. #climatehealth → #datajournalism"
     image: "/profile.png"
   twitter-card:
     creator: "@jimjam-slam"
