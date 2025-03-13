@@ -63,6 +63,7 @@ button.qwebr-button-run:disabled {
 
 #qwebr-status-message-area .quarto-title-meta-heading {
   display: none;
+  background-color: rgba(0, 0, 0, .5);
 }
 
 .quarto-title-meta p {
