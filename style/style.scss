@@ -157,6 +157,10 @@ main.content .quarto-listing .card-text.listing-description {
   font-weight: normal;
 }
 
+main.content p a {
+  font-weight: bold;
+}
+
 .quarto-listing div.quarto-post {
   border-bottom: none;
 }
@@ -215,18 +219,25 @@ main.content .quarto-listing .card-text.listing-description {
           // border: none;
           color: $body-color;
           opacity: $opacity-secondary;
+          transition: color 0.2s linear, opacity 0.2s linear;
     
-          &:hover {
+          &:hover,
+          &:focus-within {
            color: $gradient-from;
-           opacity: 100%; 
+           opacity: 100%;
           }
         }
     
       }
     
       .intro {
-        font-size: 0.85em;
+        font-size: 0.9em;
         opacity: $opacity-secondary;
+        margin-top: auto;
+
+        :last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }
