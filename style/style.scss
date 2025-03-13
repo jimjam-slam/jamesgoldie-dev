@@ -38,7 +38,10 @@
   src: url("/style/fonts/Inter-ExtraBoldItalic.woff2") format("woff2");
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=JetBrains+Mono:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=JetBrains+Mono:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 
 /*-- scss:uses --*/
 
@@ -52,22 +55,27 @@ $code-block-border-left: darkorange;
 
 /*-- scss:rules --*/
 
-h1, h2, .h1, .h2 {
-  font-weight: 800;
-  font-style: italic;
+h1,
+h2,
+.h1,
+.h2,
+.quarto-listing .listing-title,
+.quarto-listing .listing-title a {
+  font-family: "DM Serif Display";
+  font-weight: normal;
+  opacity: 100%;
+  color: $header-color;
+  // font-style: italic;
 }
 
-.listing-title {
-  font-weight: 800;
-  font-style: italic;
+.quarto-listing .listing-title {
+// .quarto-listing div.quarto-post h3.listing-title {
+  margin-bottom: 0.25em;
 }
+
 
 .category-cloud {
   font-size: 0.75rem;
-}
-
-main.content a {
-  font-weight: 700;
 }
 
 main.content .quarto-listing .listing-description a,
@@ -75,8 +83,8 @@ main.content .quarto-listing .card-text.listing-description {
   font-weight: normal;
 }
 
-.quarto-listing .listing-category {
-  font-weight: 700;
+.quarto-listing div.quarto-post {
+  border-bottom: none;
 }
 
 .card {
@@ -93,39 +101,60 @@ main.content .quarto-listing .card-text.listing-description {
 
 /* home page */
 
-main .homepage-block {
+#quarto-content {
+  padding-top: 3rem;
 
-  margin-block-start: 1.5rem;
-
-  div.quarto-about-jolla {
-    margin-top: 0;
-    padding-bottom: 0;
-
-    .description {
-      font-size: 1.15rem;
-    }
-    
-    header.quarto-title-block {
-      border-bottom: none;
-      padding-bottom: 0px;
+  main {
+    margin-block: auto;
   
-      margin-block-end: 0;
+    .homepage-block {
+    
+      div.quarto-about-jolla {
+        margin-top: 0;
+        padding-bottom: 0;
+    
+        .description {
+          font-size: 1.15rem;
+        }
+        
+        header.quarto-title-block {
+          border-bottom: none;
+          padding-bottom: 0px;
       
-      // .description {
-        //   text-align: center;
-        // }
+          margin-block-end: 0;
+    
+          // h1 {
+          //   font-weight: normal;
+          // }
+          
+          // .description {
+            //   text-align: center;
+            // }
+        }
+          
+        hr {
+          width: 0;
+          margin-block: 0.25em;
+        }
+
+        .about-link {
+          // border: none;
+          color: $body-color;
+          opacity: 70%;
+    
+          &:hover {
+           color: $gradient-from;
+           opacity: 100%; 
+          }
+        }
+    
       }
-      
-    hr {
-      width: 0;
-      margin-block: 0.25em;
+    
+      .intro {
+        font-size: 0.85em;
+        opacity: 70%;
+      }
     }
-
-  }
-
-  .intro {
-    font-size: 0.85em;
-    color: #666666;
   }
 }
 
@@ -157,10 +186,6 @@ main .homepage-block {
 
     .about-link {
       border: none;
-
-      &:hover {
-        color: gold;
-      }
     }
   }
 }
@@ -205,14 +230,14 @@ header.quarto-title-block {
 }
 
 .callout {
-  background-color: white;
+  background-color: $body-bg;
 }
 
 /* make category/tag pills opaque bg */
-div.quarto-post .listing-categories .listing-category,
-div.quarto-title div.quarto-categories div.quarto-category {
-  background-color: white;
-}
+// div.quarto-post .listing-categories .listing-category,
+// div.quarto-title div.quarto-categories div.quarto-category {
+//   background-color: white;
+// }
 
 /* fix code block headers not pushing out to the left with block */
 @media (min-width: 992px) {
@@ -224,15 +249,26 @@ div.quarto-title div.quarto-categories div.quarto-category {
   }
 }
 
-/* fix code block header shading */
-.code-with-filename .code-with-filename-file,
-.code-with-filename .code-with-filename-file pre {
-  background-color: rgb(219, 219, 219);
-}
-
 .panel-caption, .figure-caption, .subfigure-caption, .table-caption, figcaption, caption {
   text-transform: uppercase;
   font-size: 0.8rem;
+  color: hsl(from $body-color h s calc(l - 10));
+}
+
+
+button.navbar-toggler .navbar-toggler-icon {
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23e2cc74' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+
+.navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
+  color: $gradient-to;
+}
+
+/* inline code */
+
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+  background-color: hsl(from $body-bg h s calc(l + 15));
+  color: $gradient-from;
 }
 
 /* nicer search style */
@@ -244,21 +280,27 @@ div.quarto-title div.quarto-categories div.quarto-category {
 .aa-DetachedContainer {
   box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.45);
   font-family: "Inter";
+  border-radius: 2em;
 }
 
 .aa-DetachedFormContainer {
   border-bottom: none;
+  border-radius: 2em;
   
   .aa-Form {
     border: none;
     border-bottom: 1px solid lightgrey;
-    border-radius: 0px;
+    border-radius: 0.9em;
       
     &:focus-within {
       border-bottom: 1px solid indigo;
       box-shadow: 0 1px 0 0 indigo;
     }
   }
+}
+
+.aa-DetachedOverlay .aa-Item .search-result-doc, #quarto-search-results .aa-Item .search-result-doc {
+  border-top: 1px solid #a7b29f33;
 }
 
 .aa-DetachedOverlay .aa-Item .search-item i.bi {
