@@ -54,7 +54,7 @@ website:
 
 format:
   html:
-    theme: [darkly, "style/style.scss", "style/light.scss"]
+    theme: [darkly, "style/style.scss"]
     mainfont: "Inter"
     monofont: "JetBrains Mono"
     callout-appearance: simple
