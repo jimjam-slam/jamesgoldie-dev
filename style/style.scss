@@ -30,15 +30,8 @@
   src: url("/style/fonts/Inter-BoldItalic.woff2") format("woff2");
 }
 
-@font-face {
-  font-family: Inter;
-  font-style: italic;
-  font-weight: 800;
-  font-display: swap;
-  src: url("/style/fonts/Inter-ExtraBoldItalic.woff2") format("woff2");
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=JetBrains+Mono:ital,wght@0,300;0,700;1,300;1,700&display=swap');
 
 /*-- scss:uses --*/
 
@@ -46,28 +39,117 @@
 
 /*-- scss:defaults --*/
 
+$navbar-fg: rgba(17, 23, 20, 0.8);
+$gradient-from: #e2cc74;
+$gradient-to: #f4eed3; 
+
+$body-bg: #202925;
+$header-color: #e2cc74;
+$link-color: $gradient-from;
+$body-color: #bbc7b2;
+$opacity-secondary: 70%;
+$opacity-tertiary: 40%;
+
+$standard-shadow:
+  0 0.2em 0.8em 0.2em rgba(167, 178, 159, .005),
+  0 0.2em 0.6em 0.1em rgba(167, 178, 159, .025);
+
+$nav-shadow:
+  0 -1px 0 0 rgba(167, 178, 159,.25),
+  0 1px 0 0 rgba(32, 41, 37,.125);
+
 $code-block-border-left: darkorange;
 
 /* -- scss:mixins --*/
 
 /*-- scss:rules --*/
 
-h1, h2, .h1, .h2 {
-  font-weight: 800;
-  font-style: italic;
+body {
+
+  background-color: #202925;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%2333423b' fill-opacity='0.4'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  header#quarto-header {
+    background-color: $navbar-fg;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: $nav-shadow;
+    border-radius: 2em;
+    border: 1px solid #27332dbb;
+    margin: 12px;
+    
+    nav.navbar {
+      background: linear-gradient(30deg, $gradient-from, $gradient-to);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      --bs-navbar-padding-y: 0.4rem;
+      --bs-navbar-padding-x: 0;
+  
+      span, a {
+        font-family: "Inter";
+      }
+  
+      .navbar-title {
+        font-family: "DM Serif Display";
+        font-style: normal;
+      }
+      .nav-item {
+        font-size: 0.85em;
+      }
+    }
+  }
+
+  header#title-block-header {
+    border-bottom: none;
+
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .btn-gradient {
+    background: linear-gradient(30deg, $gradient-from, $gradient-to);
+    color: $body-bg;
+    font-weight: bold;
+    width: 100%;
+    border: 0px solid transparent;
+    outline: 0px solid transparent;
+    box-shadow: $standard-shadow;
+    border-radius: 2em;
+    transition: transform 0.2s ease-in-out;
+
+  }
+
+  .btn-gradient:hover,
+  .btn-gradient:focus-within {
+    transform: scale(1.1);
+    color: $body-bg;
+  }
 }
 
-.listing-title {
-  font-weight: 800;
-  font-style: italic;
+h1,
+h2,
+.h1,
+.h2,
+.quarto-listing .listing-title,
+.quarto-listing .listing-title a {
+  font-family: "DM Serif Display";
+  font-weight: normal;
+  opacity: 100%;
+  color: $header-color;
+  // font-style: italic;
 }
+
+.quarto-listing .listing-title {
+// .quarto-listing div.quarto-post h3.listing-title {
+  margin-bottom: 0.25em;
+}
+
 
 .category-cloud {
   font-size: 0.75rem;
-}
-
-main.content a {
-  font-weight: 700;
 }
 
 main.content .quarto-listing .listing-description a,
@@ -75,8 +157,8 @@ main.content .quarto-listing .card-text.listing-description {
   font-weight: normal;
 }
 
-.quarto-listing .listing-category {
-  font-weight: 700;
+.quarto-listing div.quarto-post {
+  border-bottom: none;
 }
 
 .card {
@@ -91,25 +173,75 @@ main.content .quarto-listing .card-text.listing-description {
 }
 
 
-/* home page header only (not post headers hopefully!) */
-.quarto-about-jolla {
+/* home page */
+
+#quarto-content {
+  padding-top: 3rem;
+
+  main {
+    margin-block: auto;
   
-  header.quarto-title-block {
-    border-bottom: none;
-    padding-bottom: 0px;
+    .homepage-block {
     
-    .description {
-      text-align: center;
+      div.quarto-about-jolla {
+        margin-top: 0;
+        padding-bottom: 0;
+    
+        .description {
+          font-size: 1.15rem;
+        }
+        
+        header.quarto-title-block {
+          border-bottom: none;
+          padding-bottom: 0px;
+      
+          margin-block-end: 0;
+    
+          // h1 {
+          //   font-weight: normal;
+          // }
+          
+          // .description {
+            //   text-align: center;
+            // }
+        }
+          
+        hr {
+          width: 0;
+          margin-block: 0.25em;
+        }
+
+        .about-link {
+          // border: none;
+          color: $body-color;
+          opacity: $opacity-secondary;
+    
+          &:hover {
+           color: $gradient-from;
+           opacity: 100%; 
+          }
+        }
+    
+      }
+    
+      .intro {
+        font-size: 0.85em;
+        opacity: $opacity-secondary;
+      }
     }
   }
 }
 
-header.quarto-title-block .description {
-  font-size: 1.15rem;
-}
-
 /* social links on mobile */
 @include media-breakpoint-down(lg) {
+
+  main.page-columns.page-full .homepage-block.column-body-outset {
+    grid-column: screen-start-inset / screen-end-inset;
+  }
+  
+  .description {
+    text-align: center;
+  }
   
   // homepage socials
   div.quarto-about-jolla .about-links {
@@ -120,6 +252,7 @@ header.quarto-title-block .description {
     row-gap: 15px;
     width: auto;
     font-size: 1.5em;
+    padding-bottom: 0;
 
     .about-link-text {
       display: none;
@@ -127,12 +260,30 @@ header.quarto-title-block .description {
 
     .about-link {
       border: none;
-
-      &:hover {
-        color: gold;
-      }
     }
   }
+}
+
+/* right align about block content on desktop */
+@include media-breakpoint-up(lg) {
+
+  div.quarto-about-jolla {
+    align-items: end;
+
+    .quarto-title h1.title,
+    .description {
+      text-align: right;
+    }
+    
+    img.round {
+      margin-right: 0;
+    }
+  
+    .about-links {
+      justify-content: flex-end;
+    }
+
+  } 
 }
 
 /* customise post header */
@@ -149,18 +300,16 @@ header.quarto-title-block {
 /* gentle shadow on cards and callouts */
 
 .card, .callout {
-  box-shadow: $standard-shadow;
+  background-color: $navbar-fg;
+  box-shadow: $nav-shadow;
 }
 
-.callout {
-  background-color: white;
-}
 
 /* make category/tag pills opaque bg */
-div.quarto-post .listing-categories .listing-category,
-div.quarto-title div.quarto-categories div.quarto-category {
-  background-color: white;
-}
+// div.quarto-post .listing-categories .listing-category,
+// div.quarto-title div.quarto-categories div.quarto-category {
+//   background-color: white;
+// }
 
 /* fix code block headers not pushing out to the left with block */
 @media (min-width: 992px) {
@@ -172,15 +321,26 @@ div.quarto-title div.quarto-categories div.quarto-category {
   }
 }
 
-/* fix code block header shading */
-.code-with-filename .code-with-filename-file,
-.code-with-filename .code-with-filename-file pre {
-  background-color: rgb(219, 219, 219);
-}
-
 .panel-caption, .figure-caption, .subfigure-caption, .table-caption, figcaption, caption {
   text-transform: uppercase;
   font-size: 0.8rem;
+  color: hsl(from $body-color h s calc(l - 10));
+}
+
+
+button.navbar-toggler .navbar-toggler-icon {
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23e2cc74' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+
+.navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
+  color: $gradient-to;
+}
+
+/* inline code */
+
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+  background-color: hsl(from $body-bg h s calc(l + 15));
+  color: $gradient-from;
 }
 
 /* nicer search style */
@@ -192,6 +352,7 @@ div.quarto-title div.quarto-categories div.quarto-category {
 .aa-DetachedContainer {
   box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.45);
   font-family: "Inter";
+  border-radius: 2em;
 }
 
 .aa-DetachedFormContainer {
@@ -200,13 +361,17 @@ div.quarto-title div.quarto-categories div.quarto-category {
   .aa-Form {
     border: none;
     border-bottom: 1px solid lightgrey;
-    border-radius: 0px;
+    border-radius: 0.9em;
       
     &:focus-within {
       border-bottom: 1px solid indigo;
       box-shadow: 0 1px 0 0 indigo;
     }
   }
+}
+
+.aa-DetachedOverlay .aa-Item .search-result-doc, #quarto-search-results .aa-Item .search-result-doc {
+  border-top: 1px solid #a7b29f33;
 }
 
 .aa-DetachedOverlay .aa-Item .search-item i.bi {
@@ -217,18 +382,9 @@ div.quarto-title div.quarto-categories div.quarto-category {
   padding-block: 3em;
   font-style: italic;
   font-size: 125%;
-  color: slategrey;
+  color: $gradient-from;
 }
 
-// .testimonial::before {
-//   content: '“';
-//   font-size: 800%;
-//   font-family: serif;
-//   // position: absolute;
-//   z-index: -1;
-//   width: 3em;
-//   color: #70809033;
-// }
 
 @include media-breakpoint-up(md) {
   .testimonial {
@@ -257,13 +413,14 @@ div.quarto-title div.quarto-categories div.quarto-category {
 #listing-roles {
   .card-subtitle {
     margin-bottom: 1em;
-    color: $secondary;
+    opacity: $opacity-tertiary;
     font-weight: normal;
     font-size: 80%;
   }
 
   table.card-other-values {
     margin-top: auto;
+    margin-bottom: 0;
     
     tr:has(.date_range) {
       :first-child {
@@ -271,7 +428,7 @@ div.quarto-title div.quarto-categories div.quarto-category {
       }
   
       .date_range {
-        color: $secondary;
+        opacity: $opacity-tertiary;
         font-weight: normal;
         text-align: right;
       }
