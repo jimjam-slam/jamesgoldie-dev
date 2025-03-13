@@ -1,6 +1,6 @@
 ---
 title: "James Goldie"
-description: "Building things and telling stories with data 🥳<br>#climatehealth → #datajournalism"
+description: "Visualising data and building apps<br>[#climatehealth → #datajournalism]{style='font-size: 85%'}"
 image: profile.jpg
 twitter-card:
   image: profile.jpg
@@ -37,8 +37,24 @@ about:
 page-layout: article
 ---
 
-:::: {#about}
+:::::{.grid .homepage-block .column-body-outset}
 
+::::{.g-col-lg-6 .g-col-12}
+::: {#about}
+:::
 ::::
+
+::::{.g-col-lg-6 .g-col-12 .intro}
+I'm James, a data journalist, researcher and software engineer.
+
+I have a broad set of skills around analysing, visualising and communicating data. In the last few years I've [used those skills](/career/) to help Australians understand climate change and make journalistic graphics free and open.
+
+I can use those skills to [help you too!](/services/) Whether you need a consultant to build dashboards and websites, or you're looking to train your team in data analysis and visualisation, I'm your guy.
+
+Or maybe you're looking for my [other projects](/projects). Open source data tools, fun and useful websites, or other wild things I've built—they're all here.
+::::
+
+:::::
+
 
 [Mastodon verification](https://aus.social/@jimjamslam){rel="me" style="display: none;"}
