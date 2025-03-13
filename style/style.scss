@@ -349,7 +349,7 @@ button.navbar-toggler .navbar-toggler-icon {
 
 /* inline code */
 
-p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+:is(h1, h2, h3, h4, h5, h6, p, li, td, .callout-title-container) code:not(.sourceCode) {
   background-color: hsl(from $body-bg h s calc(l + 15));
   color: $gradient-from;
 }
