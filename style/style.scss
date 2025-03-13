@@ -55,7 +55,10 @@ $gradient-to: #f4eed3;
 
 $body-bg: #202925;
 $header-color: #e2cc74;
+$link-color: $gradient-from;
 $body-color: #bbc7b2;
+$opacity-secondary: 70%;
+$opacity-tertiary: 40%;
 
 $standard-shadow:
   0 0.2em 0.8em 0.2em rgba(167, 178, 159, .005),
@@ -221,7 +224,7 @@ main.content .quarto-listing .card-text.listing-description {
         .about-link {
           // border: none;
           color: $body-color;
-          opacity: 70%;
+          opacity: $opacity-secondary;
     
           &:hover {
            color: $gradient-from;
@@ -233,7 +236,7 @@ main.content .quarto-listing .card-text.listing-description {
     
       .intro {
         font-size: 0.85em;
-        opacity: 70%;
+        opacity: $opacity-secondary;
       }
     }
   }
@@ -421,13 +424,14 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
 #listing-roles {
   .card-subtitle {
     margin-bottom: 1em;
-    color: $secondary;
+    opacity: $opacity-tertiary;
     font-weight: normal;
     font-size: 80%;
   }
 
   table.card-other-values {
     margin-top: auto;
+    margin-bottom: 0;
     
     tr:has(.date_range) {
       :first-child {
@@ -435,7 +439,7 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
       }
   
       .date_range {
-        color: $secondary;
+        opacity: $opacity-tertiary;
         font-weight: normal;
         text-align: right;
       }
