@@ -30,6 +30,7 @@ Gradients and patterns are looking reasonably mature now in R: they've been arou
 That support comes via the `{grid}` package, which ships with R but isn't preloaded. That means you'll either need to call `library(grid)` or prefix a lot of functions with `grid::`.
 
 ```{r}
+#| message: false
 library(ggplot2)
 library(grid)
 library(systemfonts)
@@ -43,7 +44,7 @@ set.seed(1)
 ```{r}
 #| code-fold: true
 #| code-summary: "Complete gradient example"
-#| fig-cap: "A complete example of using gradients in ggplot2. The bars are filled using gradients mapped to a data column."
+#| fig-alt: "A complete example of using gradients in ggplot2. The bars are filled using gradients mapped to a data column."
 tibble(
   day = as.Date("2024-01-01") + days(0:14),
   count = runif(15, -10, 10),
@@ -114,12 +115,12 @@ I also refer to the [`{systemfonts}`](https://systemfonts.r-lib.org) package abo
 
 We get two basic gradient tools in `{grid}`: `linearGradient()` and `radialGradient()`. If you've used apps like Photoshop or Illustrator before, that might seem basic — it's no [mesh gradient](https://helpx.adobe.com/au/illustrator/using/meshes.html).
 
-But even this gives us a lot of power. With this new support, you can use a gradient or pattern as the `fill` (but not, as far as I know, the `colour`), for anything outside of an aesthetic.
+But even this gives us a lot of power. With this new support, you can use a gradient or pattern as a static `fill` for a layer or theme element, or even as an aesthetic in some cases. (You can't, as far as I'm aware, use one as the outer `colour`.)
 
 So that might be a geom's fill:
 
 ```{r}
-#| fig-cap: Applying a a single gradient to the fill of a barchart.
+#| fig-alt: Applying a a single gradient to the fill of a barchart.
 ggplot(mtcars) +
   aes(x = hp) +
   geom_histogram(
@@ -132,7 +133,7 @@ ggplot(mtcars) +
 Or it could be a theme option:
 
 ```{r}
-#| fig-cap: Applying a gradient to the background of a plot as a theme element.
+#| fig-alt: Applying a gradient to the background of a plot as a theme element.
 ggplot(mtcars) +
   aes(x = hp) +
   geom_histogram(
@@ -188,7 +189,7 @@ squashed_rainbow <- linearGradient(
 
 ```{r}
 #| fig-height: 1
-#| fig-cap: A rainbow gradient—but the first three colours have shorter stops, while the other four have longer ones.
+#| fig-alt: A rainbow gradient—but the first three colours have shorter stops, while the other four have longer ones.
 preview_gradient(squashed_rainbow)
 ```
 
@@ -318,7 +319,7 @@ my_ring <- radialGradient(
 ```{r}
 #| code-fold: true
 #| code-summary: "Extra code: plot `my_ring` with circles overlaid"
-#| # fig-cap: A concentric radial gradient
+#| # fig-alt: A concentric radial gradient
 ggplot() +
   geom_point(aes(x = 0.35, y = 0.5), size = 4) +
   geom_circle(aes(x0 = 0.35, y0 = 0.5, r = 0.3),
@@ -356,7 +357,7 @@ my_ring_assym <- radialGradient(
 
 ```{r}
 #| echo: false
-#| fig-cap: A 'fireball' effect created by shifting the middle of the inner circle just inside the edge of the outer circle.
+#| fig-alt: A 'fireball' effect created by shifting the middle of the inner circle just inside the edge of the outer circle.
 ggplot() +
   geom_point(aes(x = 0.4, y = 0.5)) +
   geom_circle(aes(x0 = 0.4, y0 = 0.5, r = 0.05)) +
@@ -387,7 +388,7 @@ my_ring_broken <- radialGradient(
 
 ```{r}
 #| echo: false
-#| fig-cap: This radial gradient displays unexpected results because the middle of the inner circle has escaped rthe outer circle.
+#| fig-alt: This radial gradient displays unexpected results because the middle of the inner circle has escaped rthe outer circle.
 ggplot() +
   geom_point(aes(x = 0.5, y = 0.5)) +
   geom_circle(aes(x0 = 0.5, y0 = 0.5, r = 0.1)) +
@@ -414,7 +415,7 @@ The `group` parameter controls whether a gradient applies to individual shapes o
 :::{#fig-grouping-points layout-ncol=2}
 
 ```{r}
-#| fig-cap: With grouping
+#| fig-alt: With grouping
 ggplot(mtcars) +
   aes(mpg, disp) +
   geom_point(size = 7, shape = 21, stroke = 0,
@@ -423,7 +424,7 @@ ggplot(mtcars) +
 ```
 
 ```{r}
-#| fig-cap: Without grouping
+#| fig-alt: Without grouping
 ggplot(mtcars) +
   aes(mpg, disp) +
   geom_point(size = 7, shape = 21, stroke = 0,
@@ -464,7 +465,7 @@ Don't do that here: you need a named `list()`.
 :::{#fig-grouping-bars layout-ncol=2}
 
 ```{r}
-#| fig-cap: With grouping
+#| fig-alt: With grouping
 timeseries_base +
   scale_fill_manual(values = list(
     "positive" = linearGradient(
@@ -477,7 +478,7 @@ timeseries_base +
 ```
 
 ```{r}
-#| fig-cap: Without grouping
+#| fig-alt: Without grouping
 timeseries_base +
   scale_fill_manual(values = list(
     "positive" = linearGradient(
@@ -618,7 +619,7 @@ We don't have a `"transparent"` keyword here. Instead, I'll repeat the original 
 Once we have our stack of gradients, we can use the gradient pattern as a plot background or just about anything else in `{ggplot2}`:
 
 ```{r}
-#| fig-cap: A series of radial gradients stacked on top of each other. Each gradient ends in transparency, allowing the other gradients to be visible.
+#| fig-alt: A series of radial gradients stacked on top of each other. Each gradient ends in transparency, allowing the other gradients to be visible.
 preview_gradient(stacked_gradient_bg)
 ```
 
@@ -627,7 +628,7 @@ Of course, if you're using this as a background for an actual plot, you might ne
 One easy way to do that is to just make all the colours semi-transparent:
 
 ```{r}
-#| fig-cap: A scatter plot with a stacked radial gradient background. The colours are semi-transparent, making them less bright when blended with a white background.
+#| fig-alt: A scatter plot with a stacked radial gradient background. The colours are semi-transparent, making them less bright when blended with a white background.
 ggplot(mtcars) +
   aes(mpg, hp) +
   geom_point() +
@@ -660,7 +661,7 @@ ggplot(mtcars) +
 But if your content is simple and clear, you might be able to get away with bolder colours:
 
 ```{r}
-#| fig-cap: A bar chart using the original stacked background. Because the bars and text are very bold, the background can also use brighter colours without affecting the legibility of the content.
+#| fig-alt: A bar chart using the original stacked background. Because the bars and text are very bold, the background can also use brighter colours without affecting the legibility of the content.
 tibble(
   day_n = 1:15,
   day = as.Date("2024-01-01") + days(day_n - 1),
