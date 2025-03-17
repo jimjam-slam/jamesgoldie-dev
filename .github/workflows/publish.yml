@@ -15,7 +15,7 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: 1.4.547
+          version: 1.7.15
 
       - name: Install system dependencies
         run: sudo apt install -y libfontconfig1-dev libfreetype6-dev
