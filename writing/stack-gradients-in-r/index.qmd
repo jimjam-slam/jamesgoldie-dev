@@ -226,10 +226,10 @@ p1 <- ggplot() +
 #| echo: fenced
 #| fig-width: 0.5
 #| fig-height: 1.5
+#| fig-alt: A tall gradient, going from bottom-left to top-right.
 p1
 ```
 
-A tall gradient, going from bottom-left to top-right.
 
 :::
 
@@ -239,10 +239,10 @@ A tall gradient, going from bottom-left to top-right.
 #| echo: fenced
 #| fig-width: 1.5
 #| fig-height: 0.5
+#| fig-alt: A wide gradient, going from bottom-left to top-right.
 p1
 ```
 
-A wide gradient, going from bottom-left to top-right.
 
 :::
 
@@ -268,10 +268,10 @@ p2 <- ggplot() +
 #| echo: fenced
 #| fig-width: 0.5
 #| fig-height: 1.5
+#| fig-alt: A tall gradient. The gradient maintains a 45 degree angle.
 p2
 ```
 
-A tall gradient. The gradient maintains a 45 degree angle.
 
 :::
 
@@ -281,10 +281,10 @@ A tall gradient. The gradient maintains a 45 degree angle.
 #| echo: fenced
 #| fig-width: 1.5
 #| fig-height: 0.5
+#| fig-alt: A wide gradient. The gradient maintains a 45 degree angle.
 p2
 ```
 
-A wide gradient. The gradient maintains a 45 degree angle.
 
 :::
 
@@ -415,7 +415,7 @@ The `group` parameter controls whether a gradient applies to individual shapes o
 :::{#fig-grouping-points layout-ncol=2}
 
 ```{r}
-#| fig-alt: With grouping
+#| fig-alt: Points with a gradient fill. With grouping, the gradient stretches across all of the points. 
 ggplot(mtcars) +
   aes(mpg, disp) +
   geom_point(size = 7, shape = 21, stroke = 0,
@@ -424,15 +424,13 @@ ggplot(mtcars) +
 ```
 
 ```{r}
-#| fig-alt: Without grouping
+#| fig-alt: Points with a gradient fill. Without grouping, each point gets the whole gradient, from red through to yellow.
 ggplot(mtcars) +
   aes(mpg, disp) +
   geom_point(size = 7, shape = 21, stroke = 0,
     fill = linearGradient(c("red", "yellow"), group = FALSE)) +
   theme_blog()
 ```
-
-Points with a gradient fill. In the grouped version (left), the gradient stretches across all of the points; in the ungrouped version (right), each point gets the whole gradient, from red through to yellow.
 
 :::
 
@@ -465,7 +463,7 @@ Don't do that here: you need a named `list()`.
 :::{#fig-grouping-bars layout-ncol=2}
 
 ```{r}
-#| fig-alt: With grouping
+#| fig-alt: Time series with grouping. The colour deepens consistently in all bars as they move away from the horizontal axis, so taller bars finish in a deeper tone that short ones.
 timeseries_base +
   scale_fill_manual(values = list(
     "positive" = linearGradient(
@@ -478,7 +476,7 @@ timeseries_base +
 ```
 
 ```{r}
-#| fig-alt: Without grouping
+#| fig-alt: Time series without grouping. Each bar finishes in the same, deep colours regardless of its height.
 timeseries_base +
   scale_fill_manual(values = list(
     "positive" = linearGradient(
@@ -491,8 +489,6 @@ timeseries_base +
       group = FALSE)
   ))
 ```
-
-Time series with (left) and without (right) grouping in the gradient fill.
 
 :::
 
