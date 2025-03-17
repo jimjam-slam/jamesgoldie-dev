@@ -9,6 +9,7 @@ execute:
 
 website:
   title: "James Goldie"
+  site-url: "https://jamesgoldie.dev"
   navbar:
     left:
       - text: Career
