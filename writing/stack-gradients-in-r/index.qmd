@@ -344,7 +344,7 @@ If you omit `cx2` and `cy2` entirely, they'll default to the centre. So if you'r
 
 \
 
-Generally you'll want `cx2` and `cy2` to match `cx1` and `cy1`. But if you vary them, you can make asymmetric gradients, like this firework (or fireball?) effect:
+Generally you'll want `cx2` and `cy2` to match `cx1` and `cy1`. But if you vary them, you can make asymmetric gradients, like this spotlight effect:
 
 ```{r}
 my_ring_assym <- radialGradient(
@@ -375,7 +375,9 @@ ggplot() +
 
 The key to this is continuing to imagine those circles drawn around the two points. Before they were concentric, but now they have room to move.
 
-If the centre of the first circle escapes (or grazes) the edge of the second circle, you get weirder effects:
+The defaults for the second circle are `cx2 = 0.5`, `cy2 = 0.5` and `r2 = 0.5`, which traces out a circle touching the edges of the parent. If you think of positioning and sizing the first point as positioning the spotlight within that circle, that might help you build a mental model of what to expect.
+
+But if the centre of the first circle escapes (or grazes) the edge of the second circle, you get weirder effects:
 
 ```{r}
 my_ring_broken <- radialGradient(
@@ -410,7 +412,7 @@ ggplot() +
 
 There's one other important parameter for `linearGradient()` and `radialGradient()`.
 
-The `group` parameter controls whether a gradient applies to individual shapes or to a set of them. It's `TRUE` by default. The difference is pretty obvious in some cases:
+The `group` parameter (available since R 4.2.0) controls whether a gradient applies to individual shapes or to a set of them. It's `TRUE` by default. The difference is pretty obvious in some cases:
 
 :::{#fig-grouping-points layout-ncol=2}
 
@@ -695,3 +697,42 @@ We've covered a lot here! We looked at:
 - Stacking gradients to create powerful visual effects
 
 Ready to go out and add some colour to your plots?
+
+:::{.callout-note}
+
+## Interpolating through different colour spaces
+
+One last tip if you're still here!
+
+[Gradient colour schemes in ggplot2](https://ggplot2.tidyverse.org/reference/scale_gradient.html) support the ability to interpolate colours through different colour spaces. [CSS does too.](https://developer.mozilla.org/en-US/blog/css-color-module-level-4/)
+
+Using a different colour space can be really useful, especially if your gradient uses colours that are far apart. Notice the grey colour in the middle of this gradient:
+
+```{r}
+#| fig-height: 1
+#| fig-alt: A gradient from light blue to light pink through RGB. The middle of the gradient is muddied to grey.
+linearGradient(c("#81fee9", "#f66eff")) |>
+  preview_gradient()
+```
+
+[CSS Tricks explains](https://css-tricks.com/color-spaces-for-more-interesting-css-gradients/) what's happening here well.
+
+I haven't yet found any option for setting the colour space in which to create a `linearGradient()` or a `radialGradient()`, and I assume that doing so would require the graphics device to support it (my understanding is that the current ones all work in RGB).
+
+If you know of such an option, let me know!
+
+In the mean time, the best solution is to add some stops that are pre-computed in the interpolation space you want. CSS Tricks links to an [excellent app](https://non-boring-gradients.netlify.app) by Tom Quinonero that demonstrates the difference:
+
+```{r}
+#| fig-height: 1
+#| fig-alt: A gradient from light blue to light pink through RGB. Extra stops are added to simulate interpolating through the HSL space, making the middle indigo instead of grey.
+linearGradient(c(
+  "#81fee9",
+  "#7Cd0ff",
+  "#7888ff",
+  "#ad73ff",
+  "#f66eff")) |>
+  preview_gradient()
+```
+
+:::
