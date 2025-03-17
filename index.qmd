@@ -1,6 +1,6 @@
 ---
 title: "James Goldie"
-description: "Visualising data and building apps<br>[#climatehealth → #datajournalism]{style='font-size: 85%'}"
+description: "Telling data stories and building<br>[#climatehealth → #datajournalism]{style='font-size: 85%'}"
 image: profile.jpg
 twitter-card:
   image: profile.jpg
