@@ -1,0 +1,701 @@
+---
+title: The guide to gradients in R and ggplot2
+categories: [tutorial, rstats]
+date: 2025-02-24
+description: Everything from the basics up to beautiful mesh gradients
+image: stack-gradients-in-r.png
+resources:
+  - stack-gradients-in-r.png
+# title-block-banner: true   # manually styled
+toc: true
+knitr:
+  opts_chunk:
+    fig-width: 8
+    dev: ragg_png
+    dev.args:
+      bg: transparent
+    
+---
+
+We can do a lot of fancy stuff in [ggplot2](https://ggplot2.tidyverse.org) with considered use of fonts, sizes and colours. But there are still likely finishing touches that have us reaching for tools like Illustrator every so often.
+
+Until recently, sophisticated gradient effects were one of those things. I often blur photos or use other similar patterns as slide backgrounds to provide a bit (a _bit!_) of visual interest.
+
+But now, it's not hard to do something like that directly in ggplot2!
+
+{{< contents complete-example >}}
+
+Gradients and patterns are looking reasonably mature now in R: they've been around [since R 4.1](https://stat.ethz.ch/pipermail/r-announce/2021/000670.html) (released in 2021), and ggplot2 began supporting them in version 3.5.0 (released in early 2024).
+
+That support comes via the `{grid}` package, which ships with R but isn't preloaded. That means you'll either need to call `library(grid)` or prefix a lot of functions with `grid::`.
+
+```{r}
+#| message: false
+library(ggplot2)
+library(grid)
+library(systemfonts)
+library(tibble)
+library(lubridate)
+set.seed(1)
+```
+
+:::{#complete-example}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Complete gradient example"
+#| fig-alt: "A complete example of using gradients in ggplot2. The bars are filled using gradients mapped to a data column."
+tibble(
+  day = as.Date("2024-01-01") + days(0:14),
+  count = runif(15, -10, 10),
+  sign = ifelse(count < 0, "negative", "positive")) |>
+  ggplot() +
+    aes(day, count, fill = sign) +
+    geom_col() +
+    guides(fill = "none") +
+    scale_fill_manual(values = list(
+      "positive" = linearGradient(
+        c("#d39417", "#e5260d"),
+        stops = c(0.2, 1),
+        x1 = 0.5, y1 = 0, x2 = 0.5, y2 = 1),
+      "negative" = linearGradient(
+        c("#0854ce", "#4cb8ce"),
+        stops = c(0.2, 1),
+        x1 = 0.5, y1 = 0, x2 = 0.5, y2 = 1)
+    )) +
+    theme_dark(base_size = 18, base_family = "Inter") +
+    theme(
+      text = element_text(colour = "white"),
+      axis.text = element_text(colour = "#dddddd"),
+      panel.background = element_blank(),
+      plot.background = element_blank(),
+      plot.title = element_text(face = "bold"),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+    ) +
+    labs(
+      x = NULL, y = NULL,
+      title = "Early January",
+      subtitle = "Daily scores compared to average"
+    )
+```
+
+:::
+
+I'm also going to define a quick theme to keep these plots looking tidy. It's not really relevant to the post, though, so you can skip it if you'd like!
+
+:::{.callout-note collapse="true"}
+
+## Plot theme
+
+```{r}
+theme_blog <- function() {
+  theme_dark(base_size = 18, base_family = "Inter") +
+  theme(
+    text = element_text(colour = "white"),
+    axis.text = element_text(colour = "#dddddd"),
+    panel.background = element_blank(),
+    plot.background = element_blank()
+  )
+}
+```
+
+:::
+
+:::{.column-margin}
+Some legacy R graphics devices don't support gradients and patterns at all. Install the [`{ragg}`](https://ragg.r-lib.org) package, which does — it's better for just about everything anyway!
+
+\
+
+I also refer to the [`{systemfonts}`](https://systemfonts.r-lib.org) package above. This is an optional one to make using fonts on your system—or ones you've downloaded—easier.
+
+\
+:::
+
+
+We get two basic gradient tools in `{grid}`: `linearGradient()` and `radialGradient()`. If you've used apps like Photoshop or Illustrator before, that might seem basic — it's no [mesh gradient](https://helpx.adobe.com/au/illustrator/using/meshes.html).
+
+But even this gives us a lot of power. With this new support, you can use a gradient or pattern as a static `fill` for a layer or theme element, or even as an aesthetic in some cases. (You can't, as far as I'm aware, use one as the outer `colour`.)
+
+So that might be a geom's fill:
+
+```{r}
+#| fig-alt: Applying a a single gradient to the fill of a barchart.
+ggplot(mtcars) +
+  aes(x = hp) +
+  geom_histogram(
+    bins = 30,
+    colour = "transparent",
+    fill = linearGradient(c("red", "orange"))) +
+  theme_blog()
+```
+
+Or it could be a theme option:
+
+```{r}
+#| fig-alt: Applying a gradient to the background of a plot as a theme element.
+ggplot(mtcars) +
+  aes(x = hp) +
+  geom_histogram(
+    bins = 30,
+    colour = "transparent") +
+  labs(title = "Gradient as plot background") +
+  theme_blog() +
+  theme(
+    plot.background = element_rect(
+      colour = NA,
+      fill = radialGradient(c("gold", "orange", "transparent")))
+  )
+```
+
+
+You're probably already realising that with this power comes the potential to make a lot of _ugly charts_—or, perhaps worse, unengaging or misleading ones!
+
+:::{.column-margin}
+
+We'll be looking at a lot of gradients in this post. Let's turn this example into a function we can re-use:
+
+```{r}
+preview_gradient <- \(p) {
+  ggplot() +
+    geom_blank() +
+    theme(
+      plot.background =
+        element_rect(
+        fill = p),
+      panel.background =
+        element_blank())
+}
+```
+
+:::
+
+All of the rules that apply to the accessible use of colour in data visualisation apply to gradients and patterns as well. Ensure that plot elements have sufficient contrast to be distinguished, particularly if the meaning of the plot is lost without it.
+
+But with some care, we can add sophisticated effects using these tools.
+
+# Gradient basics
+
+The most basic part of `linearGradient()` and `radialGradient()` is specifying the colours they use. Supply a vector of `colours` the same way you would supply colours elsewhere in R.
+
+If you don't want those colours to be distributed evenly along the gradient, supply a vector of `stops` between 0 and 1. Here we squash the first half of the rainbow, spreading the second half out
+
+```{r}
+squashed_rainbow <- linearGradient(
+  c("red", "orange", "yellow", "green", "blue", "darkblue", "purple"),
+  c(0, 0.1, 0.2, 0.4, 0.6, 0.8, 1)
+)
+```
+
+```{r}
+#| fig-height: 1
+#| fig-alt: A rainbow gradient—but the first three colours have shorter stops, while the other four have longer ones.
+preview_gradient(squashed_rainbow)
+```
+
+## Sizing and positioning linear gradients
+
+By default, the two gradients take up the space of all of their parent: `linearGradient()` goes left-to-right and `radialGradient()` goes from the centre out to the (shorter) edge.
+
+To change that, use the positional arguments. For `linearGradient`, those are `x1` and `y1` for the start position, and `x2` and `y2` for the end position. For example, to 
+
+If you simply provide these as numbers, the gradient will interpret these in "Normalised Parent Coordinates", which basically means "percentages of the thing I'm being put on". 0 is the (horizontal or vertical) start of the thing you're painting, and 1 is the end.
+
+Here's a gradient that stretches from the bottom-left corner to the top-right:
+
+```{r}
+angled_gradient <- linearGradient(
+  c("red", "orange"),
+  x1 = 0, y1 = 0, x2 = 1, y2 = 1)
+```
+
+One downside of this is that it makes getting a specific angle right difficult, because a wide object and a tall object have things that stretch differently:
+
+```{r}
+p1 <- ggplot() +
+  geom_blank() +
+  theme(
+    plot.background = element_rect(
+      fill = angled_gradient),
+    panel.background = element_blank())
+```
+
+:::{#fig-tall-1}
+
+```{r}
+#| echo: fenced
+#| fig-width: 0.5
+#| fig-height: 1.5
+p1
+```
+
+A tall gradient, going from bottom-left to top-right.
+
+:::
+
+:::{#fig-wide-1}
+
+```{r}
+#| echo: fenced
+#| fig-width: 1.5
+#| fig-height: 0.5
+p1
+```
+
+A wide gradient, going from bottom-left to top-right.
+
+:::
+
+But you can change the way these numbers are interpreted using `default.units = "snpc"`. _Square_ NPCs let us use the shorter side of the device for both height and width, so we'll get the same angles regardless of how wide or tall something is.
+
+```{r}
+angled_gradient_square <- linearGradient(
+  c("red", "orange"),
+  x1 = 0, y1 = 0, x2 = 1, y2 = 1,
+  default.units = "snpc")
+
+p2 <- ggplot() +
+  geom_blank() +
+  theme(
+    plot.background = element_rect(
+      fill = angled_gradient_square),
+    panel.background = element_blank())
+```
+
+:::{#fig-tall-2}
+
+```{r}
+#| echo: fenced
+#| fig-width: 0.5
+#| fig-height: 1.5
+p2
+```
+
+A tall gradient. The gradient maintains a 45 degree angle.
+
+:::
+
+:::{#fig-wide-2}
+
+```{r}
+#| echo: fenced
+#| fig-width: 1.5
+#| fig-height: 0.5
+p2
+```
+
+A wide gradient. The gradient maintains a 45 degree angle.
+
+:::
+
+:::{.column-margin}
+You can also set `default.units` to a physical or other unit, like `"cm"` or `"char"`. Check out `?unit` for all the options. You can also supply a full `unit()` to these parameters if you want to mix units!
+
+\
+
+I find `snpc` and the default `npc` to be the most useful for gradients, but there are cases where you'll want physical units—especially when we start making repeating patterns.
+
+\
+:::
+
+## Sizing and positioning radial gradients
+
+Radial gradients work in a similar way, but now we have a lot more parameters: `cx1`, `cy1`, `cx2` _and_ `cy2` for the centre points of the gradient, plus `r1` and `r2` for the radius of the start and end radii.
+
+For most applications, you'll want `cx2` and `cy2` to be the same as `cx1` and `cy1`. Then imagine two concentric circles around that point, with radii `r1` and `r2`. These rings are the start and end of your gradient.
+
+In fact, let's draw the circles explicitly to help us visualise:
+
+```{r}
+library(ggforce)
+
+my_ring <- radialGradient(
+  c("red", "orange"),
+  cx1 = 0.35, cy1 = 0.5, cx2 = 0.35, cy2 = 0.5,
+  r1 = 0, r2 = 0.3,
+  default.units = "snpc")
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Extra code: plot `my_ring` with circles overlaid"
+#| # fig-alt: A concentric radial gradient
+ggplot() +
+  geom_point(aes(x = 0.35, y = 0.5), size = 4) +
+  geom_circle(aes(x0 = 0.35, y0 = 0.5, r = 0.3),
+    linetype = "dotted") +
+  coord_equal() +
+  theme_void() +
+  scale_x_continuous(limits = c(0, 1),
+    expand = expansion(0)) +
+  scale_y_continuous(limits = c(0, 1),
+    expand = expansion(0)) +
+  theme(
+    plot.background = element_rect(
+      fill = my_ring),
+    panel.background = element_blank())
+```
+
+If you omit `cx2` and `cy2` entirely, they'll default to the centre. So if you're setting `cx1` and `cy1`, set `cx2` and `cy2` too, even if it feels redundant!
+
+:::{.callout-important collapse="true"}
+
+## What happens if I place `cx1` and `cx2` someplace else?
+
+\
+
+Generally you'll want `cx2` and `cy2` to match `cx1` and `cy1`. But if you vary them, you can make asymmetric gradients, like this firework (or fireball?) effect:
+
+```{r}
+my_ring_assym <- radialGradient(
+  c("red", "yellow"),
+  cx1 = 0.4, cy1 = 0.5,
+  cx2 = 0.65, cy2 = 0.5,
+  r1 = 0.05, r2 = 0.26,
+  default.units = "snpc")
+```
+
+```{r}
+#| echo: false
+#| fig-alt: A 'fireball' effect created by shifting the middle of the inner circle just inside the edge of the outer circle.
+ggplot() +
+  geom_point(aes(x = 0.4, y = 0.5)) +
+  geom_circle(aes(x0 = 0.4, y0 = 0.5, r = 0.05)) +
+  geom_circle(aes(x0 = 0.65, y0 = 0.5, r = 0.26),
+    linetype = "dotted") +
+  scale_x_continuous(limits = c(0, 1),
+    expand = expansion(0)) +
+  scale_y_continuous(limits = c(0, 1),
+    expand = expansion(0)) +
+  coord_equal() +
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = my_ring_assym))
+```
+
+The key to this is continuing to imagine those circles drawn around the two points. Before they were concentric, but now they have room to move.
+
+If the centre of the first circle escapes (or grazes) the edge of the second circle, you get weirder effects:
+
+```{r}
+my_ring_broken <- radialGradient(
+  c("red", "yellow"),
+  cx1 = 0.5, cy1 = 0.5,
+  cx2 = 0.7, cy2 = 0.5,
+  r1 = 0.1, r2 = 0.15,
+  default.units = "snpc")
+```
+
+```{r}
+#| echo: false
+#| fig-alt: This radial gradient displays unexpected results because the middle of the inner circle has escaped rthe outer circle.
+ggplot() +
+  geom_point(aes(x = 0.5, y = 0.5)) +
+  geom_circle(aes(x0 = 0.5, y0 = 0.5, r = 0.1)) +
+  geom_circle(aes(x0 = 0.7, y0 = 0.5, r = 0.15),
+    linetype = "dotted") +
+  scale_x_continuous(limits = c(0, 1),
+    expand = expansion(0)) +
+  scale_y_continuous(limits = c(0, 1),
+    expand = expansion(0)) +
+  coord_equal() +
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = my_ring_broken))
+```
+
+:::
+
+## Grouping
+
+There's one other important parameter for `linearGradient()` and `radialGradient()`.
+
+The `group` parameter controls whether a gradient applies to individual shapes or to a set of them. It's `TRUE` by default. The difference is pretty obvious in some cases:
+
+:::{#fig-grouping-points layout-ncol=2}
+
+```{r}
+#| fig-alt: With grouping
+ggplot(mtcars) +
+  aes(mpg, disp) +
+  geom_point(size = 7, shape = 21, stroke = 0,
+    fill = linearGradient(c("red", "yellow"))) +
+  theme_blog()
+```
+
+```{r}
+#| fig-alt: Without grouping
+ggplot(mtcars) +
+  aes(mpg, disp) +
+  geom_point(size = 7, shape = 21, stroke = 0,
+    fill = linearGradient(c("red", "yellow"), group = FALSE)) +
+  theme_blog()
+```
+
+Points with a gradient fill. In the grouped version (left), the gradient stretches across all of the points; in the ungrouped version (right), each point gets the whole gradient, from red through to yellow.
+
+:::
+
+But in others the difference might be subtler. Take this time series example:
+
+```{r}
+tibble(
+  day = as.Date("2024-01-01") + days(0:14),
+  count = runif(15, -10, 10),
+  sign = ifelse(count < 0, "negative", "positive")) ->
+day_counts
+
+timeseries_base <- ggplot(day_counts) +
+  aes(day, count, fill = sign) +
+  geom_col() +
+  guides(fill = "none") +
+  theme_blog()
+```
+
+Yes, we can use gradients for aesthetics! The way to do it is to use `scale_fill_manual()` and provide each gradient in a list.
+
+:::{.column-margin}
+If you've used `scale_*_manual()` before, you probably given `values` a named _vector_ using `c()`.
+
+\
+
+Don't do that here: you need a named `list()`.
+:::
+
+:::{#fig-grouping-bars layout-ncol=2}
+
+```{r}
+#| fig-alt: With grouping
+timeseries_base +
+  scale_fill_manual(values = list(
+    "positive" = linearGradient(
+      c("yellow", "red"),
+      x1 = 0.5, y1 = 0, x2 = 0.5, y2 = 1),
+    "negative" = linearGradient(
+      c("blue", "lightblue"),
+      x1 = 0.5, y1 = 0, x2 = 0.5, y2 = 1)
+  ))
+```
+
+```{r}
+#| fig-alt: Without grouping
+timeseries_base +
+  scale_fill_manual(values = list(
+    "positive" = linearGradient(
+      c("yellow", "red"),
+      x1 = 0.5, y1 = 0, x2 = 0.5, y2 = 1,
+      group = FALSE),
+    "negative" = linearGradient(
+      c("blue", "lightblue"),
+      x1 = 0.5, y1 = 0, x2 = 0.5, y2 = 1,
+      group = FALSE)
+  ))
+```
+
+Time series with (left) and without (right) grouping in the gradient fill.
+
+:::
+
+Without grouping, every bar gets to the intense red or blue at the end of the gradient. If you're using the change in colour to reinforce the Y axis, this could be misleading!
+
+Ready to go even further with gradients?
+
+# More advanced: stacking gradients
+
+As web and print designers know, we can make some powerful effects by stacking gradients on top of each other. And the third tool we now have in R, `pattern()`, lets us do exactly that.
+
+The secret to `pattern()`'s power is that it's recursive. We can turn any graphical object (called a "grob") into a repeating pattern.
+
+That grob could be a picture you've provided separately, it could be a shape... or it could be a list of shapes!
+
+@coolbutuseless [explored](https://coolbutuseless.github.io/2021/07/01/r-v4.1.0-grid-graphics-new-feature-patterns/) the possibilities of these recursive `pattern()`s a while back, but we can put them to good use with gradients too.
+
+So here's a helper function to help us "stack" gradients. It does two things.
+
+The first is to wrap each pattern in a rectangle grob, or `rectGrob()`. Rectangles can be sized and positioned with `x`, `y`, `width` and `height` parameters, but if we're stacking gradients on top of each other, we can leave them all at their defaults.
+
+The second step is to do the stacking. We'll use `grobTree()` to hold our list of rectangles before passing them to `pattern()`.
+
+We'll also throw in some error checking to make sure that the arguments we're passing are actually patterns. And since we'll likely want to include at least one solid colour as well to serve as a background, let's keep those as well.
+
+:::{.column-margin}
+In R, valid colours are either those named in `colours()` or 6- or 8-digit [hex numbers](https://en.wikipedia.org/wiki/Web_colors#Hex_triplet) prefixed with a hashtag. Things like:
+
+\
+
+- `"red"` or `#ff0000`
+- `#00ff00aa` is a semi-transparent green
+
+:::
+
+```{r}
+stack_patterns <- function(...) {
+  patterns <- list(...)
+
+  # helper function to check for solid colours
+  is_valid_colour <- function(x) {
+    is(x, "character") &&
+      (x %in% colours() ||
+        grepl("^\\#[0-9a-fA-F]{6}$", x) ||
+        grepl("^\\#[0-9a-fA-F]{8}$", x))
+  }
+
+  # check if any are not a pattern or colour
+  stopifnot(
+    "All supplied arguments must be patterns" =
+      patterns |>
+        sapply(\(x) is(x, "GridPattern") ||
+          is_valid_colour(x)) |>
+        all()
+  )
+
+  # wrap each gradient in a grob
+  patterns |>
+    lapply(\(x) grid::rectGrob(gp = grid::gpar(fill = x))) ->
+  pattern_grobs
+
+  # return as a compound pattern
+  grid::pattern(
+    do.call(grid::grobTree, pattern_grobs),
+    extend = "none")
+}
+```
+
+We can use `stack_patterns()` anywhere we would've used a single gradient. But what sort of gradients should we stack?
+
+There are lots of great tools for building pseudo-mesh gradients out of radial ones, like [this generator on Colorffy](https://colorffy.com/mesh-gradient-generator).
+
+Although CSS gradients aren't specified in exactly the same way as R's gradients, you can convert them pretty quickly. For example, here's the CSS code for a splashy mix of bright colours:
+
+:::{.column-margin}
+On Colorffy, use the `<>` button to display the CSS code for the gradient.
+:::
+
+```{.css filename="CSS"}
+background:
+  radial-gradient(at 87% 87%, #eb4775 0px, transparent 50%),
+  radial-gradient(at 6%  99%, #eb6b47 0px, transparent 50%),
+  radial-gradient(at 76% 4%,  #ebbd47 0px, transparent 50%),
+  radial-gradient(at 35% 44%, #47ebbd 0px, transparent 50%),
+  radial-gradient(at 86% 45%, #4775eb 0px, transparent 50%) #ffffff;
+```
+
+Using R's tools and our new helper this would be:
+
+```{r}
+stacked_gradient_bg <- stack_patterns(
+  "#ffffff",
+  radialGradient(c("#eb4775ff", "#eb477500"),
+    cx1 = 0.87, cy1 = 0.13, r1 = 0,
+    cx2 = 0.87, cy2 = 0.13, r2 = 0.5),
+  radialGradient(c("#eb6b47ff", "#eb6b4700"),
+    cx1 = 0.06, cy1 = 0.01, r1 = 0,
+    cx2 = 0.06, cy2 = 0.01, r2 = 0.5),
+  radialGradient(c("#ebbd47ff", "#ebbd4700"),
+    cx1 = 0.76, cy1 = 0.96, r1 = 0,
+    cx2 = 0.76, cy2 = 0.96, r2 = 0.5),
+  radialGradient(c("#47ebbdff", "#47ebbd00"),
+    cx1 = 0.35, cy1 = 0.56, r1 = 0,
+    cx2 = 0.35, cy2 = 0.56, r2 = 0.5),
+  radialGradient(c("#4775ebff", "#4775eb00"),
+    cx1 = 0.86, cy1 = 0.55, r1 = 0,
+    cx2 = 0.86, cy2 = 0.55, r2 = 0.5))
+```
+
+:::{.callout-tip collapse="true"}
+
+## Wait, walk me through those numbers a little more
+
+In CSS, each radial gradient starts with its position, as `at X Y`. Those become our `cx1`, `cy1`, `cx2` and `cy2` arguments (remember that we repeat the values again for `cx2` and `cy2`).
+
+One wrinkle is that the y-coordinates need to be flipped from the web (ie. top becomes bottom), so you'll want to subtract 1: 70% becomes 0.3, not 0.7!
+
+The Colorffy generator ends each radial gradient at the 50% mark in transparency to get the splotchy look.
+
+We don't have a `"transparent"` keyword here. Instead, I'll repeat the original colour but make it transparent by adding zero opacity (`00`) to the end of it. At the start they're fully opaque (`ff`).
+
+:::
+
+Once we have our stack of gradients, we can use the gradient pattern as a plot background or just about anything else in `{ggplot2}`:
+
+```{r}
+#| fig-alt: A series of radial gradients stacked on top of each other. Each gradient ends in transparency, allowing the other gradients to be visible.
+preview_gradient(stacked_gradient_bg)
+```
+
+Of course, if you're using this as a background for an actual plot, you might need to dial things back to make the content readable.
+
+One easy way to do that is to just make all the colours semi-transparent:
+
+```{r}
+#| fig-alt: A scatter plot with a stacked radial gradient background. The colours are semi-transparent, making them less bright when blended with a white background.
+ggplot(mtcars) +
+  aes(mpg, hp) +
+  geom_point() +
+  theme_blog() +
+  theme(
+    text = element_text(colour = "black"),
+    axis.text = element_text(colour = "#222222"),
+    plot.title = element_text(face = "bold"),
+    panel.background = element_blank(),
+    plot.background = element_rect(fill =
+      stack_patterns(
+        "#ffffff",
+        radialGradient(c("#eb477566", "#eb477500"),
+          cx1 = 0.87, cy1 = 0.13, r1 = 0,
+          cx2 = 0.87, cy2 = 0.13, r2 = 0.5),
+        radialGradient(c("#eb6b4766", "#eb6b4700"),
+          cx1 = 0.06, cy1 = 0.01, r1 = 0,
+          cx2 = 0.06, cy2 = 0.01, r2 = 0.5),
+        radialGradient(c("#ebbd4766", "#ebbd4700"),
+          cx1 = 0.76, cy1 = 0.96, r1 = 0,
+          cx2 = 0.76, cy2 = 0.96, r2 = 0.5),
+        radialGradient(c("#47ebbd66", "#47ebbd00"),
+          cx1 = 0.35, cy1 = 0.56, r1 = 0,
+          cx2 = 0.35, cy2 = 0.56, r2 = 0.5),
+        radialGradient(c("#4775eb66", "#4775eb00"),
+          cx1 = 0.86, cy1 = 0.55, r1 = 0,
+          cx2 = 0.86, cy2 = 0.55, r2 = 0.5))))
+```
+
+But if your content is simple and clear, you might be able to get away with bolder colours:
+
+```{r}
+#| fig-alt: A bar chart using the original stacked background. Because the bars and text are very bold, the background can also use brighter colours without affecting the legibility of the content.
+tibble(
+  day_n = 1:15,
+  day = as.Date("2024-01-01") + days(day_n - 1),
+  score = day_n + rnorm(15)) |> 
+  ggplot() +
+    aes(day, score) +
+    geom_col(fill = "#1d2841") +
+    labs(
+      x = NULL, y = "Score",
+      title = "Big things happening!") +
+    theme_blog() +
+    theme(
+      text = element_text(colour = "#1d2841"),
+      axis.text = element_text(colour = "#29385b"),
+      plot.title = element_text(face = "bold.italic"),
+      axis.ticks.x = element_blank(),
+      panel.grid = element_line(colour = "#1d284144"),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.background = element_blank(),
+      plot.background = element_rect(
+        fill = stacked_gradient_bg))
+```
+
+Of course, you don't have to stack radial gradients that fall off to transparency. You can combine all sorts of radial gradients, linear gradients and even other patterns composed of basic shapes.
+
+If you're looking for some pattern inspiration, @coolbutuseless's [series of posts](https://coolbutuseless.github.io/2021/07/01/r-v4.1.0-grid-graphics-new-feature-patterns/) on building patterns is a great place to start!
+
+# Your new gradient powers
+
+We've covered a lot here! We looked at:
+
+- Creating linear and radial gradients of various colours and sizes
+- Using those gradients both as static plot elements and as aesthetics
+- Stacking gradients to create powerful visual effects
+
+Ready to go out and add some colour to your plots?
