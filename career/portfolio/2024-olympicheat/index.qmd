@@ -35,7 +35,16 @@ But the games are also pushing into places that are much hotter than Europe in J
 The Beijing Games in 2008 pushed past a [wet bulb temperature](https://360info.org/how-dangerous-is-extreme-heat-to-humans/) of 27 degrees Celsius for the first time, while the Tokyo Games in 2021, delayed because of the COVID-19 pandemic, averaged the highest wet bulb during the day (7am to 11pm) of all the games.
 
 ```{=html}
-<iframe title="The Olympics are heating up" aria-label="Scatter Plot" id="datawrapper-chart-Ji1gb" src="https://datawrapper.dwcdn.net/Ji1gb/7/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="1198" data-external="1"></iframe>
+<iframe
+	title="The Olympics are heating up"
+	aria-label="Scatter Plot"
+	id="datawrapper-chart-Ji1gb"
+	src="https://datawrapper.dwcdn.net/Ji1gb/7/"
+	scrolling="no"
+	frameborder="0"
+	style="background: white; width: 0; min-width: 100% !important; border: none; border-radius: 1em;"
+	height="1198"
+	data-external="1"></iframe>
 <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();</script>
 ```
 
