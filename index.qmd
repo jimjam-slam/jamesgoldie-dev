@@ -14,26 +14,36 @@ about:
       text: Mastodon
       aria-label: "James's Mastodon"
       href: https://aus.social/@jimjamslam
+      target: _blank
     - icon: bootstrap-fill
       text: Bluesky
       aria-label: "James's Bluesky"
       href: https://bsky.app/profile/jimjamslam.bsky.social
+      target: _blank
     - icon: linkedin
       text: LinkedIn
       aria-label: "James's LinkedIn"
       href: https://www.linkedin.com/in/jamesgoldie
+      target: _blank
     - icon: github
       text: GitHub
       aria-label: "James's GitHub"
       href: https://github.com/jimjam-slam
+      target: _blank
     - icon: mortarboard-fill
       text: Google Scholar
       aria-label: "James's Google Scholar"
       href: https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en
+      target: _blank
     - icon: envelope-fill
       text: Mail
       aria-label: Email James
       href: mailto:me@jamesgoldie.dev
+      target: _blank
+    - icon: cup-hot-fill
+      text: Buy me a coffee
+      href: https://www.buymeacoffee.com/jimjamslam
+      target: _blank
 page-layout: article
 ---
 

@@ -101,6 +101,18 @@ body {
     }
   }
 
+  .navbar-collapse.collapse.show {
+    .nav-item.compact {
+      i.bi::after {
+        content: attr(aria-label);
+        font-style: normal;
+        font-size: 0.75em;
+        vertical-align: text-top;
+        padding-inline-start: 0.25em;
+      }
+    }
+  }
+
   header#title-block-header {
     border-bottom: none;
 
@@ -443,38 +455,3 @@ button.navbar-toggler .navbar-toggler-icon {
     }
   }
 }
-
-// #listing-roles {
-
-//   ul {
-//     list-style: none;
-//     display: flex;
-//     flex-flow: column nowrap;
-//     gap: 2em;
-//   }
-
-//   .listing-role-daterange {
-//     font-size: 75%;
-//     font-weight: bold;
-//     // text-transform: uppercase;
-//     color: $secondary;
-//     margin-bottom: 0;
-//   }
-
-//   .listing-role-title {
-//     margin: 0;
-//     font-style: italic;
-
-//     a {
-//       text-decoration: none;
-//       color: $primary;
-//     }
-
-//     &.anchored {
-//       .anchorjs-link {
-//         display: none;
-//       }
-//     }
-//   }
-// }
-

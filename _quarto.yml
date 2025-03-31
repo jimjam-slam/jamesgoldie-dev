@@ -22,23 +22,33 @@ website:
         href: /writing/
     right:
       - icon: mastodon
-        aria-label: "James's Mastodon"
+        aria-label: "Mastodon"
         href: https://aus.social/@jimjamslam
+        target: _blank
       - icon: bootstrap-fill
-        aria-label: "James's Bluesky"
+        aria-label: "Bluesky"
         href: https://bsky.app/profile/jimjamslam.bsky.social
+        target: _blank
       - icon: linkedin
-        aria-label: "James's LinkedIn"
+        aria-label: "LinkedIn"
         href: https://www.linkedin.com/in/jamesgoldie
+        target: _blank
       - icon: github
-        aria-label: "James's GitHub"
+        aria-label: "GitHub"
         href: https://github.com/jimjam-slam
+        target: _blank
       - icon: mortarboard-fill
-        aria-label: "James's Google Scholar"
+        aria-label: "Google Scholar"
         href: https://scholar.google.com/citations?user=Otq-xj0AAAAJ&hl=en
+        target: _blank
       - icon: envelope-fill
-        aria-label: Email James
+        aria-label: Email
         href: mailto:me@jamesgoldie.dev
+        target: _blank
+      - icon: cup-hot-fill
+        aria-label: Buy me a coffee
+        href: https://www.buymeacoffee.com/jimjamslam
+        target: _blank
   open-graph:
     description: "Visualising data and building things for fun and for change. #climatehealth → #datajournalism"
     image: "/profile.png"
