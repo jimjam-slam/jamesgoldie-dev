@@ -1,14 +1,17 @@
 ---
-title: Sverto
+title: quarto-svelte
 work-type: package
 categories: [package, quarto, pandoc, svelte, javascript]
 date: 2023-02-15
 description: Use Svelte components in your Quarto documents, and have them seamlessly react to Observable JS, making it quick and easy to build bespoke visuals that animate in response to user inputs or other changing data in your document.
 aliases:
-  - ../../sverto/index.html
+  - ../../quarto-svelte/index.html
+image: quartosvelte-logo.svg
+twitter-card:
+  image: quartosvelte-banner.png
 ---
 
-[Find this on sverto.jamesgoldie.dev](https://sverto.jamesgoldie.dev){.btn .btn-gradient}
+[Find this on quarto-svelte.jamesgoldie.dev](https://quarto-svelte.jamesgoldie.dev){.btn .btn-gradient}
 
 Quarto helps users build beautiful documents regardless of their language of choice, and it encourages data analysts and scientists to explore web visualisation by making JavaScript accessible and easy to use. It makes interactive visualisations intuitive to write, but animated visuals are still a challenge that require either dipping into a high-level JavaScript library or learning a lower-level one like d3.
 
