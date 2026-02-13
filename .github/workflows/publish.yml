@@ -12,10 +12,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4 
 
+      # setup the release version of quarto
+      # (use with.version for a specific version)
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: 1.7.15
 
       - name: Install system dependencies
         run: sudo apt install -y libfontconfig1-dev libfreetype6-dev
