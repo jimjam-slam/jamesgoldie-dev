@@ -1,0 +1,12 @@
+---
+title: Frontend Engineer
+subtitle: CounterCurrent
+description: "I build charts, websites and tools to help the shipping industry save fuel."
+date: 2025-05
+date_range: May 2025 to present
+categories: ["role"]
+---
+
+I currently work at CounterCurrent, a UNSW-spinoff company helping the shipping industry cut operating expenses and meet their emissions reduction targets by finding more fuel-efficient routes through the ocean.
+
+As CounterCurrent's Frontend Engineer, I build the experiences that our customers use every day, including our website, web app and reports. I've also worked on other parts of our stack, setting up our backend and getting our world-leading machine learning services into production with our customers.

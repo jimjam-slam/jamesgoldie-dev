@@ -1,6 +1,6 @@
 ---
 title: "James Goldie"
-description: "Telling data stories and building<br>[#climatehealth → #datajournalism]{style='font-size: 85%'}"
+description: "Telling data stories and building<br>[#climatehealth • #datajournalism • #softwareengineering]{style='font-size: 85%'}"
 image: profile.jpg
 twitter-card:
   image: profile.jpg
@@ -10,12 +10,7 @@ about:
   image-shape: round
   image-width: 10em
   links:
-    - icon: mastodon
-      text: Mastodon
-      aria-label: "James's Mastodon"
-      href: https://aus.social/@jimjamslam
-      target: _blank
-    - icon: bootstrap-fill
+    - icon: bluesky
       text: Bluesky
       aria-label: "James's Bluesky"
       href: https://bsky.app/profile/jimjamslam.bsky.social
@@ -57,7 +52,7 @@ page-layout: article
 ::::{.g-col-lg-6 .g-col-12 .intro}
 I'm James, a data journalist, researcher and software engineer.
 
-I have a broad set of skills around analysing, visualising and communicating data. In the last few years I've [used those skills](/career/) to help Australians understand climate change and make journalistic graphics free and open.
+I have a broad set of skills around analysing, visualising and communicating data. In the last few years I've [used those skills](/career/) to help Australians understand climate change and make journalistic graphics free and open. Now I use them to help the shipping industry [save fuel](https://countercurrent.ai).
 
 I can use those skills to [help you too!](/services/) Whether you need a consultant to build dashboards and websites, or you're looking to train your team in data analysis and visualisation, I'm your guy.
 

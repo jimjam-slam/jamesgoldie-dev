@@ -1,10 +1,11 @@
 ---
 title: "Career"
-description: I'm a data journalist and researcher with a focus on visualising and communicating climate change.
+description: I'm a data journalist, data visualisation developer and researcher with a focus on visualising and communicating climate change.
 listing:
   - contents: roles
     id: roles
     type: grid
+    grid-columns: 4
     sort: "date desc"
     sort-ui: false
     filter-ui: false
@@ -15,8 +16,14 @@ I have broad experience across data journalism, data science and engineering, sc
 
 My most recent roles include:
 
+\
+
+::::{.column-page}
 :::{#roles}
 :::
+::::
+
+\
 
 Got a role you think I'd be perfect for? I'm always happy to talk!
 

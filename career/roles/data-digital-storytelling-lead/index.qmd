@@ -1,7 +1,6 @@
 ---
 title: "Data and Digital Storytelling Lead"
 subtitle: "360info, hosted by Monash University"
-# with: "360info, hosted by Monash University"
 description: "I led the open data journalism capability of a research-based newswire. See my most ambitious visuals."
 date: 2021-10
 date_range: Oct 2021 to Dec 2024
@@ -18,7 +17,7 @@ listing:
 ---
 
 
-I most recently worked at [360info](https://360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of an open newswire supported by Monash University.
+I worked at [360info](https://360info.org) as the Data and Digital Storytelling Lead, building the data visualisation and analysis capability of an open newswire supported by Monash University.
 
 Here are some of the more ambitious interactives I've produced:
 

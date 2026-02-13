@@ -441,6 +441,7 @@ button.navbar-toggler .navbar-toggler-icon {
   table.card-other-values {
     margin-top: auto;
     margin-bottom: 0;
+    background: none;
     
     tr:has(.date_range) {
       :first-child {

@@ -21,11 +21,7 @@ website:
       - text: Writing
         href: /writing/
     right:
-      - icon: mastodon
-        aria-label: "Mastodon"
-        href: https://aus.social/@jimjamslam
-        target: _blank
-      - icon: bootstrap-fill
+      - icon: bluesky
         aria-label: "Bluesky"
         href: https://bsky.app/profile/jimjamslam.bsky.social
         target: _blank
